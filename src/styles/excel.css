@@ -199,6 +199,9 @@ summary:focus-visible {
   height: auto;
   mix-blend-mode: multiply;
 }
+.site-header .brand {
+  width: 144px;
+}
 .nav-wrap nav {
   display: flex;
   align-items: center;
@@ -426,22 +429,6 @@ h1 {
   color: var(--blue);
   padding: 4px;
 }
-.photo-corner {
-  position: absolute;
-  bottom: -17px;
-  right: -17px;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  background: var(--blue);
-  color: #fff;
-  font-size: 43px;
-  border: 8px solid var(--paper);
-  font-weight: 400;
-}
 .reviews-section {
   padding: 32px 0 28px;
   background: #edefe9;
@@ -520,15 +507,6 @@ h1 {
 .review figcaption > svg {
   color: #6b8368;
   margin-left: auto;
-}
-.review-source {
-  font-size: 9px;
-  margin-top: 14px;
-  color: #5d665d;
-}
-.review-source a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
 }
 .approach-grid {
   display: grid;
@@ -1260,8 +1238,8 @@ dialog > p {
   .nav-wrap nav {
     gap: 18px;
   }
-  .brand {
-    width: 170px;
+  .site-header .brand {
+    width: 136px;
   }
   .nav-wrap nav a {
     font-size: 11px;
@@ -1555,8 +1533,8 @@ dialog > p {
     height: 76px;
     gap: 12px;
   }
-  .brand {
-    width: 153px;
+  .site-header .brand {
+    width: 120px;
   }
   .nav-wrap nav {
     top: 76px;
@@ -1653,14 +1631,6 @@ dialog > p {
     font-size: 10px;
     gap: 37px;
   }
-  .photo-corner {
-    right: -13px;
-    bottom: -13px;
-    width: 58px;
-    height: 58px;
-    font-size: 35px;
-    border-width: 6px;
-  }
   .section-mini-heading {
     align-items: flex-start;
     gap: 10px;
@@ -1699,10 +1669,6 @@ dialog > p {
   }
   .review figcaption > svg {
     display: block;
-  }
-  .review-source {
-    font-size: 9px;
-    max-width: 310px;
   }
   .section-space {
     padding: 60px 0;
@@ -2067,8 +2033,8 @@ dialog > p {
   .nav-wrap {
     gap: 10px;
   }
-  .brand {
-    width: 128px;
+  .site-header .brand {
+    width: 112px;
   }
   .nav-book {
     font-size: 9px;

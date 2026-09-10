@@ -11,6 +11,8 @@ npm run dev
 
 Open http://localhost:4321. Build with `npm run build`; preview the static build with `npm run preview`.
 
+In Conductor, start **preview** from the **Run** tab, then click **Open** to view the site. The preview uses the workspace's assigned port and updates as you edit. New workspaces install dependencies automatically with `npm ci` using `.conductor/settings.toml`.
+
 ## Editing the draft
 
 - Homepage: `src/pages/index.astro`
