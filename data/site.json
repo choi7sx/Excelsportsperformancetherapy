@@ -1,8 +1,8 @@
 {
-  "site_title": "Astro Starter",
-  "description": "A starter template for Astro with Editable Regions, for CloudCannon CMS.",
+  "site_title": "Excel Sports Performance Therapy",
+  "description": "Chiropractic care, sports rehab, and performance coaching with Dr. Ethan Coghill in Old Hickory and Belle Meade, Nashville.",
   "twitter_site": "",
-  "image": "/images/logos/logo-wordmark-blue.png",
-  "image_alt": "CloudCannon logo",
-  "default_author": "CloudCannon"
+  "image": "/images/excel-social.jpg",
+  "image_alt": "Excel Sports Performance Therapy",
+  "default_author": "Dr. Ethan Coghill"
 }

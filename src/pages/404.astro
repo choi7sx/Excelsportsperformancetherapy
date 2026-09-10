@@ -1,13 +1,18 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "../layouts/ExcelLayout.astro";
 ---
 
-<Layout title="404 - Not Found">
-  <section class="flex flex-col items-center justify-center min-h-[60vh] px-8">
-    <img src="/images/404.png" alt="Error illustration" class="max-w-sm mb-8" />
-    <h1 class="text-3xl md:text-4xl font-bold mb-4">Page not found!</h1>
-    <a href="/" class="text-blue-600 hover:text-blue-800 font-medium text-lg">
-      &larr; Back home
+<Layout title="Page not found | Excel Sports Performance Therapy" noindex>
+  <section class="container error-page">
+    <span class="eyebrow">404 / A SMALL DETOUR</span>
+    <h1>
+      Let’s get you
+      <br />
+      back on track.
+    </h1>
+    <p>We couldn’t find that page. Your next step is still here.</p>
+    <a class="button" href="/">
+      Back to Excel →
     </a>
   </section>
 </Layout>

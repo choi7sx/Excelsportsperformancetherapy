@@ -5,7 +5,8 @@ import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://tiny-jackal.cloudvent.net/",
+  site: "https://www.excelspt.com",
+  devToolbar: { enabled: false },
   integrations: [react(), editableRegions(), mdx()],
   vite: {
     plugins: [tailwindcss()],

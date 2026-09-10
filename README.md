@@ -1,81 +1,37 @@
-# Astro Minimal Starter
+# Excel Sports Performance Therapy
 
-A minimal starter template for building an Astro site with [CloudCannon](https://cloudcannon.com/) using **Editable Regions** for visual editing.
+A responsive Astro first draft for Dr. Ethan Coghill's Nashville practice. Includes a homepage, three service pages, real patient excerpts, FAQs, two locations, and a booking location chooser that connects to the existing Jane calendars.
 
-See a [demo site](https://tiny-jackal.cloudvent.net/).
+## Run locally
 
-## Features
-
-- Visual editing with [Editable Regions](https://cloudcannon.com/documentation/developer-guides/set-up-visual-editing/an-overview-of-editable-regions/) (text, image, array, source, and component regions)
-- Page building with reusable components
-- Blog with pagination and tags
-- [Tailwind CSS v4](https://tailwindcss.com/) with CSS-first configuration
-- SEO controls
-- Pagefind search
-
-## Getting Started
-
-Click `Use this template` to make your own copy of the repository.
-
-### Local Development
-
-1. Clone the repository to your local machine.
-
-2. Start the development server.
-
-```bash
+```sh
 npm install
 npm run dev
 ```
 
-## CloudCannon Setup
+Open http://localhost:4321. Build with `npm run build`; preview the static build with `npm run preview`.
 
-This site is pre-configured for CloudCannon. Connect your repository and CloudCannon will detect the configuration in `.cloudcannon/initial-site-settings.json` and build your site automatically. The editing experience is defined in `cloudcannon.config.yml`, which you can modify to control your editors' experience.
+## Editing the draft
 
-### Editable Regions
+- Homepage: `src/pages/index.astro`
+- Services, FAQs, locations, hours, and booking URLs: `src/data/excel.ts`
+- Shared navigation, booking dialog, footer, and metadata: `src/layouts/ExcelLayout.astro`
+- Visual styles and responsive layouts: `src/styles/excel.css`
+- Service page template: `src/pages/services/[slug].astro`
+- Images and self-hosted DM Sans font: `public/images` and `public/fonts`
 
-This starter demonstrates several types of Editable Region:
+The CloudCannon integration and original content components remain available. The new pages use Astro source files; the old starter page-builder content is not connected to these new pages. Demo routes have been removed from public output (their history remains in Git).
 
-- **Text** (`data-editable="text"`) for editing front matter text values inline
-- **Image** (`data-editable="image"`) for editing front matter image values
-- **Array** (`data-editable="array"`) for page-building with reorderable content blocks
-- **Source** (`data-editable="source"`) for making standalone `.astro` pages editable
-- **Component** (`<editable-component>`) for live re-rendering of Astro components
+## Content sources and conversion strategy
 
-Components that need live re-rendering are registered in `src/scripts/register-components.ts` and loaded conditionally when the site is open in CloudCannon's Visual Editor.
+Content was checked against https://www.excelspt.com/ and https://excelspt.janeapp.com/ on September 10, 2026. Both photos are optimized versions of the user-supplied treatment photo; the user-supplied Excel logo is used throughout. No stock portraits, fabricated reviews, star ratings, pricing, qualifications, or outcome guarantees were added.
 
-#### Source Editables
+The working assumption is that uncertainty about care and the first visit creates booking friction. The Hormozi-inspired strategy therefore informed outcome-led copy, early patient proof, understandable care paths, a clear first-visit explanation, and a free consultation alternative. The intended outcome is more qualified initial evaluations. Once launched, measure visits → booking-calendar clicks → completed evaluations, along with consult requests. Analytics and completed-booking attribution are not connected in this draft; bookings happen in Jane. Evaluate conversion and booking quality before investing in more traffic. Appointment capacity becomes the next constraint if demand grows.
 
-The About page (`src/content/pages/about.astro`) demonstrates **source editables** — a pattern where content lives directly in an Astro template rather than in Markdown front matter. Source editable regions use `data-editable="source"`, `data-path="path/to/file.astro"`, and `data-key` attributes. CloudCannon writes changes straight back to the `.astro` file.
+## SEO and launch notes
 
-This is useful for standalone pages (like About or Contact) where a developer wants full control over the markup while still giving editors visual editing access — **and where page building with components is *not* desired**. No accompanying Markdown file or front matter schema is needed. A thin routing wrapper in `src/pages/about.astro` handles Astro's file-based routing.
+Server-rendered static HTML includes unique titles and descriptions, canonical URLs, Open Graph/Twitter cards, a branded favicon, medical-business/location structured data, service structured data, FAQ structured data, robots.txt, and an XML sitemap. There is one main H1 per page. The canonical production domain is https://www.excelspt.com. Structured data does not guarantee rich results or rankings.
 
-### Components
+This is a local draft, not a live replacement. Before launch, have Ethan review service wording, hours, payment details, and patient excerpt usage. Confirm the production domain, point hosting at `dist`, ensure previews are not indexed, and submit the sitemap to Search Console. Review any legacy URLs for redirects when migrating. No patient information is collected by this site; scheduling and consultation links use the existing external providers.
 
-Three page-building components are included:
-
-- **Hero** — heading, subheading, image, and optional button
-- **LeftRight** — side-by-side text and image, with optional flip and button
-- **TextBlock** — heading and rich text content
-
-### Content
-
-- **Pages** are in `src/content/pages/` as Markdown with structured front matter, and support a component-based page-building workflow. Developers can also add standalone pages paired with a routing file in `src/pages/` (like `src/content/pages/about.astro`), and decide which parts of those pages are editable in CloudCannon.
-- **Blog posts** are in `src/content/blog/` as MDX files
-- **Data** files (site settings, navigation) are in `data/`
-
-## Project Structure
-
-```
-├── .cloudcannon/          # CloudCannon schemas and postbuild
-├── cloudcannon.config.yml # CloudCannon configuration
-├── data/                  # Site-wide data files
-├── public/                # Static assets
-└── src/
-    ├── components/        # Astro components
-    ├── content/           # Content collections (pages, blog)
-    ├── layouts/           # Page layouts
-    ├── pages/             # Astro page routes
-    ├── scripts/           # Component registration for visual editing
-    └── styles/            # Global CSS (Tailwind v4)
-```
+Compatible dependency fixes were applied using `npm audit fix`. Six inherited advisories remain (one critical, three high, one moderate, one low), involving Astro/MDX, sharp, esbuild, and markdown-it/linkify-it. Resolving all of them currently requires dependency upgrades beyond the starter's major-version ranges. This draft emits static files; a production dependency upgrade and verification should be completed before launch.

@@ -1,0 +1,454 @@
+---
+import Layout from "../layouts/ExcelLayout.astro";
+import Icon from "../components/ExcelIcon.astro";
+import {
+  bookingUrl,
+  consultUrl,
+  services,
+  faqs,
+  locations,
+} from "../data/excel";
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+const reviews = [
+  {
+    quote: "Ethan is fantastic! He was personable and very knowledgeable.",
+    name: "Anthony",
+    initial: "A",
+    context: "On his experience with Ethan",
+  },
+  {
+    quote: "Best Chiro for athletes around!",
+    name: "Josh",
+    initial: "J",
+    context: "On care for his active lifestyle",
+  },
+  {
+    quote: "significant improvement in my mobility and function.",
+    name: "Derek",
+    initial: "D",
+    context: "On working through a shoulder issue",
+  },
+];
+---
+
+<Layout schema={faqSchema}>
+  <section class="hero container">
+    <div class="hero-copy">
+      <div class="eyebrow">
+        <span class="status-dot"></span> NASHVILLE CHIROPRACTIC & SPORTS REHAB
+      </div>
+      <h1>
+        More movement.
+        <br />
+        More life.
+        <br />
+        <span>More you.</span>
+      </h1>
+      <p class="hero-description">
+        Get back to the workouts, weekends, and everyday moments you love—with
+        care that starts by listening to you.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href={bookingUrl} data-booking>
+          Book with Ethan <Icon size={19} />
+        </a>
+        <a
+          class="text-link"
+          href={consultUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Let’s talk first <Icon size={18} />
+        </a>
+      </div>
+      <div class="hero-reassurance">
+        <span>
+          <Icon name="check" size={16} /> One-on-one care
+        </span>
+        <span>
+          <Icon name="check" size={16} /> A plan built for you
+        </span>
+      </div>
+      <a class="hero-social" href="#reviews">
+        <span class="patient-initials">
+          <span>A</span>
+          <span>J</span>
+          <span>D</span>
+        </span>
+        <span>
+          <strong>Real people. Real progress.</strong>
+          <small>
+            Hear from the Excel community <span>↗</span>
+          </small>
+        </span>
+      </a>
+    </div>
+    <div class="hero-visual">
+      <img
+        class="hero-image"
+        src="/images/ethan-care.webp"
+        alt="Dr. Ethan Coghill providing hands-on care to a patient at Excel"
+        width="1000"
+        height="1774"
+        fetchpriority="high"
+      />
+      <div class="photo-label">
+        <span class="live-dot"></span> YOUR GOALS. OUR GAME PLAN.
+      </div>
+      <div class="care-card">
+        <span class="care-icon">
+          <Icon name="heart" size={25} />
+        </span>
+        <div>
+          <strong>A person, not just a patient.</strong>
+          <p>
+            Meet Dr. Ethan Coghill{" "}
+            <a href="#meet-ethan" aria-label="Meet Dr. Ethan Coghill">
+              <Icon size={19} />
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class="photo-corner" aria-hidden="true">
+        ↗
+      </div>
+    </div>
+  </section>
+  <section id="reviews" class="reviews-section">
+    <div class="container">
+      <div class="section-mini-heading">
+        <span class="eyebrow">GOOD PEOPLE. GOOD WORDS.</span>
+        <span>A few stories from our community</span>
+      </div>
+      <div class="reviews-grid">
+        {reviews.map((r) => (
+          <figure class="review">
+            <span class="quote-mark" aria-hidden="true">
+              “
+            </span>
+            <blockquote>“{r.quote}”</blockquote>
+            <figcaption>
+              <span class="review-initial">{r.initial}</span>
+              <span>
+                <strong>{r.name}</strong>
+                <small>{r.context}</small>
+              </span>
+              <Icon name="check" size={17} />
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <p class="review-source">
+        Patient excerpts shared on{" "}
+        <a
+          href="https://www.excelspt.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Excel’s original website ↗
+        </a>
+        . Individual experiences vary.
+      </p>
+    </div>
+  </section>
+  <section id="approach" class="approach-section section-space">
+    <div class="container approach-grid">
+      <div>
+        <span class="eyebrow">A DIFFERENT KIND OF CARE</span>
+        <h2>
+          You bring your goals.
+          <br />
+          We’ll meet you there.
+        </h2>
+      </div>
+      <div>
+        <p class="large-copy">
+          You don’t have to compete to deserve great care. You just need
+          something you want to get back to.
+        </p>
+        <p>
+          At Excel, the conversation starts with your life—what you love doing,
+          what’s getting in the way, and what moving forward looks like for you.
+          Then we connect hands-on care, rehab, and strength around that
+          picture.
+        </p>
+        <a class="text-link" href="#first-visit">
+          Here’s what to expect <Icon size={18} />
+        </a>
+      </div>
+    </div>
+    <div class="container values-row">
+      <div>
+        <Icon name="heart" />
+        <span>
+          Human first.<small>Your story matters.</small>
+        </span>
+      </div>
+      <div>
+        <Icon name="rehab" />
+        <span>
+          A whole-body approach.
+          <small>Connect the dots in your movement.</small>
+        </span>
+      </div>
+      <div>
+        <Icon name="performance" />
+        <span>
+          Built for your real life.<small>Progress with a purpose.</small>
+        </span>
+      </div>
+    </div>
+  </section>
+  <section id="services" class="services-section section-space">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">YOUR BODY. YOUR NEXT STEP.</span>
+          <h2>Care that moves with you.</h2>
+        </div>
+        <p>
+          From feeling better to building stronger,
+          <br class="desktop-break" /> find the support that fits your season.
+        </p>
+      </div>
+      <div class="services-grid">
+        {services.map((s) => (
+          <article class="service-card">
+            <div class="service-card-top">
+              <span class="service-icon">
+                <Icon name={s.icon} size={31} />
+              </span>
+              <span class="service-number">/{s.number}</span>
+            </div>
+            <p class="service-tagline">{s.tagline}</p>
+            <h3>{s.title}</h3>
+            <p>{s.description}</p>
+            <div class="service-tags">
+              {s.tags.map((t) => (
+                <span>{t}</span>
+              ))}
+            </div>
+            <a href={`/services/${s.slug}/`} class="service-link">
+              Explore {s.title.toLowerCase()}{" "}
+              <span>
+                <Icon size={20} />
+              </span>
+            </a>
+          </article>
+        ))}
+      </div>
+      <div class="service-help">
+        <span>
+          <Icon name="recovery" size={20} /> Not sure where to start? That’s
+          what we’re here for.
+        </span>
+        <a
+          class="text-link"
+          href={consultUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Find your fit with a free consult <Icon size={17} />
+        </a>
+      </div>
+    </div>
+  </section>
+  <section id="meet-ethan" class="ethan-section section-space">
+    <div class="container ethan-grid">
+      <div class="ethan-photo">
+        <img
+          src="/images/ethan-detail.webp"
+          alt="Ethan focused on a patient during a hands-on therapy session"
+          width="720"
+          height="820"
+          loading="lazy"
+        />
+        <div class="ethan-caption">
+          <span class="eyebrow">IN YOUR CORNER</span>
+          <strong>Dr. Ethan Coghill</strong>
+          <span>Sports Rehab Chiropractor</span>
+        </div>
+      </div>
+      <div class="ethan-copy">
+        <span class="eyebrow">MEET YOUR PARTNER IN PROGRESS</span>
+        <h2>
+          A real person.
+          <br />
+          On your team.
+        </h2>
+        <p class="large-copy">Good care starts with feeling heard.</p>
+        <p>
+          Dr. Ethan Coghill brings chiropractic care, rehabilitation, and
+          performance coaching together to help active people work toward their
+          goals.
+        </p>
+        <p>
+          His approach looks at how your body moves alongside the demands of
+          your day. Hands-on treatment is one part of the picture; building
+          strength and confidence in movement is another.
+        </p>
+        <div class="ethan-note">
+          <Icon name="heart" size={23} />
+          <p>
+            New to chiropractic care? It’s okay to have questions. A
+            conversation is a great place to begin.
+          </p>
+        </div>
+        <a
+          class="button"
+          href={consultUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Start a conversation <Icon size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
+  <section id="first-visit" class="first-visit section-space">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">LESS GUESSWORK. A CLEAR NEXT STEP.</span>
+          <h2>Your first visit, made simple.</h2>
+        </div>
+        <a class="button button-outline" href={bookingUrl} data-booking>
+          Let’s get started <Icon size={18} />
+        </a>
+      </div>
+      <div class="steps-grid">
+        <article>
+          <span class="step-number">01</span>
+          <h3>Tell us your story.</h3>
+          <p>
+            We’ll talk about what’s bothering you, what you’ve tried, and what
+            you want to get back to.
+          </p>
+        </article>
+        <article>
+          <span class="step-number">02</span>
+          <h3>Understand your movement.</h3>
+          <p>
+            Your 60-minute evaluation explores how you move and where
+            limitations show up.
+          </p>
+        </article>
+        <article>
+          <span class="step-number">03</span>
+          <h3>Find your way forward.</h3>
+          <p>
+            Ethan recommends a care path based on your assessment, so you know
+            what comes next.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section id="faq" class="faq-section section-space">
+    <div class="container faq-grid">
+      <div>
+        <span class="eyebrow">LET’S CLEAR A FEW THINGS UP</span>
+        <h2>
+          A little clarity.
+          <br />A lot more comfort.
+        </h2>
+        <p>
+          Still have something on your mind?
+          <br />
+          We’re happy to talk it through.
+        </p>
+        <a class="text-link" href="tel:+16153141508">
+          <Icon name="phone" size={18} /> (615) 314-1508
+        </a>
+      </div>
+      <div class="faq-list">
+        {faqs.map((f, i) => (
+          <details name="faq" open={i === 0}>
+            <summary>
+              {f.question}
+              <span class="faq-plus" aria-hidden="true"></span>
+            </summary>
+            <p>{f.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section id="locations" class="locations-section section-space">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">YOUR NEIGHBORHOOD. YOUR CARE.</span>
+          <h2>Two locations. One team in your corner.</h2>
+        </div>
+      </div>
+      <div class="locations-grid">
+        {locations.map((l) => (
+          <article class="location-card">
+            <div class="location-heading">
+              <Icon name="pin" size={28} />
+              <h3>{l.name}</h3>
+            </div>
+            <p class="location-venue">{l.venue}</p>
+            <address>
+              {l.address}
+              <br />
+              {l.city}
+            </address>
+            <p class="location-hours">
+              <Icon name="clock" size={17} /> {l.hours}
+            </p>
+            <div class="location-actions">
+              <a class="text-link" href={l.booking}>
+                Book this location <Icon size={18} />
+              </a>
+              <a
+                class="directions-link"
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.address + ", " + l.city)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get directions ↗
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="closing-cta">
+    <div class="container">
+      <span class="eyebrow">HERE’S TO WHAT’S NEXT.</span>
+      <h2>
+        Your life is calling.
+        <br />
+        Let’s get you back to it.
+      </h2>
+      <p>Make your next move a good one.</p>
+      <div class="closing-actions">
+        <a class="button button-white" href={bookingUrl} data-booking>
+          Book with Ethan <Icon size={19} />
+        </a>
+        <a
+          class="text-link"
+          href={consultUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Or start with a free consult <Icon size={18} />
+        </a>
+      </div>
+      <div class="closing-chevron" aria-hidden="true">
+        »
+      </div>
+    </div>
+  </section>
+</Layout>
