@@ -20,6 +20,8 @@ In Conductor, start **preview** from the **Run** tab, then click **Open** to vie
 - Shared navigation, booking dialog, footer, and metadata: `src/layouts/ExcelLayout.astro`
 - Visual styles and responsive layouts: `src/styles/excel.css`
 - Service page template: `src/pages/services/[slug].astro`
+- Service learning content and service-specific FAQs: `src/data/service-guides.ts`
+- Service page styles: `src/styles/service-pages.css`
 - Images and self-hosted DM Sans font: `public/images` and `public/fonts`
 
 The CloudCannon integration and original content components remain available. The new pages use Astro source files; the old starter page-builder content is not connected to these new pages. Demo routes have been removed from public output (their history remains in Git).
@@ -29,6 +31,8 @@ The CloudCannon integration and original content components remain available. Th
 Content was checked against https://www.excelspt.com/ and https://excelspt.janeapp.com/ on September 10, 2026. Both photos are optimized versions of the user-supplied treatment photo; the user-supplied Excel logo is used throughout. No stock portraits, fabricated reviews, star ratings, pricing, qualifications, or outcome guarantees were added.
 
 The working assumption is that uncertainty about care and the first visit creates booking friction. The Hormozi-inspired strategy therefore informed outcome-led copy, early patient proof, understandable care paths, a clear first-visit explanation, and a free consultation alternative. The intended outcome is more qualified initial evaluations. Once launched, measure visits → booking-calendar clicks → completed evaluations, along with consult requests. Analytics and completed-booking attribution are not connected in this draft; bookings happen in Jane. Evaluate conversion and booking quality before investing in more traffic. Appointment capacity becomes the next constraint if demand grows.
+
+Service pages use a quieter shared layout with grey photo placeholders, service-fit guidance, explanations of the care approach, first-visit steps, and service-specific FAQs. The Enhanced PT physical therapy page (https://enhancedpt.com/services/physical-therapy/) informed the educational structure; copy and design are original to Excel. The placeholders live in the service template and can be replaced with service photography.
 
 ## SEO and launch notes
 

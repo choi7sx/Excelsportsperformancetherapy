@@ -1144,92 +1144,6 @@ dialog > p {
   color: var(--blue);
   text-decoration: underline;
 }
-.service-detail-hero {
-  padding-top: 50px;
-  padding-bottom: 70px;
-}
-.back-link {
-  display: block;
-  font-size: var(--text-small);
-  color: var(--muted);
-  margin-bottom: 45px;
-}
-.service-detail-hero h1 {
-  max-width: 850px;
-  margin: 23px 0;
-}
-.service-detail-hero > .large-copy {
-  max-width: 750px;
-  font-size: 21px;
-}
-.service-detail-hero .button {
-  margin-top: 30px;
-}
-.service-detail-body {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 85px;
-  border-top: 1px solid var(--line);
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-.care-list {
-  list-style: none;
-  padding: 0;
-  margin: 30px 0 38px;
-}
-.care-list li {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 18px;
-  font-size: var(--text-body);
-}
-.care-list svg {
-  color: var(--blue);
-}
-.service-detail-body h3 {
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-.service-detail-body p {
-  font-size: var(--text-body);
-}
-.service-detail-body aside {
-  padding: 34px;
-  background: #eaf0f5;
-  border-radius: 15px;
-  align-self: start;
-}
-.service-detail-body aside .service-icon {
-  margin-bottom: 25px;
-}
-.service-detail-body aside p {
-  margin-bottom: 22px;
-}
-.related-services {
-  padding: 30px 0 90px;
-}
-.related-services h2 {
-  margin-bottom: 30px;
-}
-.related-services > div {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-.related-services a {
-  padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--blue);
-  gap: 15px;
-}
-.related-services a:hover {
-  background: var(--light-blue);
-}
 .error-page {
   padding-block: 100px;
 }
@@ -1530,9 +1444,6 @@ dialog > p {
   }
   .footer-top > div:last-child {
     grid-column: 2;
-  }
-  .service-detail-body {
-    gap: 35px;
   }
 }
 @media (max-width: 600px) {
@@ -2000,54 +1911,6 @@ dialog > p {
   }
   .dialog-note {
     font-size: var(--text-small) !important;
-  }
-  .service-detail-hero {
-    padding-top: 30px;
-    padding-bottom: 45px;
-  }
-  .back-link {
-    margin-bottom: 35px;
-  }
-  .service-detail-hero h1 {
-    font-size: 49px;
-    letter-spacing: -2px;
-  }
-  .service-detail-hero > .large-copy {
-    font-size: 17px;
-  }
-  .service-detail-hero .button {
-    font-size: var(--text-small);
-    gap: 15px;
-  }
-  .service-detail-body {
-    grid-template-columns: 1fr;
-    gap: 35px;
-    padding-top: 40px;
-    padding-bottom: 35px;
-  }
-  .service-detail-body h2 {
-    font-size: 32px;
-  }
-  .service-detail-body p,
-  .care-list li {
-    font-size: var(--text-body);
-  }
-  .service-detail-body aside {
-    padding: 26px;
-  }
-  .related-services {
-    padding-bottom: 60px;
-  }
-  .related-services > div {
-    grid-template-columns: 1fr;
-    gap: 13px;
-  }
-  .related-services a {
-    padding: 24px;
-    font-size: var(--text-body);
-  }
-  .related-services h2 {
-    font-size: 30px;
   }
   .error-page {
     padding-block: 65px;
