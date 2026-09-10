@@ -1,0 +1,15 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[[preview_urls]]
+name = "Website preview"
+url = "http://localhost:$CONDUCTOR_PORT"
+
+[scripts]
+setup = "npm ci"
+run_mode = "concurrent"
+
+[scripts.run.preview]
+available_in = ["local"]
+command = "npm run dev -- --host 127.0.0.1 --port $CONDUCTOR_PORT"
+default = true
+icon = "play"
