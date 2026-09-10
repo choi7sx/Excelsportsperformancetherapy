@@ -1,0 +1,96 @@
+---
+import Layout from "../../layouts/ExcelLayout.astro";
+import Icon from "../../components/ExcelIcon.astro";
+import { services, bookingUrl, consultUrl } from "../../data/excel";
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+const { service } = Astro.props;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: service.title,
+  description: service.description,
+  provider: { "@id": "https://www.excelspt.com/#practice" },
+  areaServed: "Nashville, TN",
+  url: `https://www.excelspt.com/services/${service.slug}/`,
+};
+---
+
+<Layout
+  title={`${service.title} in Nashville | Excel Sports Performance Therapy`}
+  description={
+    service.description +
+    " Meet with Dr. Ethan Coghill in Old Hickory or Belle Meade."
+  }
+  schema={schema}
+>
+  <section class="service-detail-hero container">
+    <a href="/#services" class="back-link">
+      ← All services
+    </a>
+    <span class="eyebrow">
+      EXCEL SPORTS PERFORMANCE THERAPY / {service.title.toUpperCase()}
+    </span>
+    <h1>{service.intro}</h1>
+    <p class="large-copy">{service.detail}</p>
+    <a class="button" href={bookingUrl} data-booking>
+      Book your initial evaluation <Icon size={19} />
+    </a>
+  </section>
+  <section class="service-detail-body container">
+    <div>
+      <span class="eyebrow">WHAT’S INCLUDED</span>
+      <h2>
+        {service.title},<br />
+        built around you.
+      </h2>
+      <ul class="care-list">
+        {service.items.map((item) => (
+          <li>
+            <Icon name="check" size={20} />
+            {item}
+          </li>
+        ))}
+      </ul>
+      <h3>What to expect</h3>
+      <p>{service.expectation}</p>
+    </div>
+    <aside>
+      <span class="service-icon">
+        <Icon name={service.icon} size={32} />
+      </span>
+      <h3>Could this be your next step?</h3>
+      <p>{service.fit}</p>
+      <p>
+        You don’t need to choose a treatment yourself. Ethan’s evaluation helps
+        identify the right starting point.
+      </p>
+      <a
+        class="text-link"
+        href={consultUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Talk it through first <Icon size={18} />
+      </a>
+    </aside>
+  </section>
+  <section class="related-services container">
+    <span class="eyebrow">CARE THAT MOVES WITH YOU</span>
+    <h2>Explore your other options.</h2>
+    <div>
+      {services
+        .filter((s) => s.slug !== service.slug)
+        .map((s) => (
+          <a href={`/services/${s.slug}/`}>
+            <span>{s.title}</span>
+            <Icon />
+          </a>
+        ))}
+    </div>
+  </section>
+</Layout>

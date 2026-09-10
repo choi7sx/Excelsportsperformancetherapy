@@ -1,0 +1,301 @@
+---
+import "../styles/excel.css";
+import Icon from "../components/ExcelIcon.astro";
+import { bookingUrl, consultUrl, locations } from "../data/excel";
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  schema?: Record<string, unknown>;
+}
+const {
+  title = "Sports Chiropractor in Nashville | Excel Sports Performance Therapy",
+  description = "Move with more confidence. Dr. Ethan Coghill offers chiropractic care, sports rehab, and performance coaching in Old Hickory and Belle Meade. Book your evaluation.",
+  noindex = false,
+  schema,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": "https://www.excelspt.com/#practice",
+  name: "Excel Sports Performance Therapy",
+  url: "https://www.excelspt.com/",
+  image: "https://www.excelspt.com/images/ethan-care.webp",
+  logo: "https://www.excelspt.com/images/excel-logo.webp",
+  telephone: "+1-615-314-1508",
+  medicalSpecialty: "Chiropractic",
+  areaServed: ["Nashville", "Old Hickory", "Belle Meade"],
+  employee: {
+    "@type": "Person",
+    name: "Ethan Coghill",
+    jobTitle: "Sports Rehab Chiropractor",
+  },
+  department: locations.map((l) => ({
+    "@type": "MedicalBusiness",
+    name: `Excel Sports Performance Therapy — ${l.name}`,
+    telephone: "+1-615-314-1508",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: l.address,
+      addressLocality: l.name === "Old Hickory" ? "Old Hickory" : "Nashville",
+      addressRegion: "TN",
+      addressCountry: "US",
+      ...(l.name === "Belle Meade" ? { postalCode: "37205" } : {}),
+    },
+    openingHoursSpecification: l.days.map((day) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: `https://schema.org/${day}`,
+      opens: "07:00",
+      closes: day === "Monday" ? "17:00" : day === "Friday" ? "14:00" : "16:00",
+    })),
+  })),
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f7f2" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={noindex ? "noindex, follow" : "index, follow"}
+    />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Excel Sports Performance Therapy" />
+    <meta
+      property="og:image"
+      content="https://www.excelspt.com/images/excel-social.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Excel Sports Performance Therapy — care with Dr. Ethan Coghill"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta
+      name="twitter:image"
+      content="https://www.excelspt.com/images/excel-social.jpg"
+    />
+    <link
+      rel="preload"
+      href="/fonts/dm-sans-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(businessSchema)}
+    ></script>
+    {schema && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema)}
+      ></script>
+    )}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <div class="topbar">
+      <span>Move well. Do more of what you love.</span>
+      <a href="/#locations">
+        <Icon name="pin" size={13} /> Old Hickory & Belle Meade, TN{" "}
+        <Icon size={14} />
+      </a>
+    </div>
+    <header class="site-header">
+      <div class="nav-wrap container">
+        <a
+          href="/"
+          class="brand"
+          aria-label="Excel Sports Performance Therapy home"
+        >
+          <img
+            src="/images/excel-logo.webp"
+            alt="Excel Sports Performance Therapy"
+            width="280"
+            height="130"
+          />
+        </a>
+        <nav id="main-nav" aria-label="Main navigation">
+          <a href="/#approach">Our approach</a>
+          <a href="/#services">Services</a>
+          <a href="/#meet-ethan">Meet Ethan</a>
+          <a href="/#reviews">Patient stories</a>
+          <a href="/#faq">FAQs</a>
+        </nav>
+        <a class="button nav-book" href={bookingUrl} data-booking>
+          Book with Ethan <Icon size={17} />
+        </a>
+        <button
+          class="menu-toggle"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <div>
+          <a class="brand footer-brand" href="/" aria-label="Excel home">
+            <img
+              src="/images/excel-logo.webp"
+              alt="Excel Sports Performance Therapy"
+              width="280"
+              height="130"
+              loading="lazy"
+            />
+          </a>
+          <p>
+            Care for your body.
+            <br />
+            Room for everything you love.
+          </p>
+        </div>
+        <div>
+          <h3>Find your next step</h3>
+          <a href="/#services">Explore our services</a>
+          <a href="/#meet-ethan">Meet Dr. Ethan</a>
+          <a href={bookingUrl} data-booking>
+            Book an evaluation
+          </a>
+          <a href={consultUrl} target="_blank" rel="noopener noreferrer">
+            Start with a free consult ↗
+          </a>
+        </div>
+        <div>
+          <h3>Let’s connect</h3>
+          <a href="tel:+16153141508">(615) 314-1508</a>
+          <a href="mailto:drethanexcelspt@gmail.com">
+            drethanexcelspt@gmail.com
+          </a>
+          <a href="/#locations">Old Hickory & Belle Meade, TN</a>
+          <span class="footer-note">HSA / FSA accepted</span>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>
+          © {new Date().getFullYear()} Excel Sports Performance Therapy
+        </span>
+        <span>Built around you. Right here in Nashville.</span>
+        <a href="https://devotioncreative.com" target="_blank" rel="noopener noreferrer">
+          Built by Devotion Creative
+        </a>
+      </div>
+    </footer>
+    <div class="mobile-booking">
+      <a class="button" href={bookingUrl} data-booking>
+        Book with Ethan <Icon size={18} />
+      </a>
+      <a href="tel:+16153141508" aria-label="Call Excel">
+        <Icon name="phone" />
+      </a>
+    </div>
+    <dialog id="booking-dialog" aria-labelledby="booking-title">
+      <button class="dialog-close" aria-label="Close booking options">
+        ×
+      </button>
+      <span class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
+      <h2 id="booking-title">Let’s get you moving.</h2>
+      <p>
+        Choose your location to see Ethan’s availability and book through Jane.
+      </p>
+      <div class="booking-options">
+        {locations.map((l) => (
+          <a href={l.booking} class="booking-option">
+            <div>
+              <span class="eyebrow">{l.venue}</span>
+              <h3>{l.name}</h3>
+              <p>{l.hours}</p>
+            </div>
+            <Icon />
+          </a>
+        ))}
+      </div>
+      <p class="dialog-note">
+        Have a question first?{" "}
+        <a href={consultUrl} target="_blank" rel="noopener noreferrer">
+          Start with a free consult ↗
+        </a>
+      </p>
+    </dialog>
+    <script>
+      const menu = document.querySelector<HTMLButtonElement>(".menu-toggle");
+      const nav = document.querySelector<HTMLElement>("#main-nav");
+      const closeMenu = () => {
+        menu?.setAttribute("aria-expanded", "false");
+        menu?.setAttribute("aria-label", "Open navigation");
+        nav?.classList.remove("is-open");
+      };
+      menu?.addEventListener("click", () => {
+        const open = menu.getAttribute("aria-expanded") !== "true";
+        menu.setAttribute("aria-expanded", String(open));
+        menu.setAttribute(
+          "aria-label",
+          open ? "Close navigation" : "Open navigation",
+        );
+        nav?.classList.toggle("is-open", open);
+      });
+      nav
+        ?.querySelectorAll("a")
+        .forEach((a) => a.addEventListener("click", closeMenu));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+      const dialog =
+        document.querySelector<HTMLDialogElement>("#booking-dialog");
+      document
+        .querySelectorAll<HTMLAnchorElement>("[data-booking]")
+        .forEach((link) =>
+          link.addEventListener("click", (e) => {
+            if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+            if (dialog?.showModal) {
+              e.preventDefault();
+              dialog.showModal();
+              document.body.classList.add("dialog-open");
+            }
+          }),
+        );
+      dialog
+        ?.querySelector(".dialog-close")
+        ?.addEventListener("click", () => dialog.close());
+      dialog?.addEventListener("click", (e) => {
+        if (e.target === dialog) {
+          const r = dialog.getBoundingClientRect();
+          if (
+            e.clientX < r.left ||
+            e.clientX > r.right ||
+            e.clientY < r.top ||
+            e.clientY > r.bottom
+          )
+            dialog.close();
+        }
+      });
+      dialog?.addEventListener("close", () =>
+        document.body.classList.remove("dialog-open"),
+      );
+    </script>
+  </body>
+</html>

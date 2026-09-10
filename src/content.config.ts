@@ -46,7 +46,7 @@ const paginatedCollectionSchema = z.object({
 });
 
 const pagesCollection = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.{md,astro}', base: "./src/content/pages" }),
+  loader: glob({ pattern: '**/[^_]*.md', base: "./src/content/pages" }),
   schema: z.union([paginatedCollectionSchema, pageSchema]),
 });
 
