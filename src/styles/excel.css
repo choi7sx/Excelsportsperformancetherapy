@@ -14,6 +14,9 @@
   --light-blue: #edf1ff;
   --white: #fff;
   --radius: 18px;
+  --text-label: 0.75rem;
+  --text-small: 0.875rem;
+  --text-body: 1rem;
   font-family: "DM Sans", Arial, sans-serif;
   color: var(--ink);
   background: var(--paper);
@@ -24,6 +27,7 @@
 }
 body {
   margin: 0;
+  font-size: var(--text-body);
 }
 html {
   scroll-behavior: smooth;
@@ -95,7 +99,7 @@ summary:focus-visible {
 }
 .eyebrow {
   display: block;
-  font-size: 11px;
+  font-size: var(--text-label);
   letter-spacing: 1.8px;
   font-weight: 700;
   line-height: 1.6;
@@ -115,7 +119,7 @@ summary:focus-visible {
   color: white;
   border: 1px solid var(--blue);
   border-radius: 7px;
-  font-size: 14px;
+  font-size: var(--text-small);
   font-weight: 600;
   transition:
     background 0.2s,
@@ -132,7 +136,7 @@ summary:focus-visible {
   align-items: center;
   gap: 13px;
   color: var(--blue);
-  font-size: 14px;
+  font-size: var(--text-small);
   font-weight: 600;
   line-height: 1.5;
 }
@@ -148,7 +152,8 @@ summary:focus-visible {
 }
 .skip-link {
   position: fixed;
-  top: -60px;
+  top: 0;
+  transform: translateY(-150%);
   left: 15px;
   z-index: 200;
   background: white;
@@ -156,16 +161,19 @@ summary:focus-visible {
 }
 .skip-link:focus {
   top: 10px;
+  transform: none;
 }
 .topbar {
-  height: 35px;
+  min-height: 35px;
+  flex-wrap: wrap;
+  gap: 8px 20px;
   background: var(--ink);
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 max(52px, calc((100vw - 1200px) / 2));
-  font-size: 10px;
+  font-size: var(--text-label);
   letter-spacing: 0.3px;
 }
 .topbar a {
@@ -186,7 +194,7 @@ summary:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  min-height: 100px;
   gap: 30px;
 }
 .brand {
@@ -208,7 +216,7 @@ summary:focus-visible {
   gap: 28px;
 }
 .nav-wrap nav a {
-  font-size: 12px;
+  font-size: var(--text-body);
   font-weight: 550;
   white-space: nowrap;
   transition: color 0.2s;
@@ -218,7 +226,7 @@ summary:focus-visible {
 }
 .nav-book {
   min-height: 45px;
-  font-size: 12px;
+  font-size: var(--text-small);
   padding: 12px 18px;
   gap: 18px;
 }
@@ -249,16 +257,18 @@ summary:focus-visible {
   align-items: center;
 }
 .hero-copy {
+  min-width: 0;
   padding: 12px 0;
 }
 .hero-copy > .eyebrow {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 10px;
+  font-size: var(--text-label);
   letter-spacing: 1.3px;
 }
 .status-dot {
+  flex-shrink: 0;
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -271,26 +281,27 @@ h1 {
 }
 .hero h1 {
   margin: 25px 0 23px;
-  white-space: nowrap;
 }
 .hero h1 > span {
   color: var(--blue);
 }
 .hero-description {
-  font-size: 16px;
+  font-size: var(--text-body);
   max-width: 410px;
   line-height: 1.75;
 }
 .hero-actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 27px;
   margin: 29px 0 20px;
 }
 .hero-reassurance {
   display: flex;
+  flex-wrap: wrap;
   gap: 22px;
-  font-size: 10px;
+  font-size: var(--text-small);
   color: var(--muted);
 }
 .hero-reassurance > span {
@@ -321,7 +332,7 @@ h1 {
   border-radius: 50%;
   background: #d9ddd3;
   color: #415139;
-  font-size: 11px;
+  font-size: var(--text-small);
   font-weight: 650;
 }
 .patient-initials > span:first-child {
@@ -335,13 +346,13 @@ h1 {
 }
 .hero-social strong {
   display: block;
-  font-size: 11px;
+  font-size: var(--text-small);
   font-weight: 650;
 }
 .hero-social small {
   display: block;
   margin-top: 4px;
-  font-size: 10px;
+  font-size: var(--text-small);
   color: var(--muted);
 }
 .hero-social small span {
@@ -373,10 +384,12 @@ h1 {
   position: absolute;
   top: 22px;
   left: 22px;
+  right: 22px;
+  width: fit-content;
   padding: 10px 13px;
   background: #f7f7f2f0;
   border-radius: 5px;
-  font-size: 8px;
+  font-size: var(--text-label);
   letter-spacing: 1.1px;
   font-weight: 650;
   display: flex;
@@ -384,6 +397,7 @@ h1 {
   gap: 8px;
 }
 .live-dot {
+  flex-shrink: 0;
   height: 6px;
   width: 6px;
   border-radius: 50%;
@@ -393,6 +407,8 @@ h1 {
   position: absolute;
   z-index: 2;
   left: -29px;
+  right: 16px;
+  width: fit-content;
   bottom: 28px;
   border: 1px solid #e7e8e4;
   background: #fff;
@@ -404,6 +420,7 @@ h1 {
   border-radius: 11px;
 }
 .care-icon {
+  flex-shrink: 0;
   display: grid;
   place-items: center;
   background: var(--light-blue);
@@ -413,11 +430,11 @@ h1 {
   border-radius: 50%;
 }
 .care-card strong {
-  font-size: 14px;
+  font-size: var(--text-small);
   font-weight: 650;
 }
 .care-card p {
-  font-size: 11px;
+  font-size: var(--text-small);
   margin-top: 6px;
   display: flex;
   align-items: center;
@@ -442,12 +459,12 @@ h1 {
   margin-bottom: 21px;
 }
 .section-mini-heading > .eyebrow {
-  font-size: 10px;
+  font-size: var(--text-label);
   letter-spacing: 1.6px;
   color: #4c5b52;
 }
 .section-mini-heading > span:last-child {
-  font-size: 11px;
+  font-size: var(--text-body);
   color: var(--muted);
 }
 .reviews-grid {
@@ -456,6 +473,8 @@ h1 {
   gap: 18px;
 }
 .review {
+  min-width: 0;
+  overflow-wrap: anywhere;
   background: #fafbf7;
   border: 1px solid #e2e5de;
   border-radius: 9px;
@@ -473,7 +492,7 @@ h1 {
 }
 .review blockquote {
   margin: 10px 0 19px;
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 1.55;
   font-weight: 500;
   flex-grow: 1;
@@ -484,23 +503,27 @@ h1 {
   align-items: center;
   gap: 10px;
 }
+.review figcaption > span {
+  min-width: 0;
+}
 .review-initial {
+  flex-shrink: 0;
   display: grid;
   place-items: center;
   width: 30px;
   height: 30px;
   background: #e5e9df;
   border-radius: 50%;
-  font-size: 11px;
+  font-size: var(--text-small);
   color: #53614a;
 }
 .review figcaption strong {
   display: block;
-  font-size: 10px;
+  font-size: var(--text-small);
 }
 .review figcaption small {
   display: block;
-  font-size: 9px;
+  font-size: var(--text-small);
   color: var(--muted);
   margin-top: 3px;
 }
@@ -523,7 +546,7 @@ h1 {
   margin-bottom: 18px;
 }
 .approach-grid p:not(.large-copy) {
-  font-size: 14px;
+  font-size: var(--text-body);
 }
 .approach-grid .text-link {
   margin-top: 23px;
@@ -547,13 +570,13 @@ h1 {
   height: 28px;
 }
 .values-row > div > span {
-  font-size: 14px;
+  font-size: var(--text-body);
   font-weight: 600;
 }
 .values-row small {
   display: block;
   font-weight: 400;
-  font-size: 11px;
+  font-size: var(--text-small);
   margin-top: 5px;
   color: var(--muted);
 }
@@ -568,7 +591,7 @@ h1 {
   margin-bottom: 38px;
 }
 .section-heading > p {
-  font-size: 13px;
+  font-size: var(--text-body);
   padding-bottom: 3px;
 }
 .services-grid {
@@ -607,11 +630,11 @@ h1 {
   background: #e4eaf9;
 }
 .service-number {
-  font-size: 12px;
+  font-size: var(--text-label);
   color: #62717c;
 }
 .service-tagline {
-  font-size: 10px;
+  font-size: var(--text-label);
   color: var(--blue);
   font-weight: 600;
   margin-bottom: 6px;
@@ -622,7 +645,7 @@ h1 {
   letter-spacing: -1px;
 }
 .service-card > p:not(.service-tagline) {
-  font-size: 13px;
+  font-size: var(--text-body);
   line-height: 1.8;
 }
 .service-tags {
@@ -635,7 +658,7 @@ h1 {
   border: 1px solid #dce0dc;
   border-radius: 5px;
   padding: 6px 8px;
-  font-size: 8px;
+  font-size: var(--text-label);
   color: #54615e;
 }
 .service-link {
@@ -646,7 +669,7 @@ h1 {
   border-top: 1px solid var(--line);
   padding-top: 19px;
   color: var(--blue);
-  font-size: 11px;
+  font-size: var(--text-small);
   font-weight: 650;
   gap: 6px;
 }
@@ -669,14 +692,14 @@ h1 {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 12px;
+  font-size: var(--text-small);
   color: var(--muted);
 }
 .service-help > span svg {
   color: var(--blue);
 }
 .service-help .text-link {
-  font-size: 12px;
+  font-size: var(--text-small);
 }
 .ethan-grid {
   display: grid;
@@ -712,7 +735,7 @@ h1 {
 }
 .ethan-caption .eyebrow {
   color: #c7d6fe;
-  font-size: 9px;
+  font-size: var(--text-label);
   margin-bottom: 10px;
 }
 .ethan-caption strong {
@@ -723,7 +746,7 @@ h1 {
 }
 .ethan-caption > span:last-child {
   display: block;
-  font-size: 12px;
+  font-size: var(--text-small);
   color: #e0e5e8;
   margin-top: 7px;
 }
@@ -733,7 +756,7 @@ h1 {
   margin-bottom: 14px;
 }
 .ethan-copy > p:not(.large-copy) {
-  font-size: 14px;
+  font-size: var(--text-body);
   margin-bottom: 17px;
 }
 .ethan-note {
@@ -750,12 +773,12 @@ h1 {
   margin-top: 2px;
 }
 .ethan-note > p {
-  font-size: 12px;
+  font-size: var(--text-body);
   line-height: 1.65;
   color: #4a5c48;
 }
 .ethan-copy > .button {
-  font-size: 13px;
+  font-size: var(--text-small);
 }
 .first-visit {
   background: var(--ink);
@@ -768,7 +791,7 @@ h1 {
   background: transparent;
   border-color: #667680;
   color: #fff;
-  font-size: 12px;
+  font-size: var(--text-small);
 }
 .button-outline:hover {
   background: #2a3c47;
@@ -783,7 +806,7 @@ h1 {
 .step-number {
   display: block;
   color: #a8bcff;
-  font-size: 13px;
+  font-size: var(--text-label);
   border-bottom: 1px solid #43525c;
   padding-bottom: 20px;
   margin-bottom: 24px;
@@ -805,7 +828,7 @@ h1 {
   letter-spacing: -0.6px;
 }
 .steps-grid p {
-  font-size: 13px;
+  font-size: var(--text-body);
   color: #c0c9cd;
   line-height: 1.8;
 }
@@ -815,7 +838,7 @@ h1 {
   gap: 75px;
 }
 .faq-grid > div > p {
-  font-size: 13px;
+  font-size: var(--text-body);
   margin-top: 24px;
   margin-bottom: 21px;
 }
@@ -832,7 +855,7 @@ h1 {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  font-size: 14px;
+  font-size: var(--text-body);
   font-weight: 550;
   padding: 23px 0;
   line-height: 1.5;
@@ -864,7 +887,7 @@ h1 {
   transform: rotate(0);
 }
 .faq-list details > p {
-  font-size: 13px;
+  font-size: var(--text-body);
   line-height: 1.85;
   padding: 0 30px 24px 0;
 }
@@ -900,19 +923,19 @@ h1 {
   font-size: 25px;
 }
 .location-venue {
-  font-size: 12px;
+  font-size: var(--text-small);
   margin: 16px 0 12px;
 }
 .location-card address {
   font-style: normal;
-  font-size: 14px;
+  font-size: var(--text-body);
   line-height: 1.8;
 }
 .location-hours {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 11px;
+  font-size: var(--text-small);
   margin-top: 20px;
 }
 .location-actions {
@@ -925,10 +948,10 @@ h1 {
   gap: 15px;
 }
 .location-actions .text-link {
-  font-size: 12px;
+  font-size: var(--text-small);
 }
 .directions-link {
-  font-size: 11px;
+  font-size: var(--text-small);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -953,7 +976,7 @@ h1 {
 }
 .closing-cta p {
   color: #d3ddff;
-  font-size: 14px;
+  font-size: var(--text-body);
   margin-top: 18px;
 }
 .closing-actions {
@@ -974,7 +997,7 @@ h1 {
 }
 .closing-actions > .text-link {
   color: #fff;
-  font-size: 12px;
+  font-size: var(--text-small);
 }
 .closing-chevron {
   position: absolute;
@@ -993,7 +1016,7 @@ h1 {
 }
 .footer-top {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
+  grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr));
   gap: 70px;
   padding-bottom: 46px;
 }
@@ -1003,28 +1026,29 @@ h1 {
   margin-bottom: 17px;
 }
 .footer-top > div > p {
-  font-size: 12px;
+  font-size: var(--text-small);
   line-height: 1.8;
 }
 .footer-top h3 {
-  font-size: 12px;
+  font-size: var(--text-small);
   font-weight: 650;
   letter-spacing: 0;
   margin: 10px 0 20px;
 }
 .footer-top > div > a:not(.brand) {
   display: block;
-  font-size: 11px;
+  font-size: var(--text-small);
   color: var(--muted);
   margin-bottom: 13px;
   width: fit-content;
+  overflow-wrap: anywhere;
 }
 .footer-top > div > a:hover {
   color: var(--blue);
 }
 .footer-note {
   display: block;
-  font-size: 10px;
+  font-size: var(--text-label);
   font-weight: 550;
   margin-top: 20px;
   color: #4c6146;
@@ -1033,9 +1057,10 @@ h1 {
   padding: 22px 0;
   border-top: 1px solid var(--line);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
-  font-size: 9px;
+  font-size: var(--text-label);
   color: var(--muted);
 }
 .dialog-open {
@@ -1067,7 +1092,7 @@ dialog::backdrop {
   height: 40px;
 }
 dialog > .eyebrow {
-  font-size: 9px;
+  font-size: var(--text-label);
   margin-top: 8px;
 }
 dialog h2 {
@@ -1075,7 +1100,7 @@ dialog h2 {
   margin: 14px 0;
 }
 dialog > p {
-  font-size: 14px;
+  font-size: var(--text-body);
 }
 .booking-options {
   display: grid;
@@ -1097,7 +1122,7 @@ dialog > p {
   background: var(--light-blue);
 }
 .booking-option .eyebrow {
-  font-size: 8px;
+  font-size: var(--text-label);
   letter-spacing: 1px;
 }
 .booking-option h3 {
@@ -1105,7 +1130,7 @@ dialog > p {
   margin-top: 5px;
 }
 .booking-option p {
-  font-size: 11px;
+  font-size: var(--text-small);
   margin-top: 5px;
 }
 .booking-option > svg {
@@ -1113,7 +1138,7 @@ dialog > p {
 }
 .dialog-note {
   margin-top: 24px !important;
-  font-size: 11px !important;
+  font-size: var(--text-small) !important;
 }
 .dialog-note a {
   color: var(--blue);
@@ -1156,7 +1181,7 @@ dialog > p {
     width: 136px;
   }
   .nav-wrap nav a {
-    font-size: 11px;
+    font-size: var(--text-body);
   }
   .nav-book {
     padding: 11px 13px;
@@ -1172,7 +1197,7 @@ dialog > p {
     min-height: 525px;
   }
   .hero-copy > .eyebrow {
-    font-size: 8px;
+    font-size: var(--text-label);
     letter-spacing: 1px;
   }
   .care-card {
@@ -1187,7 +1212,7 @@ dialog > p {
     gap: 15px;
   }
   .hero-actions .text-link {
-    font-size: 12px;
+    font-size: var(--text-small);
   }
   .service-card {
     padding: 23px;
@@ -1208,13 +1233,13 @@ dialog > p {
     gap: 60px;
   }
 }
-@media (max-width: 850px) {
+@media (max-width: 1100px) {
   .nav-wrap nav {
     display: none;
     position: absolute;
     left: 0;
     right: 0;
-    top: 85px;
+    top: 100%;
     background: var(--paper);
     padding: 20px 32px 25px;
     border-bottom: 1px solid var(--line);
@@ -1227,11 +1252,11 @@ dialog > p {
     display: flex;
   }
   .nav-wrap nav a {
-    font-size: 16px;
+    font-size: var(--text-body);
     padding: 13px 0;
   }
   .nav-wrap {
-    height: 85px;
+    min-height: 85px;
     gap: 17px;
   }
   .nav-book {
@@ -1240,6 +1265,8 @@ dialog > p {
   .menu-toggle {
     display: block;
   }
+}
+@media (max-width: 850px) {
   .hero {
     gap: 30px;
     padding-top: 36px;
@@ -1250,7 +1277,7 @@ dialog > p {
     letter-spacing: -2.5px;
   }
   .hero-description {
-    font-size: 14px;
+    font-size: var(--text-body);
   }
   .hero-visual {
     min-height: 490px;
@@ -1267,12 +1294,12 @@ dialog > p {
     margin-top: 24px;
   }
   .hero-copy > .eyebrow {
-    font-size: 7px;
+    font-size: var(--text-label);
   }
   .photo-label {
     left: 14px;
     top: 14px;
-    font-size: 6px;
+    font-size: var(--text-label);
     padding: 9px;
   }
   .care-card {
@@ -1289,10 +1316,10 @@ dialog > p {
     width: 20px;
   }
   .care-card strong {
-    font-size: 11px;
+    font-size: var(--text-small);
   }
   .care-card p {
-    font-size: 10px;
+    font-size: var(--text-small);
     gap: 22px;
   }
   .section-space {
@@ -1305,10 +1332,10 @@ dialog > p {
     padding: 18px;
   }
   .review blockquote {
-    font-size: 13px;
+    font-size: var(--text-body);
   }
   .review figcaption small {
-    font-size: 8px;
+    font-size: var(--text-small);
   }
   .review figcaption > svg {
     display: none;
@@ -1326,10 +1353,10 @@ dialog > p {
     gap: 10px;
   }
   .values-row > div > span {
-    font-size: 12px;
+    font-size: var(--text-body);
   }
   .values-row small {
-    font-size: 10px;
+    font-size: var(--text-small);
   }
   .section-heading {
     align-items: flex-start;
@@ -1347,13 +1374,13 @@ dialog > p {
     font-size: 20px;
   }
   .service-card > p:not(.service-tagline) {
-    font-size: 12px;
+    font-size: var(--text-body);
   }
   .service-tags {
     gap: 5px;
   }
   .service-link {
-    font-size: 10px;
+    font-size: var(--text-small);
   }
   .service-link > span {
     width: 26px;
@@ -1364,11 +1391,11 @@ dialog > p {
     align-items: flex-start;
   }
   .service-help > span {
-    font-size: 11px;
+    font-size: var(--text-small);
     max-width: 310px;
   }
   .service-help .text-link {
-    font-size: 11px;
+    font-size: var(--text-small);
   }
   .ethan-grid {
     gap: 35px;
@@ -1377,7 +1404,7 @@ dialog > p {
     height: 520px;
   }
   .ethan-copy > .eyebrow {
-    font-size: 9px;
+    font-size: var(--text-label);
   }
   .steps-grid {
     gap: 25px;
@@ -1389,7 +1416,7 @@ dialog > p {
     gap: 35px;
   }
   .faq-list summary {
-    font-size: 13px;
+    font-size: var(--text-body);
   }
   .locations-section {
     padding-top: 0;
@@ -1401,7 +1428,7 @@ dialog > p {
     padding: 24px;
   }
   .location-hours {
-    font-size: 10px;
+    font-size: var(--text-small);
     align-items: flex-start;
   }
   .location-actions {
@@ -1427,34 +1454,33 @@ dialog > p {
     width: calc(100% - 40px);
   }
   .topbar {
-    height: 30px;
-    padding: 0 20px;
+    min-height: 30px;
+    padding: 6px 20px;
     justify-content: center;
   }
   .topbar > span {
     display: none;
   }
   .topbar a {
-    font-size: 9px;
+    font-size: var(--text-label);
   }
   .site-header {
     background: #f7f7f2fa;
   }
   .nav-wrap {
-    height: 76px;
+    min-height: 76px;
     gap: 12px;
   }
   .site-header .brand {
     width: 120px;
   }
   .nav-wrap nav {
-    top: 76px;
     padding-inline: 20px;
   }
   .nav-book {
     min-height: 37px;
     padding: 9px 11px;
-    font-size: 10px;
+    font-size: var(--text-small);
     gap: 8px;
   }
   .nav-book svg {
@@ -1463,6 +1489,7 @@ dialog > p {
   .menu-toggle {
     width: 30px;
     padding: 3px;
+    flex-shrink: 0;
   }
   .hero {
     grid-template-columns: 1fr;
@@ -1474,7 +1501,7 @@ dialog > p {
     padding: 0;
   }
   .hero-copy > .eyebrow {
-    font-size: 8px;
+    font-size: var(--text-label);
     letter-spacing: 1.1px;
   }
   .hero h1 {
@@ -1484,28 +1511,28 @@ dialog > p {
     margin: 20px 0;
   }
   .hero-description {
-    font-size: 14px;
+    font-size: var(--text-body);
     max-width: 360px;
   }
   .hero-actions {
     margin: 24px 0 17px;
     gap: 26px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
   .hero-actions .button {
     min-height: 50px;
-    font-size: 12px;
+    font-size: var(--text-small);
     padding: 14px 18px;
     gap: 18px;
   }
   .hero-actions .text-link {
-    font-size: 12px;
+    font-size: var(--text-small);
     gap: 9px;
   }
   .hero-reassurance {
     flex-direction: row;
     gap: 20px;
-    font-size: 9px;
+    font-size: var(--text-small);
   }
   .hero-social {
     margin-top: 25px;
@@ -1523,7 +1550,7 @@ dialog > p {
   .photo-label {
     left: 17px;
     top: 17px;
-    font-size: 7px;
+    font-size: var(--text-label);
   }
   .care-card {
     left: -12px;
@@ -1536,10 +1563,10 @@ dialog > p {
     height: 41px;
   }
   .care-card strong {
-    font-size: 12px;
+    font-size: var(--text-small);
   }
   .care-card p {
-    font-size: 10px;
+    font-size: var(--text-small);
     gap: 37px;
   }
   .section-mini-heading {
@@ -1549,10 +1576,10 @@ dialog > p {
     margin-bottom: 18px;
   }
   .section-mini-heading > .eyebrow {
-    font-size: 9px;
+    font-size: var(--text-label);
   }
   .section-mini-heading > span:last-child {
-    font-size: 11px;
+    font-size: var(--text-body);
   }
   .reviews-section {
     padding: 28px 0 24px;
@@ -1571,12 +1598,12 @@ dialog > p {
     font-size: 34px;
   }
   .review blockquote {
-    font-size: 14px;
+    font-size: var(--text-body);
     margin: 0 0 15px;
     max-width: none;
   }
   .review figcaption small {
-    font-size: 9px;
+    font-size: var(--text-small);
   }
   .review figcaption > svg {
     display: block;
@@ -1589,7 +1616,7 @@ dialog > p {
     letter-spacing: -1.35px;
   }
   .eyebrow {
-    font-size: 9px;
+    font-size: var(--text-label);
     letter-spacing: 1.5px;
   }
   .eyebrow + h2 {
@@ -1603,7 +1630,7 @@ dialog > p {
     font-size: 19px;
   }
   .approach-grid p:not(.large-copy) {
-    font-size: 13px;
+    font-size: var(--text-body);
   }
   .values-row {
     grid-template-columns: 1fr;
@@ -1615,10 +1642,10 @@ dialog > p {
     gap: 17px;
   }
   .values-row > div > span {
-    font-size: 14px;
+    font-size: var(--text-body);
   }
   .values-row small {
-    font-size: 11px;
+    font-size: var(--text-small);
   }
   .section-heading {
     flex-direction: column;
@@ -1626,7 +1653,7 @@ dialog > p {
     margin-bottom: 27px;
   }
   .section-heading > p {
-    font-size: 13px;
+    font-size: var(--text-body);
     max-width: 100%;
   }
   .desktop-break {
@@ -1646,21 +1673,21 @@ dialog > p {
     font-size: 28px;
   }
   .service-card > p:not(.service-tagline) {
-    font-size: 14px;
+    font-size: var(--text-body);
     max-width: 340px;
   }
   .service-tagline {
-    font-size: 11px;
+    font-size: var(--text-label);
   }
   .service-tags {
     margin: 20px 0 23px;
     gap: 7px;
   }
   .service-tags span {
-    font-size: 9px;
+    font-size: var(--text-label);
   }
   .service-link {
-    font-size: 12px;
+    font-size: var(--text-small);
   }
   .service-link > span {
     width: 32px;
@@ -1672,11 +1699,11 @@ dialog > p {
     margin-top: 24px;
   }
   .service-help > span {
-    font-size: 11px;
+    font-size: var(--text-small);
     max-width: none;
   }
   .service-help .text-link {
-    font-size: 12px;
+    font-size: var(--text-small);
   }
   .ethan-grid {
     grid-template-columns: 1fr;
@@ -1690,7 +1717,7 @@ dialog > p {
     left: 28px;
   }
   .ethan-copy > p:not(.large-copy) {
-    font-size: 13px;
+    font-size: var(--text-body);
   }
   .ethan-copy .large-copy {
     font-size: 19px;
@@ -1718,7 +1745,7 @@ dialog > p {
     font-size: 23px;
   }
   .steps-grid p {
-    font-size: 13px;
+    font-size: var(--text-body);
     max-width: 380px;
   }
   .faq-grid {
@@ -1730,11 +1757,11 @@ dialog > p {
     margin-bottom: 17px;
   }
   .faq-list summary {
-    font-size: 14px;
+    font-size: var(--text-body);
     padding: 22px 0;
   }
   .faq-list details > p {
-    font-size: 13px;
+    font-size: var(--text-body);
     padding-right: 15px;
   }
   .locations-section {
@@ -1754,7 +1781,7 @@ dialog > p {
     font-size: 27px;
   }
   .location-hours {
-    font-size: 11px;
+    font-size: var(--text-small);
   }
   .location-actions {
     justify-content: space-between;
@@ -1773,7 +1800,7 @@ dialog > p {
     margin-top: 25px;
   }
   .closing-actions > .button {
-    font-size: 13px;
+    font-size: var(--text-small);
     min-height: 51px;
   }
   .closing-chevron {
@@ -1783,7 +1810,7 @@ dialog > p {
     letter-spacing: -50px;
   }
   .footer-top {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px 20px;
     padding-bottom: 32px;
   }
@@ -1791,6 +1818,7 @@ dialog > p {
     grid-column: span 2;
     grid-row: auto;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
@@ -1800,21 +1828,21 @@ dialog > p {
     margin-bottom: 0;
   }
   .footer-top > div:first-child > p {
-    font-size: 10px;
+    font-size: var(--text-small);
   }
   .footer-top > div:last-child {
     grid-column: auto;
   }
   .footer-top h3 {
-    font-size: 11px;
+    font-size: var(--text-small);
     margin-bottom: 17px;
   }
   .footer-top > div > a:not(.brand) {
-    font-size: 10px;
+    font-size: var(--text-small);
     overflow-wrap: anywhere;
   }
   .footer-note {
-    font-size: 9px;
+    font-size: var(--text-label);
   }
   .site-footer {
     padding-top: 35px;
@@ -1823,7 +1851,7 @@ dialog > p {
   .footer-bottom {
     flex-direction: column;
     gap: 8px;
-    font-size: 8px;
+    font-size: var(--text-label);
     padding: 19px 0;
   }
   .mobile-booking {
@@ -1844,7 +1872,7 @@ dialog > p {
     min-height: 45px;
     padding: 12px;
     flex: 1;
-    font-size: 12px;
+    font-size: var(--text-small);
   }
   .mobile-booking > a:last-child {
     display: grid;
@@ -1862,12 +1890,12 @@ dialog > p {
     font-size: 31px;
   }
   dialog > .eyebrow {
-    font-size: 8px;
+    font-size: var(--text-label);
     letter-spacing: 1.1px;
     margin-top: 16px;
   }
   dialog > p {
-    font-size: 13px;
+    font-size: var(--text-body);
   }
   .booking-option {
     padding: 17px;
@@ -1876,13 +1904,13 @@ dialog > p {
     font-size: 24px;
   }
   .booking-option p {
-    font-size: 10px;
+    font-size: var(--text-small);
   }
   .booking-option .eyebrow {
-    font-size: 7px;
+    font-size: var(--text-label);
   }
   .dialog-note {
-    font-size: 10px !important;
+    font-size: var(--text-small) !important;
   }
   .error-page {
     padding-block: 65px;
@@ -1900,10 +1928,10 @@ dialog > p {
     width: 112px;
   }
   .nav-book {
-    font-size: 9px;
+    font-size: var(--text-small);
     padding: 8px 9px;
     gap: 6px;
-    white-space: nowrap;
+    white-space: normal;
   }
   .menu-toggle {
     width: 26px;
@@ -1915,11 +1943,11 @@ dialog > p {
     padding-inline: 12px;
   }
   .hero-actions .text-link {
-    font-size: 11px;
+    font-size: var(--text-small);
     gap: 7px;
   }
   .hero-copy > .eyebrow {
-    font-size: 7px;
+    font-size: var(--text-label);
     letter-spacing: 0.8px;
   }
 }
