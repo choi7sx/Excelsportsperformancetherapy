@@ -1,0 +1,90 @@
+/* Service pages share the site's brand with a quieter, reading-first layout. */
+.service-intro { padding-top: 30px; }
+.service-breadcrumb { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--muted); margin-bottom: 40px; }
+.service-breadcrumb a:hover { color: var(--blue); text-decoration: underline; }
+.service-breadcrumb [aria-current] { color: var(--ink); }
+.service-intro-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center; }
+.service-intro h1 { font-size: clamp(42px, 4.3vw, 62px); line-height: 1.08; letter-spacing: -2.5px; margin: 18px 0 22px; max-width: 580px; }
+.service-lead { font-size: 17px; max-width: 550px; }
+.service-image-placeholder { display: grid; place-items: center; aspect-ratio: 6 / 5; background: #dedfdd; border-radius: 12px; }
+.service-image-placeholder span { color: #606560; font-size: 10px; letter-spacing: 2px; }
+.service-meta { margin-top: 40px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 19px 0; display: flex; justify-content: space-between; gap: 20px; font-size: 12px; color: var(--muted); }
+.service-meta > span, .service-meta a { display: flex; align-items: center; gap: 9px; }
+.service-meta a { color: var(--blue); font-weight: 600; }
+.service-meta a:hover { text-decoration: underline; }
+.service-overview { display: grid; grid-template-columns: 1.15fr 1fr; gap: 100px; padding-block: 76px; }
+.service-page h2 { font-size: clamp(30px, 3vw, 40px); letter-spacing: -1.5px; }
+.service-overview h2 { max-width: 520px; }
+.service-overview > div > p { margin-top: 22px; font-size: 15px; }
+.service-situations { list-style: none; margin: 24px 0 0; padding: 0; }
+.service-situations li { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.7; margin-top: 13px; }
+.service-situations svg { color: var(--blue); margin-top: 3px; }
+.service-included { background: #eff1ed; padding: 30px; border: 1px solid var(--line); border-radius: 12px; align-self: start; }
+.service-included .service-icon { width: 48px; height: 48px; margin-bottom: 20px; }
+.service-included h3 { font-size: 23px; }
+.service-included ul { padding-left: 18px; font-size: 14px; line-height: 1.7; margin: 20px 0; }
+.service-included li + li { margin-top: 11px; }
+.service-included > p { border-top: 1px solid var(--line); padding-top: 17px; font-size: 12px; }
+.service-learning { padding-bottom: 76px; }
+.service-section-heading { margin-bottom: 32px; }
+.service-learning-row { border-top: 1px solid var(--line); padding-block: 30px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; }
+.service-learning-row:last-child { border-bottom: 1px solid var(--line); }
+.service-learning-row > div:first-child { display: flex; align-items: baseline; gap: 24px; }
+.service-row-number { color: var(--blue); font-size: 12px; font-weight: 600; }
+.service-learning-row h3 { font-size: 24px; line-height: 1.3; max-width: 310px; }
+.service-learning-row p { font-size: 15px; }
+.service-learning-row .service-takeaway { display: flex; align-items: flex-start; gap: 9px; margin-top: 16px; font-size: 12px; color: var(--blue); font-weight: 500; }
+.service-takeaway svg { margin-top: 3px; }
+.service-expect { padding-block: 62px; background: #eff1ed; }
+.service-expect-heading { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
+.service-expect-heading > p { font-size: 15px; }
+.service-steps { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.service-steps li { border-top: 1px solid #cfd6ce; padding-top: 24px; }
+.service-steps h3 { font-size: 22px; line-height: 1.3; margin: 13px 0 12px; }
+.service-steps p { font-size: 14px; }
+.service-questions { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; padding-block: 76px; }
+.service-questions > div > p { font-size: 14px; margin: 22px 0 12px; }
+.service-next { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: center; padding: 42px; background: var(--light-blue); border-radius: 12px; }
+.service-next h2 { max-width: 530px; font-size: 36px; }
+.service-next p { font-size: 14px; margin-top: 18px; max-width: 510px; }
+.service-next-actions { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+.service-next-actions .text-link { font-size: 12px; }
+.service-explore { padding-block: 52px 70px; }
+.service-explore > div { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 18px; }
+.service-explore a { display: flex; justify-content: space-between; align-items: center; gap: 20px; border-top: 1px solid var(--line); padding: 22px 0; color: var(--blue); }
+.service-explore strong { display: block; font-size: 20px; font-weight: 500; }
+.service-explore a span { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); }
+.service-explore a:hover strong { text-decoration: underline; text-underline-offset: 5px; }
+@media (max-width: 1000px) {
+  .service-intro-grid, .service-overview, .service-learning-row, .service-expect-heading, .service-questions { gap: 40px; }
+  .service-next { gap: 30px; padding: 32px; }
+  .service-next .button { font-size: 12px; padding-inline: 17px; gap: 14px; }
+}
+@media (max-width: 700px) {
+  .service-intro { padding-top: 24px; }
+  .service-breadcrumb { margin-bottom: 28px; font-size: 11px; }
+  .service-intro-grid, .service-overview, .service-learning-row, .service-expect-heading, .service-questions, .service-next { grid-template-columns: 1fr; gap: 30px; }
+  .service-intro h1 { font-size: clamp(39px, 8.5vw, 55px); letter-spacing: -1.8px; margin-top: 16px; }
+  .service-lead { font-size: 16px; }
+  .service-image-placeholder { aspect-ratio: 4 / 3; }
+  .service-meta { margin-top: 28px; font-size: 10px; gap: 12px; }
+  .service-meta > span { gap: 5px; }
+  .service-overview, .service-questions { padding-block: 50px; }
+  .service-included { padding: 26px; }
+  .service-learning { padding-bottom: 50px; }
+  .service-learning-row { gap: 17px; padding-block: 25px; }
+  .service-learning-row > div:first-child { gap: 15px; }
+  .service-learning-row h3 { max-width: none; font-size: 23px; }
+  .service-learning-row p { font-size: 14px; }
+  .service-expect { padding-block: 45px; }
+  .service-expect-heading { gap: 20px; }
+  .service-steps { grid-template-columns: 1fr; gap: 25px; margin-top: 28px; }
+  .service-steps li { padding-top: 20px; }
+  .service-steps h3 { margin-block: 10px; }
+  .service-next { padding: 28px 24px; }
+  .service-next h2 { font-size: 31px; }
+  .service-next-actions .button { width: 100%; }
+  .service-next-actions .text-link { font-size: 11px; gap: 9px; }
+  .service-explore { padding-block: 40px 45px; }
+  .service-explore > div { grid-template-columns: 1fr; gap: 0; }
+}
