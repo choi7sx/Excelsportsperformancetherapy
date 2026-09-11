@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url("/fonts/dm-sans-latin.woff2") format("woff2");
+}
+:root {
+  --font-body: "DM Sans", Arial, sans-serif;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-synthesis: none;
+}
+
+:where(button, input, select, textarea) {
+  font: inherit;
+}
+
+strong, b {
+  font-weight: var(--weight-bold);
+}
