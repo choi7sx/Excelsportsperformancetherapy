@@ -4,7 +4,8 @@
 .service-breadcrumb a { display: inline-flex; align-items: center; min-height: 44px; }
 .service-breadcrumb a:hover { color: var(--blue); text-decoration: underline; }
 .service-breadcrumb [aria-current] { color: var(--ink); }
-.service-intro-grid { max-width: 780px; }
+.service-intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); align-items: center; gap: 64px; }
+.service-hero-image { width: 100%; max-width: 400px; height: auto; aspect-ratio: 10 / 9; object-fit: cover; object-position: center 20%; border-radius: var(--radius); background: #eff1ed; }
 .service-intro h1 { font-size: clamp(42px, 4.3vw, 62px); line-height: 1.08; letter-spacing: -2.5px; margin: 18px 0 22px; max-width: 760px; }
 .service-lead { font-size: var(--text-body); max-width: 680px; }
 .service-meta { flex-wrap: wrap; margin-top: 40px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 19px 0; display: flex; justify-content: space-between; gap: 20px; font-size: var(--text-small); color: var(--muted); }
@@ -55,6 +56,7 @@
 .service-explore a span { display: block; margin-top: 6px; font-size: var(--text-small); color: var(--muted); }
 .service-explore a:hover strong { text-decoration: underline; text-underline-offset: 5px; }
 @media (max-width: 1000px) {
+  .service-intro-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
   .service-intro-grid, .service-overview, .service-learning-row, .service-expect-heading, .service-questions { gap: 40px; }
   .service-next { gap: 30px; padding: 32px; }
   .service-next .button { font-size: var(--text-small); padding-inline: 17px; gap: 14px; }
@@ -65,7 +67,8 @@
   .service-intro-grid, .service-overview, .service-learning-row, .service-expect-heading, .service-questions, .service-next { grid-template-columns: 1fr; gap: 30px; }
   .service-intro h1 { font-size: clamp(39px, 8.5vw, 55px); letter-spacing: -1.8px; margin-top: 16px; }
   .service-lead { font-size: var(--text-body); }
-    .service-meta { flex-wrap: wrap; margin-top: 28px; font-size: var(--text-small); gap: 12px; }
+  .service-hero-image { aspect-ratio: 3 / 2; max-height: 260px; justify-self: center; }
+  .service-meta { flex-wrap: wrap; margin-top: 28px; font-size: var(--text-small); gap: 12px; }
   .service-meta > span { gap: 5px; }
   .service-overview, .service-questions { padding-block: 50px; }
   .service-included { padding: 26px; }
