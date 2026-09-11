@@ -106,12 +106,22 @@ const businessSchema = {
         set:html={JSON.stringify(schema)}
       ></script>
     )}
+    <noscript>
+      <style>
+        @media (max-width: 1100px) {
+          .site-header { position: relative; }
+          .nav-wrap { flex-wrap: wrap; padding-block: 12px; }
+          .nav-wrap nav { display: flex; position: static; width: 100%; order: 3; max-height: none; padding: 0; box-shadow: none; border: 0; }
+          .menu-toggle { display: none; }
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <a class="skip-link" href="#main">
       Skip to content
     </a>
-    <div class="topbar">
+    <div class="topbar" role="region" aria-label="Practice locations">
       <span>Move well. Do more of what you love.</span>
       <a href="/#locations">
         <Icon name="pin" size={13} /> Old Hickory & Belle Meade, TN{" "}
@@ -133,14 +143,14 @@ const businessSchema = {
           />
         </a>
         <nav id="main-nav" aria-label="Main navigation">
-          <a href="/#approach">Our approach</a>
+          <a href="/#first-visit">First visit</a>
           <a href="/#services">Services</a>
           <a href="/#meet-ethan">Meet Ethan</a>
-          <a href="/#reviews">Patient stories</a>
+          <a href="/#locations">Locations</a>
           <a href="/#faq">FAQs</a>
         </nav>
         <a class="button nav-book" href={bookingUrl} data-booking>
-          Book with Ethan <Icon size={17} />
+          Book an evaluation <Icon size={17} />
         </a>
         <button
           class="menu-toggle"
@@ -153,7 +163,7 @@ const businessSchema = {
         </button>
       </div>
     </header>
-    <main id="main">
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <footer class="site-footer">
@@ -175,18 +185,18 @@ const businessSchema = {
           </p>
         </div>
         <div>
-          <h3>Find your next step</h3>
+          <h2 class="footer-heading">Find your next step</h2>
           <a href="/#services">Explore our services</a>
           <a href="/#meet-ethan">Meet Dr. Ethan</a>
           <a href={bookingUrl} data-booking>
             Book an evaluation
           </a>
-          <a href={consultUrl} target="_blank" rel="noopener noreferrer">
-            Start with a free consult ↗
+          <a href={consultUrl}>
+            Request a free consult
           </a>
         </div>
         <div>
-          <h3>Let’s connect</h3>
+          <h2 class="footer-heading">Let’s connect</h2>
           <a href="tel:+16153141508">(615) 314-1508</a>
           <a href="mailto:drethanexcelspt@gmail.com">
             drethanexcelspt@gmail.com
@@ -205,29 +215,32 @@ const businessSchema = {
         </a>
       </div>
     </footer>
-    <div class="mobile-booking">
+    <div class="mobile-booking" role="navigation" aria-label="Book or call Excel">
       <a class="button" href={bookingUrl} data-booking>
-        Book with Ethan <Icon size={18} />
+        Book an evaluation <Icon size={18} />
       </a>
       <a href="tel:+16153141508" aria-label="Call Excel">
         <Icon name="phone" />
       </a>
     </div>
-    <dialog id="booking-dialog" aria-labelledby="booking-title">
+    <dialog id="booking-dialog" aria-labelledby="booking-title" aria-describedby="booking-description">
       <button class="dialog-close" aria-label="Close booking options">
         ×
       </button>
-      <span class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
-      <h2 id="booking-title">Let’s get you moving.</h2>
-      <p>
-        Choose your location to see Ethan’s availability and book through Jane.
+      <span class="eyebrow">BOOK YOUR INITIAL EVALUATION</span>
+      <h2 id="booking-title">Choose your location.</h2>
+      <p id="booking-description">
+        See available times in Jane, then select an initial evaluation for your
+        60-minute first visit with Ethan.
       </p>
+      <p class="booking-reassurance">Cash-based care · HSA/FSA accepted. <a href="tel:+16153141508">Call for pricing</a> before booking.</p>
       <div class="booking-options">
         {locations.map((l) => (
           <a href={l.booking} class="booking-option">
             <div>
               <span class="eyebrow">{l.venue}</span>
               <h3>{l.name}</h3>
+              <p>{l.address}</p>
               <p>{l.hours}</p>
             </div>
             <Icon />
@@ -236,15 +249,16 @@ const businessSchema = {
       </div>
       <p class="dialog-note">
         Have a question first?{" "}
-        <a href={consultUrl} target="_blank" rel="noopener noreferrer">
-          Start with a free consult ↗
+        <a href={consultUrl}>
+          Request a free consult
         </a>
       </p>
     </dialog>
     <script>
       const menu = document.querySelector<HTMLButtonElement>(".menu-toggle");
       const nav = document.querySelector<HTMLElement>("#main-nav");
-      const closeMenu = () => {
+      const closeMenu = (restoreFocus = false) => {
+        if (restoreFocus && nav?.contains(document.activeElement)) menu?.focus();
         menu?.setAttribute("aria-expanded", "false");
         menu?.setAttribute("aria-label", "Open navigation");
         nav?.classList.remove("is-open");
@@ -260,15 +274,26 @@ const businessSchema = {
       });
       nav
         ?.querySelectorAll("a")
-        .forEach((a) => a.addEventListener("click", closeMenu));
+        .forEach((a) => a.addEventListener("click", () => closeMenu()));
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeMenu();
+        if (e.key === "Escape") closeMenu(true);
       });
+      document.addEventListener("click", (e) => {
+        if (e.target instanceof Node && !nav?.contains(e.target) && !menu?.contains(e.target)) closeMenu();
+      });
+      document.addEventListener("focusin", (e) => {
+        if (e.target instanceof Node && !nav?.contains(e.target) && !menu?.contains(e.target)) closeMenu();
+      });
+      window.matchMedia("(min-width: 1101px)").addEventListener("change", () => closeMenu());
       const dialog =
         document.querySelector<HTMLDialogElement>("#booking-dialog");
       document
         .querySelectorAll<HTMLAnchorElement>("[data-booking]")
-        .forEach((link) =>
+        .forEach((link) => {
+          if (dialog?.showModal) {
+            link.setAttribute("aria-haspopup", "dialog");
+            link.setAttribute("aria-controls", "booking-dialog");
+          }
           link.addEventListener("click", (e) => {
             if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
             if (dialog?.showModal) {
@@ -276,8 +301,8 @@ const businessSchema = {
               dialog.showModal();
               document.body.classList.add("dialog-open");
             }
-          }),
-        );
+          });
+        });
       dialog
         ?.querySelector(".dialog-close")
         ?.addEventListener("click", () => dialog.close());

@@ -1,10 +1,5 @@
-@font-face {
-  font-family: "DM Sans";
-  font-style: normal;
-  font-weight: 100 1000;
-  font-display: swap;
-  src: url("/fonts/dm-sans-latin.woff2") format("woff2");
-}
+@import "./typography.css";
+
 :root {
   --paper: #f7f7f2;
   --ink: #192c36;
@@ -17,10 +12,8 @@
   --text-label: 0.75rem;
   --text-small: 0.875rem;
   --text-body: 1rem;
-  font-family: "DM Sans", Arial, sans-serif;
   color: var(--ink);
   background: var(--paper);
-  font-synthesis: none;
 }
 * {
   box-sizing: border-box;
@@ -66,7 +59,7 @@ figure {
 h1,
 h2,
 h3 {
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 p {
   color: var(--muted);
@@ -100,8 +93,9 @@ summary:focus-visible {
 .eyebrow {
   display: block;
   font-size: var(--text-label);
-  letter-spacing: 1.8px;
-  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: var(--weight-bold);
   line-height: 1.6;
   color: var(--blue);
 }
@@ -120,7 +114,7 @@ summary:focus-visible {
   border: 1px solid var(--blue);
   border-radius: 7px;
   font-size: var(--text-small);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   transition:
     background 0.2s,
     transform 0.2s,
@@ -137,7 +131,7 @@ summary:focus-visible {
   gap: 13px;
   color: var(--blue);
   font-size: var(--text-small);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   line-height: 1.5;
 }
 .text-link:hover {
@@ -217,7 +211,7 @@ summary:focus-visible {
 }
 .nav-wrap nav a {
   font-size: var(--text-body);
-  font-weight: 550;
+  font-weight: var(--weight-medium);
   white-space: nowrap;
   transition: color 0.2s;
 }
@@ -265,15 +259,8 @@ summary:focus-visible {
   align-items: center;
   gap: 9px;
   font-size: var(--text-label);
-  letter-spacing: 1.3px;
 }
-.status-dot {
-  flex-shrink: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--blue);
-}
+
 h1 {
   font-size: clamp(50px, 5.6vw, 78px);
   line-height: 1.04;
@@ -312,52 +299,7 @@ h1 {
 .hero-reassurance svg {
   color: var(--blue);
 }
-.hero-social {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 34px;
-}
-.patient-initials {
-  display: flex;
-  padding-left: 0;
-}
-.patient-initials > span {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  border: 3px solid var(--paper);
-  margin-left: -8px;
-  border-radius: 50%;
-  background: #d9ddd3;
-  color: #415139;
-  font-size: var(--text-small);
-  font-weight: 650;
-}
-.patient-initials > span:first-child {
-  margin-left: 0;
-  background: #e1d8cb;
-  color: #685545;
-}
-.patient-initials > span:last-child {
-  background: #d4dfee;
-  color: #4a607f;
-}
-.hero-social strong {
-  display: block;
-  font-size: var(--text-small);
-  font-weight: 650;
-}
-.hero-social small {
-  display: block;
-  margin-top: 4px;
-  font-size: var(--text-small);
-  color: var(--muted);
-}
-.hero-social small span {
-  padding-left: 4px;
-}
+
 .hero-visual {
   position: relative;
   align-self: stretch;
@@ -380,72 +322,7 @@ h1 {
   border-radius: inherit;
   pointer-events: none;
 }
-.photo-label {
-  position: absolute;
-  top: 22px;
-  left: 22px;
-  right: 22px;
-  width: fit-content;
-  padding: 10px 13px;
-  background: #f7f7f2f0;
-  border-radius: 5px;
-  font-size: var(--text-label);
-  letter-spacing: 1.1px;
-  font-weight: 650;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.live-dot {
-  flex-shrink: 0;
-  height: 6px;
-  width: 6px;
-  border-radius: 50%;
-  background: #63886f;
-}
-.care-card {
-  position: absolute;
-  z-index: 2;
-  left: -29px;
-  right: 16px;
-  width: fit-content;
-  bottom: 28px;
-  border: 1px solid #e7e8e4;
-  background: #fff;
-  box-shadow: 0 8px 35px #14252d0a;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 20px 23px;
-  border-radius: 11px;
-}
-.care-icon {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  background: var(--light-blue);
-  width: 48px;
-  height: 48px;
-  color: var(--blue);
-  border-radius: 50%;
-}
-.care-card strong {
-  font-size: var(--text-small);
-  font-weight: 650;
-}
-.care-card p {
-  font-size: var(--text-small);
-  margin-top: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 42px;
-  line-height: 1.3;
-}
-.care-card a {
-  color: var(--blue);
-  padding: 4px;
-}
+
 .reviews-section {
   padding: 32px 0 28px;
   background: #edefe9;
@@ -457,11 +334,6 @@ h1 {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 21px;
-}
-.section-mini-heading > .eyebrow {
-  font-size: var(--text-label);
-  letter-spacing: 1.6px;
-  color: #4c5b52;
 }
 .section-mini-heading > span:last-child {
   font-size: var(--text-body);
@@ -484,7 +356,6 @@ h1 {
   flex-direction: column;
 }
 .quote-mark {
-  font-family: Georgia, serif;
   color: var(--blue);
   font-size: 38px;
   line-height: 0.7;
@@ -494,7 +365,7 @@ h1 {
   margin: 10px 0 19px;
   font-size: var(--text-body);
   line-height: 1.55;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   flex-grow: 1;
   max-width: 290px;
 }
@@ -531,55 +402,14 @@ h1 {
   color: #6b8368;
   margin-left: auto;
 }
-.approach-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 95px;
-}
+
 .large-copy {
   font-size: 21px;
   color: var(--ink);
   line-height: 1.55;
   letter-spacing: -0.35px;
 }
-.approach-grid .large-copy {
-  margin-bottom: 18px;
-}
-.approach-grid p:not(.large-copy) {
-  font-size: var(--text-body);
-}
-.approach-grid .text-link {
-  margin-top: 23px;
-}
-.values-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
-  margin-top: 50px;
-  padding-top: 31px;
-  gap: 35px;
-}
-.values-row > div {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-.values-row > div > svg {
-  color: var(--blue);
-  width: 28px;
-  height: 28px;
-}
-.values-row > div > span {
-  font-size: var(--text-body);
-  font-weight: 600;
-}
-.values-row small {
-  display: block;
-  font-weight: 400;
-  font-size: var(--text-small);
-  margin-top: 5px;
-  color: var(--muted);
-}
+
 .services-section {
   background: #eaf0f5;
 }
@@ -614,6 +444,10 @@ h1 {
   transform: translateY(-5px);
   box-shadow: 0 13px 30px #192c3609;
 }
+.service-card:is(:hover, :focus-visible) .service-link {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 .service-card-top {
   display: flex;
   justify-content: space-between;
@@ -629,38 +463,13 @@ h1 {
   color: var(--blue);
   background: #e4eaf9;
 }
-.service-number {
-  font-size: var(--text-label);
-  color: #62717c;
-}
-.service-tagline {
-  font-size: var(--text-label);
-  color: var(--blue);
-  font-weight: 600;
-  margin-bottom: 6px;
-}
+
 .service-card h3 {
   font-size: 26px;
   margin-bottom: 13px;
   letter-spacing: -1px;
 }
-.service-card > p:not(.service-tagline) {
-  font-size: var(--text-body);
-  line-height: 1.8;
-}
-.service-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 24px 0 29px;
-}
-.service-tags span {
-  border: 1px solid #dce0dc;
-  border-radius: 5px;
-  padding: 6px 8px;
-  font-size: var(--text-label);
-  color: #54615e;
-}
+
 .service-link {
   display: flex;
   align-items: center;
@@ -670,7 +479,7 @@ h1 {
   padding-top: 19px;
   color: var(--blue);
   font-size: var(--text-small);
-  font-weight: 650;
+  font-weight: var(--weight-semibold);
   gap: 6px;
 }
 .service-link > span {
@@ -739,7 +548,7 @@ h1 {
   margin-bottom: 10px;
 }
 .ethan-caption strong {
-  font-weight: 550;
+  font-weight: var(--weight-medium);
   font-size: 28px;
   display: block;
   letter-spacing: -0.7px;
@@ -759,24 +568,7 @@ h1 {
   font-size: var(--text-body);
   margin-bottom: 17px;
 }
-.ethan-note {
-  display: flex;
-  align-items: flex-start;
-  gap: 13px;
-  background: #edf0e8;
-  border-left: 2px solid #91a889;
-  padding: 18px;
-  margin: 24px 0;
-}
-.ethan-note > svg {
-  color: #5e7856;
-  margin-top: 2px;
-}
-.ethan-note > p {
-  font-size: var(--text-body);
-  line-height: 1.65;
-  color: #4a5c48;
-}
+
 .ethan-copy > .button {
   font-size: var(--text-small);
 }
@@ -856,7 +648,7 @@ h1 {
   justify-content: space-between;
   gap: 20px;
   font-size: var(--text-body);
-  font-weight: 550;
+  font-weight: var(--weight-medium);
   padding: 23px 0;
   line-height: 1.5;
 }
@@ -999,17 +791,7 @@ h1 {
   color: #fff;
   font-size: var(--text-small);
 }
-.closing-chevron {
-  position: absolute;
-  right: 30px;
-  top: -100px;
-  font-size: 420px;
-  font-weight: 400;
-  letter-spacing: -70px;
-  line-height: 1;
-  color: #ffffff13;
-  pointer-events: none;
-}
+
 .site-footer {
   background: var(--paper);
   padding-top: 55px;
@@ -1029,9 +811,9 @@ h1 {
   font-size: var(--text-small);
   line-height: 1.8;
 }
-.footer-top h3 {
+.footer-heading {
   font-size: var(--text-small);
-  font-weight: 650;
+  font-weight: var(--weight-semibold);
   letter-spacing: 0;
   margin: 10px 0 20px;
 }
@@ -1049,7 +831,7 @@ h1 {
 .footer-note {
   display: block;
   font-size: var(--text-label);
-  font-weight: 550;
+  font-weight: var(--weight-medium);
   margin-top: 20px;
   color: #4c6146;
 }
@@ -1123,7 +905,6 @@ dialog > p {
 }
 .booking-option .eyebrow {
   font-size: var(--text-label);
-  letter-spacing: 1px;
 }
 .booking-option h3 {
   font-size: 24px;
@@ -1198,12 +979,8 @@ dialog > p {
   }
   .hero-copy > .eyebrow {
     font-size: var(--text-label);
-    letter-spacing: 1px;
   }
-  .care-card {
-    left: -15px;
-    padding: 17px;
-  }
+
   .hero-actions {
     gap: 18px;
   }
@@ -1229,9 +1006,7 @@ dialog > p {
   .footer-top {
     gap: 35px;
   }
-  .approach-grid {
-    gap: 60px;
-  }
+
 }
 @media (max-width: 1100px) {
   .nav-wrap nav {
@@ -1290,38 +1065,11 @@ dialog > p {
     flex-direction: column;
     gap: 7px;
   }
-  .hero-social {
-    margin-top: 24px;
-  }
+
   .hero-copy > .eyebrow {
     font-size: var(--text-label);
   }
-  .photo-label {
-    left: 14px;
-    top: 14px;
-    font-size: var(--text-label);
-    padding: 9px;
-  }
-  .care-card {
-    padding: 13px;
-    left: -12px;
-    bottom: 20px;
-    gap: 9px;
-  }
-  .care-icon {
-    width: 35px;
-    height: 35px;
-  }
-  .care-icon svg {
-    width: 20px;
-  }
-  .care-card strong {
-    font-size: var(--text-small);
-  }
-  .care-card p {
-    font-size: var(--text-small);
-    gap: 22px;
-  }
+
   .section-space {
     padding: 70px 0;
   }
@@ -1340,24 +1088,11 @@ dialog > p {
   .review figcaption > svg {
     display: none;
   }
-  .approach-grid {
-    gap: 35px;
-  }
+
   .large-copy {
     font-size: 18px;
   }
-  .values-row {
-    gap: 20px;
-  }
-  .values-row > div {
-    gap: 10px;
-  }
-  .values-row > div > span {
-    font-size: var(--text-body);
-  }
-  .values-row small {
-    font-size: var(--text-small);
-  }
+
   .section-heading {
     align-items: flex-start;
   }
@@ -1373,12 +1108,7 @@ dialog > p {
   .service-card h3 {
     font-size: 20px;
   }
-  .service-card > p:not(.service-tagline) {
-    font-size: var(--text-body);
-  }
-  .service-tags {
-    gap: 5px;
-  }
+
   .service-link {
     font-size: var(--text-small);
   }
@@ -1502,7 +1232,6 @@ dialog > p {
   }
   .hero-copy > .eyebrow {
     font-size: var(--text-label);
-    letter-spacing: 1.1px;
   }
   .hero h1 {
     font-size: clamp(36px, 12.3vw, 72px);
@@ -1534,9 +1263,7 @@ dialog > p {
     gap: 20px;
     font-size: var(--text-small);
   }
-  .hero-social {
-    margin-top: 25px;
-  }
+
   .hero-visual {
     height: 390px;
     min-height: 0;
@@ -1547,28 +1274,7 @@ dialog > p {
   .hero-image {
     object-position: center 37%;
   }
-  .photo-label {
-    left: 17px;
-    top: 17px;
-    font-size: var(--text-label);
-  }
-  .care-card {
-    left: -12px;
-    bottom: 21px;
-    padding: 16px;
-    gap: 12px;
-  }
-  .care-icon {
-    width: 41px;
-    height: 41px;
-  }
-  .care-card strong {
-    font-size: var(--text-small);
-  }
-  .care-card p {
-    font-size: var(--text-small);
-    gap: 37px;
-  }
+
   .section-mini-heading {
     align-items: flex-start;
     gap: 10px;
@@ -1617,36 +1323,15 @@ dialog > p {
   }
   .eyebrow {
     font-size: var(--text-label);
-    letter-spacing: 1.5px;
   }
   .eyebrow + h2 {
     margin-top: 13px;
   }
-  .approach-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
+
   .large-copy {
     font-size: 19px;
   }
-  .approach-grid p:not(.large-copy) {
-    font-size: var(--text-body);
-  }
-  .values-row {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    margin-top: 33px;
-    padding-top: 27px;
-  }
-  .values-row > div {
-    gap: 17px;
-  }
-  .values-row > div > span {
-    font-size: var(--text-body);
-  }
-  .values-row small {
-    font-size: var(--text-small);
-  }
+
   .section-heading {
     flex-direction: column;
     gap: 18px;
@@ -1672,20 +1357,7 @@ dialog > p {
   .service-card h3 {
     font-size: 28px;
   }
-  .service-card > p:not(.service-tagline) {
-    font-size: var(--text-body);
-    max-width: 340px;
-  }
-  .service-tagline {
-    font-size: var(--text-label);
-  }
-  .service-tags {
-    margin: 20px 0 23px;
-    gap: 7px;
-  }
-  .service-tags span {
-    font-size: var(--text-label);
-  }
+
   .service-link {
     font-size: var(--text-small);
   }
@@ -1723,9 +1395,7 @@ dialog > p {
     font-size: 19px;
     margin-top: 23px;
   }
-  .ethan-note {
-    margin: 20px 0;
-  }
+
   .ethan-copy > .button {
     min-height: 50px;
   }
@@ -1803,12 +1473,7 @@ dialog > p {
     font-size: var(--text-small);
     min-height: 51px;
   }
-  .closing-chevron {
-    font-size: 290px;
-    right: -18px;
-    top: 10px;
-    letter-spacing: -50px;
-  }
+
   .footer-top {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px 20px;
@@ -1833,7 +1498,7 @@ dialog > p {
   .footer-top > div:last-child {
     grid-column: auto;
   }
-  .footer-top h3 {
+  .footer-heading {
     font-size: var(--text-small);
     margin-bottom: 17px;
   }
@@ -1891,7 +1556,6 @@ dialog > p {
   }
   dialog > .eyebrow {
     font-size: var(--text-label);
-    letter-spacing: 1.1px;
     margin-top: 16px;
   }
   dialog > p {
@@ -1948,7 +1612,6 @@ dialog > p {
   }
   .hero-copy > .eyebrow {
     font-size: var(--text-label);
-    letter-spacing: 0.8px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1960,5 +1623,73 @@ dialog > p {
   *:after {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+/* Keep the decision path readable and keyboard controls easy to locate. */
+html {
+  scroll-padding-bottom: 100px;
+}
+:where(a, button, summary):focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px var(--paper);
+}
+.booking-reassurance {
+  margin-top: 16px;
+  font-size: var(--text-small);
+  line-height: 1.7;
+}
+.booking-reassurance a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.text-link, .directions-link {
+  min-height: 44px;
+  align-content: center;
+}
+.service-card > p + .service-link {
+  margin-top: 24px;
+}
+.dialog-close {
+  width: 44px;
+  height: 44px;
+}
+@media (max-width: 1100px) {
+  .nav-wrap nav {
+    max-height: calc(100dvh - 180px);
+    overflow-y: auto;
+  }
+}
+@media (max-width: 600px) {
+  .nav-book {
+    display: none;
+  }
+  .menu-toggle {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+  }
+  .hero-reassurance {
+    gap: 10px 20px;
+  }
+  .hero-visual {
+    margin-inline: 0;
+    border-radius: 16px;
+  }
+  .hero-actions {
+    gap: 10px 22px;
+  }
+}
+@media (max-height: 500px) {
+  .site-header {
+    position: relative;
+  }
+  .mobile-booking {
+    display: none;
+  }
+  html {
+    scroll-padding-top: 16px;
   }
 }

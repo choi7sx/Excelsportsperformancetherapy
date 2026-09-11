@@ -18,6 +18,7 @@ In Conductor, start **preview** from the **Run** tab, then click **Open** to vie
 - Homepage: `src/pages/index.astro`
 - Services, FAQs, locations, hours, and booking URLs: `src/data/excel.ts`
 - Shared navigation, booking dialog, footer, and metadata: `src/layouts/ExcelLayout.astro`
+- Shared font family and weight tokens: `src/styles/typography.css`
 - Visual styles and responsive layouts: `src/styles/excel.css`
 - Service page template: `src/pages/services/[slug].astro`
 - Service learning content and service-specific FAQs: `src/data/service-guides.ts`
@@ -32,7 +33,7 @@ Content was checked against https://www.excelspt.com/ and https://excelspt.janea
 
 The working assumption is that uncertainty about care and the first visit creates booking friction. The Hormozi-inspired strategy therefore informed outcome-led copy, early patient proof, understandable care paths, a clear first-visit explanation, and a free consultation alternative. The intended outcome is more qualified initial evaluations. Once launched, measure visits → booking-calendar clicks → completed evaluations, along with consult requests. Analytics and completed-booking attribution are not connected in this draft; bookings happen in Jane. Evaluate conversion and booking quality before investing in more traffic. Appointment capacity becomes the next constraint if demand grows.
 
-Service pages use a quieter shared layout with grey photo placeholders, service-fit guidance, explanations of the care approach, first-visit steps, and service-specific FAQs. The Enhanced PT physical therapy page (https://enhancedpt.com/services/physical-therapy/) informed the educational structure; copy and design are original to Excel. The placeholders live in the service template and can be replaced with service photography.
+Service pages use a quieter text-led layout with an introductory booking action, service-fit guidance, explanations of the care approach, first-visit steps, and service-specific FAQs. The Enhanced PT physical therapy page (https://enhancedpt.com/services/physical-therapy/) informed the educational structure; copy and design are original to Excel.
 
 ## SEO and launch notes
 
@@ -41,3 +42,7 @@ Server-rendered static HTML includes unique titles and descriptions, canonical U
 This is a local draft, not a live replacement. Before launch, have Ethan review service wording, hours, payment details, and patient excerpt usage. Confirm the production domain, point hosting at `dist`, ensure previews are not indexed, and submit the sitemap to Search Console. Review any legacy URLs for redirects when migrating. No patient information is collected by this site; scheduling and consultation links use the existing external providers.
 
 Compatible dependency fixes were applied using `npm audit fix`. Six inherited advisories remain (one critical, three high, one moderate, one low), involving Astro/MDX, sharp, esbuild, and markdown-it/linkify-it. Resolving all of them currently requires dependency upgrades beyond the starter's major-version ranges. This draft emits static files; a production dependency upgrade and verification should be completed before launch.
+
+## Site audit
+
+See [SITE-AUDIT.md](SITE-AUDIT.md) for the content, conversion, accessibility, and technical audit, implemented improvements, verification results, and remaining launch priorities.

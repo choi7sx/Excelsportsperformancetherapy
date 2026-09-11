@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./typography.css";
 
 @layer base {
   * {
@@ -8,7 +9,7 @@
   }
 
   html {
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: var(--font-body);
   }
 
   main {
@@ -25,7 +26,7 @@
   .prose h2,
   .prose h3,
   .prose h4 {
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     margin-bottom: 0.5rem;
     text-wrap: balance;
     line-height: 1.2;

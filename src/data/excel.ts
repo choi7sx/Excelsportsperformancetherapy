@@ -101,7 +101,7 @@ export const faqs = [
   {
     question: "I’m nervous about chiropractic care. Where should I start?",
     answer:
-      "Start with a free consultation and bring your questions. Let Ethan know what feels uncomfortable or uncertain, including any concerns about adjustments. You can discuss the approach before deciding whether to book an evaluation.",
+      "Request a free phone consultation through the short form, and Ethan will call you back. Bring your questions. Let Ethan know what feels uncomfortable or uncertain, including any concerns about adjustments. You can discuss the approach before deciding whether to book an evaluation.",
   },
   {
     question: "Do you accept insurance or HSA/FSA?",
