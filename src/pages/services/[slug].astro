@@ -46,7 +46,16 @@ const schema = {
           </div>
           <p class="booking-reassurance">60-minute first visit · Cash-based care · HSA/FSA accepted</p>
         </div>
-
+        <img
+          class="service-hero-image"
+          src={guide.heroImage.src}
+          alt={guide.heroImage.alt}
+          width="960"
+          height="1100"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
       </div>
       <div class="service-meta">
         <span><Icon name="pin" size={16} /> Old Hickory & Belle Meade</span>

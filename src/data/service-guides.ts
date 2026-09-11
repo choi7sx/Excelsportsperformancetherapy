@@ -1,5 +1,6 @@
 // Learning-page copy is separate from the short homepage service summaries.
 export interface ServiceGuide {
+  heroImage: { src: string; alt: string };
   overview: string;
   situations: string[];
   focus: { title: string; description: string; takeaway: string }[];
@@ -9,6 +10,10 @@ export interface ServiceGuide {
 
 export const serviceGuides: Record<string, ServiceGuide> = {
   "recovery-care": {
+    heroImage: {
+      src: "/images/services/recovery-care.webp",
+      alt: "Dr. Ethan Coghill providing hands-on neck care to a patient.",
+    },
     overview: "Support for the everyday demands on your body.",
     situations: [
       "You feel tight or stiff between workouts.",
@@ -49,6 +54,10 @@ export const serviceGuides: Record<string, ServiceGuide> = {
     ],
   },
   "focused-rehab": {
+    heroImage: {
+      src: "/images/services/recovery-care.webp",
+      alt: "Dr. Ethan Coghill providing hands-on neck care to a patient.",
+    },
     overview: "When pain needs more than occasional attention.",
     situations: [
       "The same discomfort keeps interrupting your routine.",
@@ -89,6 +98,10 @@ export const serviceGuides: Record<string, ServiceGuide> = {
     ],
   },
   "performance-training": {
+    heroImage: {
+      src: "/images/services/performance-training.webp",
+      alt: "An athlete preparing to lift a barbell during a strength training session.",
+    },
     overview: "Give your training a clear direction.",
     situations: [
       "You want a program connected to a specific fitness or sport goal.",

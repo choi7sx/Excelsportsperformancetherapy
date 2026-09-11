@@ -29,7 +29,7 @@ The CloudCannon integration and original content components remain available. Th
 
 ## Content sources and conversion strategy
 
-Content was checked against https://www.excelspt.com/ and https://excelspt.janeapp.com/ on September 10, 2026. Both photos are optimized versions of the user-supplied treatment photo; the user-supplied Excel logo is used throughout. No stock portraits, fabricated reviews, star ratings, pricing, qualifications, or outcome guarantees were added.
+Content was checked against https://www.excelspt.com/ and https://excelspt.janeapp.com/ on September 10, 2026. The homepage, Recovery Care, and Focused Rehab photos are optimized versions of the user-supplied treatment photo; the user-supplied Excel logo is used throughout. Performance Training uses a stock placeholder photo, with its source recorded in `public/images/services/README.md`. No fabricated reviews, star ratings, pricing, qualifications, or outcome guarantees were added.
 
 The working assumption is that uncertainty about care and the first visit creates booking friction. The Hormozi-inspired strategy therefore informed outcome-led copy, early patient proof, understandable care paths, a clear first-visit explanation, and a free consultation alternative. The intended outcome is more qualified initial evaluations. Once launched, measure visits → booking-calendar clicks → completed evaluations, along with consult requests. Analytics and completed-booking attribution are not connected in this draft; bookings happen in Jane. Evaluate conversion and booking quality before investing in more traffic. Appointment capacity becomes the next constraint if demand grows.
 
