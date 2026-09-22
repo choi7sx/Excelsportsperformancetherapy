@@ -30,7 +30,7 @@ export const services = [
     title: "Recovery care",
     tagline: "A little care. More good days.",
     description:
-      "For the tightness, stiffness, and everyday aches that get between you and the things you love.",
+      "Chiropractic adjustments, soft tissue work, and mobility support for everyday aches and stiffness.",
     tags: ["Hands-on treatment", "Mobility", "Recovery"],
     intro: "Give your body room to recover.",
     detail:
@@ -51,7 +51,7 @@ export const services = [
     title: "Focused rehab",
     tagline: "A plan to move forward.",
     description:
-      "When pain keeps coming back, get a structured plan built around your body and your goals.",
+      "One-on-one rehabilitation with hands-on care, strength work, and mobility exercises tailored to your goals.",
     tags: ["Injury rehabilitation", "Strength", "Progress"],
     intro: "Work toward the activities you miss.",
     detail:
@@ -72,7 +72,7 @@ export const services = [
     title: "Performance training",
     tagline: "Build what comes next.",
     description:
-      "Purposeful programming and coaching to help you grow stronger, in your sport and in everyday life.",
+      "Custom strength programming, exercise coaching, and ongoing check-ins for sport and everyday life.",
     tags: ["Custom programming", "Coaching", "Longevity"],
     intro: "Train with a little more direction.",
     detail:
