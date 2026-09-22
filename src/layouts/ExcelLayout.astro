@@ -58,7 +58,7 @@ const businessSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f7f7f2" />
+    <meta name="theme-color" content="#fafaf7" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta
@@ -121,13 +121,6 @@ const businessSchema = {
     <a class="skip-link" href="#main">
       Skip to content
     </a>
-    <div class="topbar" role="region" aria-label="Practice locations">
-      <span>Move well. Do more of what you love.</span>
-      <a href="/#locations">
-        <Icon name="pin" size={13} /> Old Hickory & Belle Meade, TN{" "}
-        <Icon size={14} />
-      </a>
-    </div>
     <header class="site-header">
       <div class="nav-wrap container">
         <a
@@ -143,10 +136,9 @@ const businessSchema = {
           />
         </a>
         <nav id="main-nav" aria-label="Main navigation">
-          <a href="/#first-visit">First visit</a>
           <a href="/#services">Services</a>
-          <a href="/#meet-ethan">Meet Ethan</a>
           <a href="/#locations">Locations</a>
+          <a href="/#meet-ethan">Meet Ethan</a>
           <a href="/#faq">FAQs</a>
         </nav>
         <a class="button nav-book" href={bookingUrl} data-booking>
@@ -192,7 +184,7 @@ const businessSchema = {
             Book an evaluation
           </a>
           <a href={consultUrl}>
-            Request a free consult
+            Free Consultation
           </a>
         </div>
         <div>
@@ -215,14 +207,6 @@ const businessSchema = {
         </a>
       </div>
     </footer>
-    <div class="mobile-booking" role="navigation" aria-label="Book or call Excel">
-      <a class="button" href={bookingUrl} data-booking>
-        Book an evaluation <Icon size={18} />
-      </a>
-      <a href="tel:+16153141508" aria-label="Call Excel">
-        <Icon name="phone" />
-      </a>
-    </div>
     <dialog id="booking-dialog" aria-labelledby="booking-title" aria-describedby="booking-description">
       <button class="dialog-close" aria-label="Close booking options">
         ×
@@ -250,7 +234,7 @@ const businessSchema = {
       <p class="dialog-note">
         Have a question first?{" "}
         <a href={consultUrl}>
-          Request a free consult
+          Free Consultation
         </a>
       </p>
     </dialog>

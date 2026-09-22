@@ -5,7 +5,7 @@
 .service-breadcrumb a:hover { color: var(--blue); text-decoration: underline; }
 .service-breadcrumb [aria-current] { color: var(--ink); }
 .service-intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); align-items: center; gap: 64px; }
-.service-hero-image { width: 100%; max-width: 400px; height: auto; aspect-ratio: 10 / 9; object-fit: cover; object-position: center 20%; border-radius: var(--radius); background: #eff1ed; }
+.service-hero-image { width: 100%; max-width: 400px; height: auto; aspect-ratio: 10 / 9; object-fit: cover; object-position: center 20%; border-radius: var(--radius); background: var(--surface); }
 .service-intro h1 { font-size: clamp(42px, 4.3vw, 62px); line-height: 1.08; letter-spacing: -2.5px; margin: 18px 0 22px; max-width: 760px; }
 .service-lead { font-size: var(--text-body); max-width: 680px; }
 .service-meta { flex-wrap: wrap; margin-top: 40px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 19px 0; display: flex; justify-content: space-between; gap: 20px; font-size: var(--text-small); color: var(--muted); }
@@ -19,7 +19,7 @@
 .service-situations { list-style: none; margin: 24px 0 0; padding: 0; }
 .service-situations li { display: flex; gap: 12px; align-items: flex-start; font-size: var(--text-small); line-height: 1.7; margin-top: 13px; }
 .service-situations svg { color: var(--blue); margin-top: 3px; }
-.service-included { background: #eff1ed; padding: 30px; border: 1px solid var(--line); border-radius: 12px; align-self: start; }
+.service-included { background: var(--surface); padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); align-self: start; }
 .service-included .service-icon { width: 48px; height: 48px; margin-bottom: 20px; }
 .service-included h3 { font-size: 23px; }
 .service-included ul { padding-left: 18px; font-size: var(--text-small); line-height: 1.7; margin: 20px 0; }
@@ -35,16 +35,16 @@
 .service-learning-row p { font-size: var(--text-body); }
 .service-learning-row .service-takeaway { display: flex; align-items: flex-start; gap: 9px; margin-top: 16px; font-size: var(--text-small); color: var(--blue); font-weight: var(--weight-medium); }
 .service-takeaway svg { margin-top: 3px; }
-.service-expect { padding-block: 62px; background: #eff1ed; }
+.service-expect { padding-block: 62px; background: var(--surface); }
 .service-expect-heading { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
 .service-expect-heading > p { font-size: var(--text-body); }
 .service-steps { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.service-steps li { border-top: 1px solid #cfd6ce; padding-top: 24px; }
+.service-steps li { border-top: 1px solid var(--line); padding-top: 24px; }
 .service-steps h3 { font-size: 22px; line-height: 1.3; margin: 13px 0 12px; }
 .service-steps p { font-size: var(--text-small); }
 .service-questions { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; padding-block: 76px; }
 .service-questions > div > p { font-size: var(--text-small); margin: 22px 0 12px; }
-.service-next { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: center; padding: 42px; background: var(--light-blue); border-radius: 12px; }
+.service-next { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: center; padding: 42px; background: var(--light-blue); border-radius: var(--radius); }
 .service-next h2 { max-width: 530px; font-size: 36px; }
 .service-next p { font-size: var(--text-small); margin-top: 18px; max-width: 510px; }
 .service-next-actions { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }

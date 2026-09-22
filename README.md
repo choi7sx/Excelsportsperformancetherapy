@@ -27,6 +27,10 @@ In Conductor, start **preview** from the **Run** tab, then click **Open** to vie
 
 The CloudCannon integration and original content components remain available. The new pages use Astro source files; the old starter page-builder content is not connected to these new pages. Demo routes have been removed from public output (their history remains in Git).
 
+## Google reviews badge
+
+The hero includes a branded link to the Old Hickory Google Maps reviews. Automatic rating and review-count updates are ready to configure using `PUBLIC_GOOGLE_MAPS_API_KEY` and `PUBLIC_GOOGLE_PLACE_ID`; see [the setup guide](docs/google-reviews.md) and `.env.example`. Until configured, the badge displays “Read our Google reviews” without a fabricated rating. Once configured, it fetches current Google data on each homepage load without rebuilding the site.
+
 ## Content sources and conversion strategy
 
 Content was checked against https://www.excelspt.com/ and https://excelspt.janeapp.com/ on September 10, 2026. The homepage, Recovery Care, and Focused Rehab photos are optimized versions of the user-supplied treatment photo; the user-supplied Excel logo is used throughout. Performance Training uses a stock placeholder photo, with its source recorded in `public/images/services/README.md`. No fabricated reviews, star ratings, pricing, qualifications, or outcome guarantees were added.
