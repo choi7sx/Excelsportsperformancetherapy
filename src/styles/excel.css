@@ -253,7 +253,7 @@ h3 {
   flex-wrap: wrap;
   align-items: center;
   gap: 16px 24px;
-  margin-block: 30px 16px;
+  margin-block: 30px 0;
 }
 .booking-reassurance {
   margin-top: 16px;

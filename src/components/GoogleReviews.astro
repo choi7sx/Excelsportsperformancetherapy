@@ -1,5 +1,4 @@
 ---
-import Icon from "./ExcelIcon.astro";
 import { googleReviewsUrl } from "../lib/google-reviews";
 const starPath = "m10 1.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.9Z";
 ---
@@ -8,9 +7,8 @@ const starPath = "m10 1.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-
   <a class="google-reviews-link" href={googleReviewsUrl} target="_blank" rel="noopener noreferrer"
     aria-label="Read Excel Sports Performance Therapy reviews on Google Maps (opens in a new tab)" data-review-link>
     <span class="review-fallback" data-review-fallback>
-      <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d={starPath} /></svg>
+      <svg class="review-fallback-star" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d={starPath} /></svg>
       <span>Read our Google reviews</span>
-      <Icon size={16} />
     </span>
     <span class="review-live" data-review-live hidden>
       <span class="review-rating-row">
@@ -20,7 +18,6 @@ const starPath = "m10 1.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-
         </svg>
         <strong data-review-score></strong>
         <span class="review-count" data-review-count></span>
-        <Icon size={16} />
       </span>
       <span class="review-source" translate="no">Google Maps</span>
     </span>
@@ -36,10 +33,10 @@ const starPath = "m10 1.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-
 </script>
 
 <style>
-  .google-reviews { margin-bottom: 24px; }
   .google-reviews-link { display: inline-flex; align-items: center; min-height: 48px; max-width: 100%; padding-block: 4px; color: var(--blue); border-radius: var(--radius); }
   .review-fallback, .review-rating-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: var(--text-small); line-height: 1.5; }
-  .review-fallback { font-weight: var(--weight-medium); }
+  .review-fallback { color: #000; font-size: 14px; font-weight: var(--weight-medium); }
+  .review-fallback-star { flex-shrink: 0; color: #fbbc04; }
   .review-live { display: grid; gap: 5px; }
   .review-live[hidden], .review-fallback[hidden], .review-attributions[hidden] { display: none; }
   .review-rating-row strong { font-size: 17px; color: var(--ink); font-weight: var(--weight-semibold); }
@@ -48,11 +45,11 @@ const starPath = "m10 1.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-
   .review-stars-empty { fill: #cbd1df; }
   .review-stars-filled { fill: var(--blue); }
   .review-source { color: #5e5e5e; font-size: 12px; font-weight: 400; font-style: normal; letter-spacing: normal; white-space: nowrap; }
-  .google-reviews-link:hover .review-count, .google-reviews-link:hover .review-fallback > span { color: var(--blue); text-decoration: underline; text-underline-offset: 4px; }
+  .google-reviews-link:hover .review-count { color: var(--blue); text-decoration: underline; text-underline-offset: 4px; }
+  .google-reviews-link:hover .review-fallback > span { text-decoration: underline; text-underline-offset: 4px; }
   .review-attributions { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: var(--muted); }
   .review-attributions :global(a) { text-decoration: underline; text-underline-offset: 3px; }
   @media (max-width: 600px) {
-    .google-reviews { margin-bottom: 18px; }
     .review-rating-row { gap: 8px; font-size: 13px; }
     .review-stars { width: 94px; }
   }
