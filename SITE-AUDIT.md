@@ -1,5 +1,7 @@
 # Site audit — September 10, 2026
 
+For the current responsive, functional, Lighthouse, and technical SEO results, see the [September 22, 2026 quality audit](docs/quality-audit-2026-09-22.md). The findings below are a historical snapshot.
+
 The goal is more qualified initial evaluations. The likeliest website constraint was uncertainty about the first step: broad, repeated promises competed with practical details about the evaluation, payment, and booking. This is a hypothesis from reviewing the site, not a finding from conversion data; analytics and booking attribution are not connected.
 
 Applied the Hormozi-inspired value framework by making the desired outcome understandable, preserving real patient proof, explaining the first step, and reducing effort. No pricing, results, scarcity, or guarantees were invented.
