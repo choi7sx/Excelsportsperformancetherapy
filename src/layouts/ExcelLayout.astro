@@ -14,17 +14,19 @@ const {
   noindex = false,
   schema,
 } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const siteUrl = new URL("/", Astro.site);
+const canonical = new URL(noindex ? Astro.url.pathname : `${Astro.url.pathname.replace(/\/+$/, "")}/`, siteUrl);
+const absoluteUrl = (path: string) => new URL(path, siteUrl).href;
 const businessSchema = {
   "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
-  "@id": "https://www.excelspt.com/#practice",
+  "@type": "Organization",
+  "@id": absoluteUrl("/#practice"),
   name: "Excel Sports Performance Therapy",
-  url: "https://www.excelspt.com/",
-  image: "https://www.excelspt.com/images/ethan-care.webp",
-  logo: "https://www.excelspt.com/images/excel-logo.webp",
+  url: siteUrl.href,
+  image: absoluteUrl("/images/excel-social.jpg"),
+  logo: absoluteUrl("/images/excel-logo.webp"),
   telephone: "+1-615-314-1508",
-  medicalSpecialty: "Chiropractic",
+  email: "drethanexcelspt@gmail.com",
   areaServed: ["Nashville", "Old Hickory", "Belle Meade"],
   employee: {
     "@type": "Person",
@@ -33,7 +35,12 @@ const businessSchema = {
   },
   department: locations.map((l) => ({
     "@type": "MedicalBusiness",
+    "@id": absoluteUrl(`/#${l.name.toLowerCase().replaceAll(" ", "-")}`),
     name: `Excel Sports Performance Therapy — ${l.name}`,
+    url: absoluteUrl("/#locations"),
+    image: absoluteUrl("/images/excel-social.jpg"),
+    parentOrganization: { "@id": absoluteUrl("/#practice") },
+    hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${l.address}, ${l.city}`)}`,
     telephone: "+1-615-314-1508",
     address: {
       "@type": "PostalAddress",
@@ -51,6 +58,18 @@ const businessSchema = {
     })),
   })),
 };
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": absoluteUrl("/#website"),
+  url: siteUrl.href,
+  name: "Excel Sports Performance Therapy",
+  inLanguage: "en-US",
+  publisher: { "@id": absoluteUrl("/#practice") },
+};
+// Escape '<' so content can never terminate the JSON-LD script element.
+const structuredData = [businessSchema, ...(Astro.url.pathname === "/" ? [websiteSchema] : []), ...(schema ? [schema] : [])];
+const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
@@ -65,16 +84,17 @@ const businessSchema = {
       name="robots"
       content={noindex ? "noindex, follow" : "index, follow"}
     />
-    <link rel="canonical" href={canonical} />
+    {!noindex && <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Excel Sports Performance Therapy" />
     <meta
       property="og:image"
-      content="https://www.excelspt.com/images/excel-social.jpg"
+      content={absoluteUrl("/images/excel-social.jpg")}
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -87,8 +107,9 @@ const businessSchema = {
     <meta name="twitter:description" content={description} />
     <meta
       name="twitter:image"
-      content="https://www.excelspt.com/images/excel-social.jpg"
+      content={absoluteUrl("/images/excel-social.jpg")}
     />
+    <meta name="twitter:image:alt" content="Excel Sports Performance Therapy — care with Dr. Ethan Coghill" />
     <link
       rel="preload"
       href="/fonts/dm-sans-latin.woff2"
@@ -96,23 +117,19 @@ const businessSchema = {
       type="font/woff2"
       crossorigin
     />
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(businessSchema)}
-    ></script>
-    {schema && (
+    {!noindex && structuredData.map((item) => (
       <script
         type="application/ld+json"
-        set:html={JSON.stringify(schema)}
+        set:html={serializeSchema(item)}
       ></script>
-    )}
+    ))}
     <noscript>
       <style>
         @media (max-width: 1100px) {
-          .site-header { position: relative; }
-          .nav-wrap { flex-wrap: wrap; padding-block: 12px; }
-          .nav-wrap nav { display: flex; position: static; width: 100%; order: 3; max-height: none; padding: 0; box-shadow: none; border: 0; }
-          .menu-toggle { display: none; }
+          body .site-header { position: relative; }
+          .site-header .nav-wrap { flex-wrap: wrap; padding-block: 12px; }
+          .site-header .nav-wrap nav { display: flex; position: static; width: 100%; order: 3; max-height: none; padding: 0; box-shadow: none; border: 0; }
+          .site-header .menu-toggle { display: none; }
         }
       </style>
     </noscript>
@@ -130,9 +147,11 @@ const businessSchema = {
         >
           <img
             src="/images/excel-logo.webp"
+            srcset="/images/excel-logo-300.webp 300w, /images/excel-logo.webp 600w"
+            sizes="(max-width: 380px) 88px, (max-width: 600px) 100px, 128px"
             alt="Excel Sports Performance Therapy"
-            width="280"
-            height="130"
+            width="600"
+            height="272"
           />
         </a>
         <nav id="main-nav" aria-label="Main navigation">
@@ -183,9 +202,11 @@ const businessSchema = {
           <a class="brand footer-brand" href="/" aria-label="Excel home">
             <img
               src="/images/excel-logo.webp"
+              srcset="/images/excel-logo-300.webp 300w, /images/excel-logo.webp 600w"
+              sizes="150px"
               alt="Excel Sports Performance Therapy"
-              width="280"
-              height="130"
+              width="600"
+              height="272"
               loading="lazy"
             />
           </a>
@@ -305,6 +326,7 @@ const businessSchema = {
       window.matchMedia("(min-width: 1101px)").addEventListener("change", () => closeMenu());
       const dialog =
         document.querySelector<HTMLDialogElement>("#booking-dialog");
+      let bookingTrigger: HTMLAnchorElement | undefined;
       document
         .querySelectorAll<HTMLAnchorElement>("[data-booking]")
         .forEach((link) => {
@@ -316,6 +338,7 @@ const businessSchema = {
             if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
             if (dialog?.showModal) {
               e.preventDefault();
+              bookingTrigger = link;
               dialog.showModal();
               document.body.classList.add("dialog-open");
             }
@@ -336,9 +359,13 @@ const businessSchema = {
             dialog.close();
         }
       });
-      dialog?.addEventListener("close", () =>
-        document.body.classList.remove("dialog-open"),
-      );
+      dialog?.addEventListener("close", () => {
+        document.body.classList.remove("dialog-open");
+        // Safari does not always focus clicked links before opening a dialog.
+        // Restore the explicit trigger consistently for every dismissal method.
+        bookingTrigger?.focus({ preventScroll: true });
+        bookingTrigger = undefined;
+      });
     </script>
   </body>
 </html>

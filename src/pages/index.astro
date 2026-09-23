@@ -52,6 +52,8 @@ const reviews = [
     </div>
     <figure class="hero-visual">
       <img class="hero-image" src="/images/ethan-care.webp"
+        srcset="/images/ethan-care-480.webp 480w, /images/ethan-care-720.webp 720w, /images/ethan-care.webp 1000w"
+        sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 800px) calc((100vw - 78px) / 2.1), (max-width: 1100px) calc((100vw - 136px) / 2.1), (max-width: 1256px) calc((100vw - 166px) / 2.1), 520px"
         alt="Dr. Ethan Coghill providing hands-on care to a patient at Excel"
         width="1000" height="1774" fetchpriority="high" />
     </figure>
@@ -84,7 +86,7 @@ const reviews = [
       </div>
       <div class="services-list">
         {services.map((service) => (
-          <a class="service-row" href={`/services/${service.slug}/`} aria-labelledby={`${service.slug}-title`}>
+          <a class="service-row" href={`/services/${service.slug}/`}>
             <span class="service-icon" aria-hidden="true"><Icon name={service.icon} size={25} /></span>
             <div><h3 id={`${service.slug}-title`}>{service.title}</h3><p>{service.description}</p></div>
             <Icon size={23} />
@@ -107,7 +109,7 @@ const reviews = [
             <address>{location.address}<br />{location.city}</address>
             <p class="location-hours">{location.hours}</p>
             <div class="location-actions">
-              <a class="text-link" href={location.booking} aria-label={`Book at ${location.name}`}>Book this location <Icon size={18} /></a>
+              <a class="text-link" href={location.booking} aria-label={`Book this location: ${location.name}`}>Book this location <Icon size={18} /></a>
               <a class="directions-link" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.address + ", " + location.city)}`}
                 aria-label={`Get directions to ${location.name} (opens in a new tab)`} target="_blank" rel="noopener noreferrer">Directions ↗</a>
             </div>

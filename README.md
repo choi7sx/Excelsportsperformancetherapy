@@ -1,6 +1,6 @@
 # Excel Sports Performance Therapy
 
-A responsive Astro first draft for Dr. Ethan Coghill's Nashville practice. Includes a homepage, three service pages, real patient excerpts, FAQs, two locations, and a booking location chooser that connects to the existing Jane calendars.
+A responsive Astro first draft for Dr. Ethan Coghill's Nashville practice. Includes a homepage, four service pages, real patient excerpts, FAQs, two locations, and a booking location chooser that connects to the existing Jane calendars.
 
 ## Run locally
 
@@ -46,6 +46,14 @@ Server-rendered static HTML includes unique titles and descriptions, canonical U
 This is a local draft, not a live replacement. Before launch, have Ethan review service wording, hours, payment details, and patient excerpt usage. Confirm the production domain, point hosting at `dist`, ensure previews are not indexed, and submit the sitemap to Search Console. Review any legacy URLs for redirects when migrating. No patient information is collected by this site; scheduling and consultation links use the existing external providers.
 
 Compatible dependency fixes were applied using `npm audit fix`. Six inherited advisories remain (one critical, three high, one moderate, one low), involving Astro/MDX, sharp, esbuild, and markdown-it/linkify-it. Resolving all of them currently requires dependency upgrades beyond the starter's major-version ranges. This draft emits static files; a production dependency upgrade and verification should be completed before launch.
+
+## Quality checks
+
+Run `npm test` to build the static site and check review logic, metadata, structured data, sitemap coverage, and local links/assets. After replacing an original photo or logo, run `npm run optimize:images` to regenerate its responsive WebP variants.
+
+The production domain in `astro.config.mjs` supplies canonical URLs, structured-data URLs, the sitemap, and robots.txt. Service pages include breadcrumb structured data; the homepage identifies the website and the two practice locations.
+
+See [the September 22 responsive, functional, Lighthouse, and SEO audit](docs/quality-audit-2026-09-22.md) for the latest results.
 
 ## Site audit
 
