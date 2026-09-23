@@ -53,6 +53,50 @@ export const serviceGuides: Record<string, ServiceGuide> = {
       },
     ],
   },
+  "golf-performance": {
+    heroImage: {
+      src: "/images/services/recovery-care.webp",
+      alt: "Dr. Ethan Coghill providing hands-on neck care to a patient.",
+    },
+    overview: "Keep your body part of your game plan.",
+    situations: [
+      "Stiffness or discomfort is getting in the way of your rounds.",
+      "You want to work on the mobility and strength behind your swing.",
+      "You want a training plan built around your time on the course.",
+    ],
+    focus: [
+      {
+        title: "Start with how you move.",
+        description: "Your golf goals give the assessment direction. Talk through where you feel restricted, when discomfort shows up, and how often you play. Ethan looks at your movement to help identify what to work on first.",
+        takeaway: "A starting point connected to your game.",
+      },
+      {
+        title: "Connect therapy with training.",
+        description: "Hands-on care and mobility work can sit alongside exercises that build strength, balance, and rotation. Your assessment guides the mix, with a plan tailored to your needs and the movements golf asks of you.",
+        takeaway: "Care and exercise working toward the same goal.",
+      },
+      {
+        title: "Build around your rounds.",
+        description: "A useful plan fits your life as well as your sport. Discuss your playing schedule, training experience, and available equipment with Ethan so the work between visits has a practical place in your week.",
+        takeaway: "A plan you can carry beyond the clinic.",
+      },
+    ],
+    nextStep: "Take the next step toward better days on the course.",
+    questions: [
+      {
+        question: "Do I need to be a competitive golfer?",
+        answer: "No. Whether you play occasional rounds or compete regularly, bring your goals and experience to your evaluation. Your plan starts with how you move and what you want to work toward.",
+      },
+      {
+        question: "Is this a golf lesson?",
+        answer: "Golf Performance focuses on your body through therapy, mobility, and strength training. It can complement the technique work you do with a golf instructor.",
+      },
+      {
+        question: "What if pain is affecting my golf?",
+        answer: "Tell Ethan where you feel discomfort and which parts of playing bring it on. Your initial evaluation helps determine the right starting point for care and how golf fits into your goals.",
+      },
+    ],
+  },
   "focused-rehab": {
     heroImage: {
       src: "/images/services/recovery-care.webp",

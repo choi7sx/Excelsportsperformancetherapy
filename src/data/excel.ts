@@ -27,10 +27,10 @@ export const services = [
     slug: "recovery-care",
     number: "01",
     icon: "recovery",
-    title: "Recovery care",
+    title: "Chiropractic Care",
     tagline: "A little care. More good days.",
     description:
-      "Chiropractic adjustments, soft tissue work, and mobility support for everyday aches and stiffness.",
+      "One-on-one chiropractic care for pain, injury, and movement limitations.",
     tags: ["Hands-on treatment", "Mobility", "Recovery"],
     intro: "Give your body room to recover.",
     detail:
@@ -45,13 +45,34 @@ export const services = [
     fit: "People with mild aches, tension, or stiffness who want ongoing movement and recovery support.",
   },
   {
-    slug: "focused-rehab",
+    slug: "golf-performance",
     number: "02",
+    icon: "golf",
+    title: "Golf Performance",
+    tagline: "Move better. Play more.",
+    description:
+      "Golf-specific therapy and training to help you move better, hit it farther, and stay on the course.",
+    tags: ["Golf-specific therapy", "Mobility", "Strength"],
+    intro: "Build your body for the game you love.",
+    detail:
+      "From your first tee shot to your final putt, golf asks a lot of your body. Golf Performance brings therapy and training together around how you move, what feels limited, and what you want from your game.",
+    items: [
+      "A movement assessment connected to your golf goals",
+      "Hands-on care and mobility work tailored to your needs",
+      "Golf-focused strength, balance, and rotational exercises",
+    ],
+    expectation:
+      "Start with an initial evaluation. Talk with Ethan about your golf routine, any discomfort, and your goals on the course. Your assessment helps shape a therapy and training plan that fits your starting point.",
+    fit: "Golfers who want to address movement limitations, build strength, and feel more confident on the course.",
+  },
+  {
+    slug: "focused-rehab",
+    number: "03",
     icon: "rehab",
-    title: "Focused rehab",
+    title: "Injury Rehab",
     tagline: "A plan to move forward.",
     description:
-      "One-on-one rehabilitation with hands-on care, strength work, and mobility exercises tailored to your goals.",
+      "A customized plan to help you overcome injury and get back to what you want to do.",
     tags: ["Injury rehabilitation", "Strength", "Progress"],
     intro: "Work toward the activities you miss.",
     detail:
@@ -67,12 +88,12 @@ export const services = [
   },
   {
     slug: "performance-training",
-    number: "03",
+    number: "04",
     icon: "performance",
-    title: "Performance training",
+    title: "Personal Training",
     tagline: "Build what comes next.",
     description:
-      "Custom strength programming, exercise coaching, and ongoing check-ins for sport and everyday life.",
+      "Doctor-led personal training for strength, mobility, and longevity.",
     tags: ["Custom programming", "Coaching", "Longevity"],
     intro: "Train with a little more direction.",
     detail:
