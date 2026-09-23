@@ -1,11 +1,15 @@
-// Learning-page copy is separate from the short homepage service summaries.
+// Service-page copy is separate from the short homepage service summaries.
 export interface ServiceGuide {
   heroImage: { src: string; alt: string };
   overview: string;
-  situations: string[];
-  focus: { title: string; description: string; takeaway: string }[];
+  fit: string;
+  fitEmphasis?: string;
+  included: string;
+  includedEmphasis?: string;
+  progression?: { from: string; to: string };
+  includedItems?: string[];
+  includedNote?: string;
   nextStep: string;
-  questions: { question: string; answer: string }[];
 }
 
 export const serviceGuides: Record<string, ServiceGuide> = {
@@ -14,175 +18,65 @@ export const serviceGuides: Record<string, ServiceGuide> = {
       src: "/images/services/recovery-care.webp",
       alt: "Dr. Ethan Coghill providing hands-on neck care to a patient.",
     },
-    overview: "Support for the everyday demands on your body.",
-    situations: [
-      "You feel tight or stiff between workouts.",
-      "Mild aches make your everyday routine less comfortable.",
-      "You want recovery and mobility to have a place in your schedule.",
+    overview: "Move with more comfort and confidence.",
+    fit: "If pain, an injury, or limited movement is getting in the way of your day, chiropractic care offers one-on-one support built around you. Your first step is a full-body movement assessment with Dr. Ethan to understand how you move, identify areas that may be contributing to your symptoms, and talk through what you want to get back to.",
+    included: "Your treatment is tailored to your pain, movement limitations, and goals. Care may include:",
+    includedItems: [
+      "Chiropractic adjustments",
+      "Soft tissue therapy",
+      "Dry needling",
+      "Cupping",
+      "Mobility work",
+      "Exercise",
     ],
-    focus: [
-      {
-        title: "Hands-on care, with a purpose.",
-        description: "A session can include chiropractic adjustments or soft tissue work, with dry needling or cupping when appropriate. Ethan’s assessment guides which options make sense for you. Bring your questions and preferences to that conversation.",
-        takeaway: "Care selected around what your body needs.",
-      },
-      {
-        title: "Movement beyond the treatment table.",
-        description: "Mobility work and light corrective exercises give you something to work on between visits. The aim is to make recovery a practical part of your routine, alongside the activities you enjoy.",
-        takeaway: "A role for you in your own recovery.",
-      },
-      {
-        title: "The right level of support.",
-        description: "Recovery care is intended for mild aches and stiffness. If pain keeps returning or is stopping you from being active, discuss that at your evaluation. A more focused rehab plan may be a better starting point.",
-        takeaway: "A recommendation based on your assessment.",
-      },
-    ],
+    includedNote: "The combination depends on your assessment and specific needs.",
     nextStep: "Make room for more comfortable movement.",
-    questions: [
-      {
-        question: "How often would I come in?",
-        answer: "Recovery care is typically offered once or twice a month. Your evaluation is the starting point for deciding whether that frequency and type of care fit your needs.",
-      },
-      {
-        question: "Does every session include an adjustment?",
-        answer: "The treatment options listed here are tools, not a checklist for every visit. Talk with Ethan about your comfort with adjustments and other techniques so you can discuss the approach before treatment.",
-      },
-      {
-        question: "How is this different from focused rehab?",
-        answer: "Recovery care supports mild aches, stiffness, and ongoing movement. Focused rehab is a more structured path for pain or injury that repeatedly interrupts your activities. You do not need to decide which one to book before your initial evaluation.",
-      },
-    ],
   },
   "golf-performance": {
     heroImage: {
       src: "/images/services/recovery-care.webp",
       alt: "Dr. Ethan Coghill providing hands-on neck care to a patient.",
     },
-    overview: "Keep your body part of your game plan.",
-    situations: [
-      "Stiffness or discomfort is getting in the way of your rounds.",
-      "You want to work on the mobility and strength behind your swing.",
-      "You want a training plan built around your time on the course.",
+    overview: "Build your body for better days on the course.",
+    fitEmphasis: "Titleist Performance Institute (TPI) assessment",
+    fit: "Whether you want to hit it farther, move more freely through your swing, or keep discomfort from cutting a round short, golf performance connects therapy and training to your game. Start with a Titleist Performance Institute (TPI) assessment to identify mobility, stability, strength, and movement limitations that may be affecting your swing.",
+    included: "Your assessment helps guide the work, with a focus on mobility, strength, power, speed, and injury prevention. Choose from:",
+    includedItems: [
+      "Individual golf performance therapy",
+      "One-on-one golf performance training",
+      "Small-group golf performance training",
     ],
-    focus: [
-      {
-        title: "Start with how you move.",
-        description: "Your golf goals give the assessment direction. Talk through where you feel restricted, when discomfort shows up, and how often you play. Ethan looks at your movement to help identify what to work on first.",
-        takeaway: "A starting point connected to your game.",
-      },
-      {
-        title: "Connect therapy with training.",
-        description: "Hands-on care and mobility work can sit alongside exercises that build strength, balance, and rotation. Your assessment guides the mix, with a plan tailored to your needs and the movements golf asks of you.",
-        takeaway: "Care and exercise working toward the same goal.",
-      },
-      {
-        title: "Build around your rounds.",
-        description: "A useful plan fits your life as well as your sport. Discuss your playing schedule, training experience, and available equipment with Ethan so the work between visits has a practical place in your week.",
-        takeaway: "A plan you can carry beyond the clinic.",
-      },
-    ],
+    includedNote: "Each option is built around helping you move better and stay on the course.",
     nextStep: "Take the next step toward better days on the course.",
-    questions: [
-      {
-        question: "Do I need to be a competitive golfer?",
-        answer: "No. Whether you play occasional rounds or compete regularly, bring your goals and experience to your evaluation. Your plan starts with how you move and what you want to work toward.",
-      },
-      {
-        question: "Is this a golf lesson?",
-        answer: "Golf Performance focuses on your body through therapy, mobility, and strength training. It can complement the technique work you do with a golf instructor.",
-      },
-      {
-        question: "What if pain is affecting my golf?",
-        answer: "Tell Ethan where you feel discomfort and which parts of playing bring it on. Your initial evaluation helps determine the right starting point for care and how golf fits into your goals.",
-      },
-    ],
   },
   "focused-rehab": {
     heroImage: {
       src: "/images/services/recovery-care.webp",
       alt: "Dr. Ethan Coghill providing hands-on neck care to a patient.",
     },
-    overview: "When pain needs more than occasional attention.",
-    situations: [
-      "The same discomfort keeps interrupting your routine.",
-      "An injury has made you change or avoid activities you enjoy.",
-      "You want a clear plan for rebuilding strength and confidence.",
-    ],
-    focus: [
-      {
-        title: "Start with the whole picture.",
-        description: "Where it hurts is part of the conversation. How you move, what your day demands, and what you have already tried matter, too. Your assessment connects those details to the activities you want to return to.",
-        takeaway: "A starting point tied to your real life.",
-      },
-      {
-        title: "Connect treatment with movement.",
-        description: "Hands-on care is paired with individualized strength and mobility work. Rather than leaving the exercise piece separate from treatment, your rehab plan brings them together around the limitations identified in your assessment.",
-        takeaway: "A plan that includes building your capacity.",
-      },
-      {
-        title: "Work toward your next milestone.",
-        description: "Your goal might be getting back to lifting, returning to your sport, or moving through the day with more confidence. Progressive exercise gives that goal direction. Your response to the work helps inform what comes next.",
-        takeaway: "Progress defined by what matters to you.",
-      },
-    ],
+    overview: "Get back to the activities you miss.",
+    fit: "When an injury keeps you from training, playing your sport, or moving comfortably through the day, it helps to have a clear path forward. Injury rehab gives you a customized plan that starts with where you are now and works toward what you want to do again. The goal is to ease pain and rebuild your ability to do those things.",
+    included: "Your rehab isn’t just about getting out of pain. We’ll address the pain, mobility, strength, and physical capacity that may be limiting you and progressively build you back toward your goals.",
+    includedEmphasis: "pain, mobility, strength, and physical capacity",
+    progression: {
+      from: "From where you are now",
+      to: "Where you want to be",
+    },
     nextStep: "Take the first step back to what you love.",
-    questions: [
-      {
-        question: "What if I have already tried treatment?",
-        answer: "Tell Ethan what you tried, what helped, and where you still feel limited. That history is useful for your assessment. A free consultation is a chance to discuss whether Excel’s combination of chiropractic care and progressive exercise could fit your needs.",
-      },
-      {
-        question: "How long will my rehab take?",
-        answer: "There is no single timeline for every person or injury. Ethan recommends next steps after evaluating your movement and goals. Ask about visit frequency, the work between visits, and how you will assess progress together.",
-      },
-      {
-        question: "Do I need to know which treatment to book?",
-        answer: "No. Start with an initial evaluation. You can explain what is limiting you without choosing a technique or committing to a particular care path first.",
-      },
-    ],
   },
   "performance-training": {
     heroImage: {
       src: "/images/services/performance-training.webp",
       alt: "An athlete preparing to lift a barbell during a strength training session.",
     },
-    overview: "Give your training a clear direction.",
-    situations: [
-      "You want a program connected to a specific fitness or sport goal.",
-      "You are ready for more structure in your strength training.",
-      "You want coaching and feedback as your training progresses.",
+    overview: "Get stronger for the life you want to live.",
+    fit: "If you want to build strength, improve mobility, and make training a consistent part of your life, personal training gives you a plan shaped around you. Dr. Ethan’s doctor-led approach considers your goals, current ability, and training experience, with a focus on staying capable for everyday life and the activities you enjoy.",
+    included: "Strength and mobility work is designed around your goals and experience. Training options include:",
+    includedItems: [
+      "One-on-one personal training",
+      "Small-group personal training",
     ],
-    focus: [
-      {
-        title: "A program with your goal in mind.",
-        description: "Start with what you want your training to help you do. Your movement assessment, training background, and the demands of your sport or everyday life inform a personalized exercise program.",
-        takeaway: "A reason behind the work you put in.",
-      },
-      {
-        title: "Your training, in one place.",
-        description: "App-based delivery gives you a place to follow your exercise programming. It brings structure to your sessions so you have a plan to refer to when it is time to train.",
-        takeaway: "Less guesswork about what to work on.",
-      },
-      {
-        title: "Coaching as you build.",
-        description: "Monthly check-ins, exercise form review, and program progressions provide ongoing guidance. Use that feedback to ask questions, understand your exercises, and discuss how your training is going.",
-        takeaway: "Support beyond receiving a workout plan.",
-      },
-    ],
+    includedNote: "Your sessions give you a consistent way to train and build your ability to handle everyday demands. The focus is strength, mobility, and staying active for the long term.",
     nextStep: "Put a plan behind your next goal.",
-    questions: [
-      {
-        question: "Is this only for competitive athletes?",
-        answer: "No. Performance training is for active adults and adolescents with general fitness or sport-specific goals. Getting stronger for everyday life is a useful goal, too.",
-      },
-      {
-        question: "How is the programming delivered?",
-        answer: "Exercise programming is delivered through an app, with monthly check-ins, form review, and progressions. Discuss your training setup and the kind of coaching support you need during your evaluation.",
-      },
-      {
-        question: "What if I am still dealing with pain?",
-        answer: "Bring it up before beginning a new program. Your evaluation helps Ethan recommend whether focused rehab, recovery care, or performance training is the appropriate starting point for you.",
-      },
-    ],
   },
 };
