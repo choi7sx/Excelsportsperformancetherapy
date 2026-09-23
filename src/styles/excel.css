@@ -13,6 +13,7 @@
   --text-label: 0.75rem;
   --text-small: 0.875rem;
   --text-body: 1rem;
+  --sticky-header-height: 89px;
   color: var(--ink);
   background: var(--paper);
 }
@@ -22,7 +23,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 108px;
+  scroll-padding-top: calc(var(--sticky-header-height) + 16px);
 }
 body {
   margin: 0;
@@ -101,6 +102,13 @@ h3 {
 }
 .section-space {
   padding-block: 88px;
+}
+/* Give anchor destinations enough room to center without exposing the section above. */
+[data-section-anchor] {
+  min-height: calc(100svh - var(--sticky-header-height));
+  display: grid;
+  align-items: center;
+  scroll-margin-top: calc(-16px - var(--section-scroll-inset, 0px));
 }
 .eyebrow {
   display: block;
@@ -820,8 +828,8 @@ dialog h2 {
   }
 }
 @media (max-width: 600px) {
-  html {
-    scroll-padding-top: 90px;
+  :root {
+    --sticky-header-height: 77px;
   }
   .container {
     width: calc(100% - 40px);
@@ -980,8 +988,8 @@ dialog h2 {
   .site-header {
     position: relative;
   }
-  html {
-    scroll-padding-top: 16px;
+  :root {
+    --sticky-header-height: 0px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

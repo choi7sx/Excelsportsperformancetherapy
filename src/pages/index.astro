@@ -75,7 +75,7 @@ const reviews = [
     </div>
   </section>
 
-  <section id="services" class="services-section section-space" aria-labelledby="services-title">
+  <section id="services" class="services-section section-space" aria-labelledby="services-title" data-section-anchor>
     <div class="container services-layout">
       <div class="section-intro">
         <span class="eyebrow">How we help</span>
@@ -94,7 +94,7 @@ const reviews = [
     </div>
   </section>
 
-  <section id="locations" class="locations-section section-space" aria-labelledby="locations-title">
+  <section id="locations" class="locations-section section-space" aria-labelledby="locations-title" data-section-anchor>
     <div class="container">
       <div class="section-heading">
         <div><span class="eyebrow">Visit Us</span><h2 id="locations-title">Two locations. Same personal care.</h2></div>
@@ -117,7 +117,7 @@ const reviews = [
     </div>
   </section>
 
-  <section id="meet-ethan" class="ethan-section section-space" aria-labelledby="ethan-title">
+  <section id="meet-ethan" class="ethan-section section-space" aria-labelledby="ethan-title" data-section-anchor>
     <div class="container ethan-grid">
       <img class="ethan-photo" src="/images/ethan-detail.webp"
         alt="Dr. Ethan focused on a patient during a hands-on therapy session"
@@ -133,7 +133,7 @@ const reviews = [
     </div>
   </section>
 
-  <section id="faq" class="faq-section section-space" aria-labelledby="faq-title">
+  <section id="faq" class="faq-section section-space" aria-labelledby="faq-title" data-section-anchor>
     <div class="container faq-grid">
       <div class="section-intro">
         <span class="eyebrow">A few helpful answers</span><h2 id="faq-title">Before you book.</h2>
@@ -160,6 +160,8 @@ const reviews = [
 </Layout>
 
 <script>
+  import { initializeSectionAnchors } from "../scripts/section-anchors";
   import { initializeReviewCards } from "../scripts/review-cards";
   document.querySelectorAll<HTMLElement>(".reviews-grid").forEach(initializeReviewCards);
+  initializeSectionAnchors();
 </script>
