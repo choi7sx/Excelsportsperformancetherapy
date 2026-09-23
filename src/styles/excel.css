@@ -204,15 +204,58 @@ h3 {
   gap: 28px;
   margin-left: auto;
 }
-.nav-wrap nav a {
+.nav-wrap nav a,
+.services-nav summary {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
   font-size: var(--text-small);
   white-space: nowrap;
 }
-.nav-wrap nav a:hover {
+.nav-wrap nav a:hover,
+.services-nav summary:hover,
+.services-nav[open] summary {
   color: var(--blue);
+}
+.services-nav {
+  position: relative;
+}
+.services-nav summary {
+  gap: 7px;
+  cursor: pointer;
+  list-style: none;
+}
+.services-nav summary::-webkit-details-marker {
+  display: none;
+}
+.services-nav[open] .services-caret {
+  transform: rotate(180deg);
+}
+.services-submenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: -16px;
+  width: 240px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 28px rgb(32 44 50 / 10%);
+}
+.nav-wrap .services-submenu a {
+  display: flex;
+  padding: 12px;
+  white-space: normal;
+  border-radius: var(--radius);
+}
+.nav-wrap .services-submenu a:is(:hover, :focus-visible, [aria-current="page"]) {
+  color: var(--blue);
+  background: var(--light-blue);
+}
+.services-submenu a:focus-visible {
+  outline-offset: -3px;
 }
 .nav-book {
   min-height: 44px;
@@ -752,8 +795,23 @@ dialog h2 {
   .nav-wrap nav.is-open {
     display: flex;
   }
-  .nav-wrap nav a {
+  .nav-wrap nav a,
+  .services-nav summary {
     padding-block: 13px;
+  }
+  .services-nav summary {
+    display: flex;
+    justify-content: space-between;
+  }
+  .services-submenu {
+    position: static;
+    width: auto;
+    margin: 0 0 8px;
+    padding: 0 0 0 12px;
+    border: 0;
+    border-left: 1px solid var(--line);
+    border-radius: 0;
+    box-shadow: none;
   }
   .nav-book {
     margin-left: auto;
