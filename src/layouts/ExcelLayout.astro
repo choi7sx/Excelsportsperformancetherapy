@@ -1,7 +1,7 @@
 ---
 import "../styles/excel.css";
 import Icon from "../components/ExcelIcon.astro";
-import { bookingUrl, consultUrl, locations } from "../data/excel";
+import { bookingUrl, consultUrl, locations, services } from "../data/excel";
 interface Props {
   title?: string;
   description?: string;
@@ -136,7 +136,26 @@ const businessSchema = {
           />
         </a>
         <nav id="main-nav" aria-label="Main navigation">
-          <a href="/#services">Services</a>
+          <details class="services-nav">
+            <summary aria-controls="services-submenu">
+              Services
+              <svg class="services-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <ul id="services-submenu" class="services-submenu">
+              {services.map((service) => (
+                <li>
+                  <a
+                    href={`/services/${service.slug}/`}
+                    aria-current={Astro.url.pathname.replace(/\/$/, "") === `/services/${service.slug}` ? "page" : undefined}
+                  >
+                    {service.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
           <a href="/#locations">Locations</a>
           <a href="/#meet-ethan">Meet Dr. Ethan</a>
           <a href="/#faq">FAQs</a>
@@ -241,14 +260,21 @@ const businessSchema = {
     <script>
       const menu = document.querySelector<HTMLButtonElement>(".menu-toggle");
       const nav = document.querySelector<HTMLElement>("#main-nav");
+      const servicesNav = document.querySelector<HTMLDetailsElement>(".services-nav");
+      const closeServices = (restoreFocus = false) => {
+        if (restoreFocus) servicesNav?.querySelector("summary")?.focus();
+        if (servicesNav) servicesNav.open = false;
+      };
       const closeMenu = (restoreFocus = false) => {
         if (restoreFocus && nav?.contains(document.activeElement)) menu?.focus();
+        closeServices();
         menu?.setAttribute("aria-expanded", "false");
         menu?.setAttribute("aria-label", "Open navigation");
         nav?.classList.remove("is-open");
       };
       menu?.addEventListener("click", () => {
         const open = menu.getAttribute("aria-expanded") !== "true";
+        if (!open) closeServices();
         menu.setAttribute("aria-expanded", String(open));
         menu.setAttribute(
           "aria-label",
@@ -260,12 +286,20 @@ const businessSchema = {
         ?.querySelectorAll("a")
         .forEach((a) => a.addEventListener("click", () => closeMenu()));
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeMenu(true);
+        if (e.key !== "Escape") return;
+        if (servicesNav?.open) {
+          e.preventDefault();
+          closeServices(true);
+        } else if (menu?.getAttribute("aria-expanded") === "true") {
+          closeMenu(true);
+        }
       });
       document.addEventListener("click", (e) => {
+        if (e.target instanceof Node && !servicesNav?.contains(e.target)) closeServices();
         if (e.target instanceof Node && !nav?.contains(e.target) && !menu?.contains(e.target)) closeMenu();
       });
       document.addEventListener("focusin", (e) => {
+        if (e.target instanceof Node && !servicesNav?.contains(e.target)) closeServices();
         if (e.target instanceof Node && !nav?.contains(e.target) && !menu?.contains(e.target)) closeMenu();
       });
       window.matchMedia("(min-width: 1101px)").addEventListener("change", () => closeMenu());
