@@ -35,16 +35,16 @@ const starPath = "m10 1.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-
 <style>
   .google-reviews-link { display: inline-flex; align-items: center; min-height: 48px; max-width: 100%; padding-block: 4px; color: var(--blue); border-radius: var(--radius); }
   .review-fallback, .review-rating-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: var(--text-small); line-height: 1.5; }
-  .review-fallback { color: #000; font-size: 14px; font-weight: var(--weight-medium); }
-  .review-fallback-star { flex-shrink: 0; color: #fbbc04; }
+  .review-fallback { color: var(--ink); font-size: 14px; font-weight: var(--weight-medium); }
+  .review-fallback-star { flex-shrink: 0; color: var(--lighter-blue); }
   .review-live { display: grid; gap: 5px; }
   .review-live[hidden], .review-fallback[hidden], .review-attributions[hidden] { display: none; }
   .review-rating-row strong { font-size: 17px; color: var(--ink); font-weight: var(--weight-semibold); }
   .review-count { color: var(--muted); }
   .review-stars { flex-shrink: 0; }
-  .review-stars-empty { fill: #cbd1df; }
+  .review-stars-empty { fill: var(--line); }
   .review-stars-filled { fill: var(--blue); }
-  .review-source { color: #5e5e5e; font-size: 12px; font-weight: 400; font-style: normal; letter-spacing: normal; white-space: nowrap; }
+  .review-source { color: var(--muted); font-size: 12px; font-weight: 400; font-style: normal; letter-spacing: normal; white-space: nowrap; }
   .google-reviews-link:hover .review-count { color: var(--blue); text-decoration: underline; text-underline-offset: 4px; }
   .google-reviews-link:hover .review-fallback > span { text-decoration: underline; text-underline-offset: 4px; }
   .review-attributions { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: var(--muted); }

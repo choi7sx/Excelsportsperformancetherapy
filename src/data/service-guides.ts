@@ -32,23 +32,6 @@ export const serviceGuides: Record<string, ServiceGuide> = {
     includedNote: "The combination depends on your assessment and specific needs.",
     nextStep: "Make room for more comfortable movement.",
   },
-  "golf-performance": {
-    heroImage: {
-      src: "/images/services/recovery-care.webp",
-      alt: "Dr. Ethan Coghill providing hands-on neck care to a patient.",
-    },
-    overview: "Build your body for better days on the course.",
-    fitEmphasis: "Titleist Performance Institute (TPI) assessment",
-    fit: "Whether you want to hit it farther, move more freely through your swing, or keep discomfort from cutting a round short, golf performance connects therapy and training to your game. Start with a Titleist Performance Institute (TPI) assessment to identify mobility, stability, strength, and movement limitations that may be affecting your swing.",
-    included: "Your assessment helps guide the work, with a focus on mobility, strength, power, speed, and injury prevention. Choose from:",
-    includedItems: [
-      "Individual golf performance therapy",
-      "One-on-one golf performance training",
-      "Small-group golf performance training",
-    ],
-    includedNote: "Each option is built around helping you move better and stay on the course.",
-    nextStep: "Take the next step toward better days on the course.",
-  },
   "focused-rehab": {
     heroImage: {
       src: "/images/services/recovery-care.webp",
