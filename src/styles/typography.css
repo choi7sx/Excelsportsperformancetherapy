@@ -1,12 +1,20 @@
 @font-face {
-  font-family: "DM Sans";
+  font-family: "Outfit";
   font-style: normal;
-  font-weight: 100 1000;
+  font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/dm-sans-latin.woff2") format("woff2");
+  src: url("/fonts/outfit-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
 }
 :root {
-  --font-body: "DM Sans", Arial, sans-serif;
+  --font-body: "Inter", Arial, sans-serif;
+  --font-heading: "Outfit", Arial, sans-serif;
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
@@ -14,6 +22,11 @@
   font-family: var(--font-body);
   font-weight: var(--weight-regular);
   font-synthesis: none;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-semibold);
 }
 
 :where(button, input, select, textarea) {

@@ -23,7 +23,7 @@ In Conductor, start **preview** from the **Run** tab, then click **Open** to vie
 - Service page template: `src/pages/services/[slug].astro`
 - Service learning content and service-specific FAQs: `src/data/service-guides.ts`
 - Service page styles: `src/styles/service-pages.css`
-- Images and self-hosted DM Sans font: `public/images` and `public/fonts`
+- Images and self-hosted fonts (Outfit headings, Inter body text): `public/images` and `public/fonts`
 
 The CloudCannon integration and original content components remain available. The new pages use Astro source files; the old starter page-builder content is not connected to these new pages. Demo routes have been removed from public output (their history remains in Git).
 

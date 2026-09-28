@@ -77,7 +77,7 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#fafaf7" />
+    <meta name="theme-color" content="#ffffff" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta
@@ -112,7 +112,14 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
     <meta name="twitter:image:alt" content="Excel Sports Performance Therapy — care with Dr. Ethan Coghill" />
     <link
       rel="preload"
-      href="/fonts/dm-sans-latin.woff2"
+      href="/fonts/outfit-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/inter-latin.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -180,7 +187,7 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
           <a href="/#faq">FAQs</a>
         </nav>
         <a class="button nav-book" href={bookingUrl} data-booking>
-          Book an evaluation <Icon size={17} />
+          Schedule Now <Icon size={17} />
         </a>
         <button
           class="menu-toggle"
@@ -221,7 +228,7 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
           <a href="/#services">Explore our services</a>
           <a href="/#meet-ethan">Meet Dr. Ethan</a>
           <a href={bookingUrl} data-booking>
-            Book an evaluation
+            Schedule Now
           </a>
           <a href={consultUrl}>
             Free Consultation

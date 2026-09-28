@@ -34,7 +34,7 @@ export const services = [
     tags: ["Hands-on treatment", "Mobility", "Recovery"],
     intro: "Chiropractic care that starts with you.",
     detail:
-      "One-on-one care for pain, injury, and movement limitations. Start with a full-body movement assessment, then work with Dr. Ethan on treatment tailored to how you move and what you want to get back to.",
+      "One-on-one traditional chiropractic care for pain relief, stiffness, movement limitations, injury prevention, and maintenance care.",
     items: [
       "Chiropractic adjustments and soft tissue work",
       "Dry needling and cupping when appropriate",
@@ -45,29 +45,8 @@ export const services = [
     fit: "People with mild aches, tension, or stiffness who want ongoing movement and recovery support.",
   },
   {
-    slug: "golf-performance",
-    number: "02",
-    icon: "golf",
-    title: "Golf Performance",
-    tagline: "Move better. Play more.",
-    description:
-      "Golf-specific therapy and training to help you move better, hit it farther, and stay on the course.",
-    tags: ["Golf-specific therapy", "Mobility", "Strength"],
-    intro: "Therapy and training for better golf.",
-    detail:
-      "Golf-specific therapy and training to help you move better, build power, and stay on the course. A Titleist Performance Institute (TPI) assessment guides your next steps, with individual therapy, one-on-one training, and small-group training available.",
-    items: [
-      "A movement assessment connected to your golf goals",
-      "Hands-on care and mobility work tailored to your needs",
-      "Golf-focused strength, balance, and rotational exercises",
-    ],
-    expectation:
-      "Start with an initial evaluation. Talk with Dr. Ethan about your golf routine, any discomfort, and your goals on the course. Your assessment helps shape a therapy and training plan that fits your starting point.",
-    fit: "Golfers who want to address movement limitations, build strength, and feel more confident on the course.",
-  },
-  {
     slug: "focused-rehab",
-    number: "03",
+    number: "02",
     icon: "rehab",
     title: "Injury Rehab",
     tagline: "A plan to move forward.",
@@ -88,7 +67,7 @@ export const services = [
   },
   {
     slug: "performance-training",
-    number: "04",
+    number: "03",
     icon: "performance",
     title: "Personal Training",
     tagline: "Build what comes next.",
