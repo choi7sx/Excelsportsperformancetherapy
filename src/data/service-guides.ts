@@ -2,14 +2,13 @@
 export interface ServiceGuide {
   heroImage: { src: string; alt: string };
   overview: string;
-  fit: string;
+  fit: string | string[];
   fitEmphasis?: string;
-  included: string;
+  included?: string;
   includedEmphasis?: string;
-  progression?: { from: string; to: string };
+  bodySections?: { title: string; items: string[] }[];
   includedItems?: string[];
   includedNote?: string;
-  nextStep: string;
 }
 
 export const serviceGuides: Record<string, ServiceGuide> = {
@@ -30,36 +29,96 @@ export const serviceGuides: Record<string, ServiceGuide> = {
       "Exercise",
     ],
     includedNote: "The combination depends on your assessment and specific needs.",
-    nextStep: "Make room for more comfortable movement.",
   },
   "focused-rehab": {
     heroImage: {
       src: "/images/services/recovery-care.webp",
       alt: "Dr. Ethan Coghill providing hands-on neck care to a patient.",
     },
-    overview: "Get back to the activities you miss.",
-    fit: "When an injury keeps you from training, playing your sport, or moving comfortably through the day, it helps to have a clear path forward. Injury rehab gives you a customized plan that starts with where you are now and works toward what you want to do again. The goal is to ease pain and rebuild your ability to do those things.",
-    included: "Your rehab isn’t just about getting out of pain. We’ll address the pain, mobility, strength, and physical capacity that may be limiting you and progressively build you back toward your goals.",
-    includedEmphasis: "pain, mobility, strength, and physical capacity",
-    progression: {
-      from: "From where you are now",
-      to: "Where you want to be",
-    },
-    nextStep: "Take the first step back to what you love.",
+    overview: "Personalized rehab. A full hour with Dr. Ethan.",
+    fit: [
+      "Full body assessment, manual therapy, chiropractic care, progressive strength exercises, tailored to your diagnosis and personal goals",
+      "A full hour, one patient at a time. The same therapist every visit. Care directly from Dr. Ethan, not an assistant or tech. The first visit goes deep on history and goals, a hands-on assessment, and a plan you can keep working on at home",
+    ],
+    bodySections: [
+      {
+        title: "Back pain.",
+        items: [
+          "Disc herniation",
+          "Disc bulge",
+          "Stiffness in low back",
+          "Sciatica",
+          "Muscle strains",
+          "Rib pain",
+        ],
+      },
+      {
+        title: "Head and neck.",
+        items: [
+          "Neck pain and stiffness",
+          "Disc bulges",
+          "Pinched nerve",
+          "Headaches and migraines",
+          "TMJ dysfunction",
+          "Vertigo and balance issues",
+        ],
+      },
+      {
+        title: "Shoulder, elbow, wrist, and hand.",
+        items: [
+          "Rotator cuff tears",
+          "Labrum injuries",
+          "Impingement and bursitis",
+          "Golfer's elbow",
+          "Tennis elbow",
+          "Carpal tunnel",
+        ],
+      },
+      {
+        title: "Hip, knee, foot, and ankle.",
+        items: [
+          "Hip arthritis",
+          "Groin pain and strain",
+          "Hip impingement",
+          "Hamstring strains and tight hamstrings",
+          "Meniscus injuries",
+          "Knee popping and locking",
+          "Knee pain",
+          "Shin splints",
+          "Ankle sprains",
+          "Achilles injuries",
+          "Plantar fasciitis",
+          "Calf strains",
+        ],
+      },
+    ],
   },
   "performance-training": {
     heroImage: {
       src: "/images/services/performance-training.webp",
       alt: "An athlete preparing to lift a barbell during a strength training session.",
     },
-    overview: "Get stronger for the life you want to live.",
-    fit: "If you want to build strength, improve mobility, and make training a consistent part of your life, personal training gives you a plan shaped around you. Dr. Ethan’s doctor-led approach considers your goals, current ability, and training experience, with a focus on staying capable for everyday life and the activities you enjoy.",
-    included: "Strength and mobility work is designed around your goals and experience. Training options include:",
-    includedItems: [
-      "One-on-one personal training",
-      "Small-group personal training",
+    overview: "Who it’s for",
+    fit: [
+      "You don’t like to work out in public",
+      "You don’t want to have to think about what to do",
+      "You want doctor-led strength training",
+      "You’re training around an injury",
+      "You’re looking for community",
+      "You want training personalized to your goals, exercise experience, and injury history",
+      "You’ve recently been discharged from injury rehab and want to keep training under supervision",
+      "You’re an adult who hasn’t lifted seriously in a while and wants a careful reintroduction",
     ],
-    includedNote: "Your sessions give you a consistent way to train and build your ability to handle everyday demands. The focus is strength, mobility, and staying active for the long term.",
-    nextStep: "Put a plan behind your next goal.",
+    bodySections: [
+      {
+        title: "What sessions look like",
+        items: [
+          "One-hour weekly sessions",
+          "A private gym",
+          "A focus on progressive strength training",
+          "Exercise programming built around your body, goals, and experience",
+        ],
+      },
+    ],
   },
 };
