@@ -337,7 +337,7 @@ h3 {
 }
 
 .services-section {
-  background: var(--surface);
+  background: var(--paper);
 }
 .services-layout {
   display: grid;
@@ -575,6 +575,9 @@ h3 {
   min-height: 44px;
   font-size: var(--text-small);
   color: var(--muted);
+}
+.faq-section {
+  background: var(--surface);
 }
 .faq-grid {
   display: grid;
@@ -869,6 +872,9 @@ dialog h2 {
   }
 }
 @media (max-width: 800px) {
+  .cta-description-break {
+    display: none;
+  }
   .service-card {
     aspect-ratio: auto;
     padding: 24px 20px;

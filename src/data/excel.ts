@@ -53,7 +53,7 @@ export const services = [
     description:
       "A customized plan to help you overcome injury and get back to what you want to do.",
     tags: ["Injury rehabilitation", "Strength", "Progress"],
-    intro: "Injury rehab with a plan to move forward.",
+    intro: "Injury rehab that actually fixes the problem",
     detail:
       "A customized rehab plan to help you recover from injury and return to the activities you enjoy. Work on pain, mobility, and strength while gradually rebuilding what your body can handle, with your goals guiding each step.",
     items: [

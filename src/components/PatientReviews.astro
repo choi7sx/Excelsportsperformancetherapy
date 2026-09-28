@@ -1,0 +1,46 @@
+---
+import { googleReviewsUrl } from "../lib/google-reviews";
+
+const reviews = [
+  {
+    quote: "Dr. Ethan is amazing - from listening, to treating, to educating, to developing a plan, he is engaged in his patient’s care. He truly does have a passion for it. Process was simple from making the initial appointment to getting in the office. Communication is thorough. Highly recommend!",
+    name: "Katie Sasser",
+    rating: 5,
+  },
+  {
+    quote: "Dr. Coghill is my personal hero! I first went to see him for a very painful “popped rib head” and I left my first appointment with the rib back in place! I continued semi-monthly, then, monthly visits to develop continued preventive measures. I now have the tools to assure this doesn’t continue to happen, and, with Dr. Coghill’s incredibly accurate assessment of my entire spine and back, he also COMPLETELY eliminated my lower back pain, that I assumed was just part of the aging process. His knowledge, assessment skills and healing methods are first-rate! I highly recommend his services and look forward to utilizing his new personal and small group personal training.",
+    name: "Diane Garrison",
+    rating: 5,
+    expandable: true,
+  },
+  {
+    quote: "Dr. Ethan helped me a great deal with an injury that wasn’t improving. He tailored care specific to my needs and helped me get back to the gym with detailed, scaling plans. He is highly knowledgeable and has a genuine interest in helping people recover. Highly recommended!",
+    name: "Edward Gibson",
+    rating: 5,
+    expandable: true,
+  },
+];
+---
+
+<section id="reviews" class="reviews-section" aria-labelledby="reviews-title">
+  <div class="container">
+    <div class="reviews-heading">
+      <h2 id="reviews-title">What patients say</h2>
+      <a class="review-note" href={googleReviewsUrl} target="_blank" rel="noopener noreferrer" aria-label="Read more reviews on Google Maps (opens in a new tab)">Read more reviews</a>
+    </div>
+    <div class="reviews-grid">
+      {reviews.map((review, index) => (
+        <figure class="review" data-review-reference={index === 0 ? true : undefined} data-review-expandable={review.expandable} data-expanded="false">
+          {review.rating && <span class="review-rating" role="img" aria-label={`${review.rating} out of 5 stars`}>{"★".repeat(review.rating)}</span>}
+          <blockquote><span id={`patient-review-${index}`} data-review-text>“{review.quote}”</span>{review.expandable && <span class="review-tail" hidden><span data-review-tail></span>{" "}<button class="review-toggle" type="button" aria-expanded="false" aria-controls={`patient-review-${index}`} aria-label={`Read more of ${review.name}’s review`} data-review-name={review.name}>Read More</button></span>}</blockquote>
+          <figcaption>— {review.name}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initializeReviewCards } from "../scripts/review-cards";
+  document.querySelectorAll<HTMLElement>(".reviews-grid").forEach(initializeReviewCards);
+</script>
