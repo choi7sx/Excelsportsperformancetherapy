@@ -6,12 +6,13 @@ import PatientReviews from "../components/PatientReviews.astro";
 import { bookingUrl, consultUrl, services, faqs, locations } from "../data/excel";
 
 // Homepage card copy is independent of the longer service-page introductions.
-const homepageServiceCopy: Record<string, { title?: string; description?: string }> = {
+const homepageServiceCopy: Record<string, { title?: string; description?: string; emphasis?: string }> = {
   "recovery-care": {
     description: "Traditional chiropractic care for pain relief, stiffness, movement limitations, injury prevention, and maintenance care.",
   },
   "focused-rehab": {
-    description: "A customized rehab plan to overcome injury. See the injuries we treat.",
+    description: "A customized rehab plan to overcome injury.",
+    emphasis: "See the injuries we treat.",
   },
   "performance-training": {
     title: "1:1 Personal and Small Group Training",
@@ -37,7 +38,7 @@ const faqSchema = {
   <section class="hero container" aria-labelledby="hero-title">
     <div class="hero-copy">
       <span class="eyebrow">Chiropractic & sports rehab · Old Hickory and Belle Meade, TN</span>
-      <h1 id="hero-title">It’s More Than <span>Chiropractic Care</span></h1>
+      <h1 id="hero-title">More Than <span>Chiropractic Care</span></h1>
       <p class="hero-description">
         From Pain to Performance. One-on-one chiropractic care, injury rehab,
         and personal + small group training with Dr. Ethan Coghill
@@ -70,7 +71,7 @@ const faqSchema = {
         {homepageServices.map((service) => (
           <a class="service-card" href={`/services/${service.slug}/`} aria-labelledby={`${service.slug}-title`}>
             <span class="service-icon" aria-hidden="true"><Icon name={service.icon} size={25} /></span>
-            <div><h3 id={`${service.slug}-title`}>{service.title}</h3><p>{service.description}</p></div>
+            <div><h3 id={`${service.slug}-title`}>{service.title}</h3><p>{service.description}{service.emphasis && <> <strong>{service.emphasis}</strong></>}</p></div>
           </a>
         ))}
       </div>
@@ -109,8 +110,10 @@ const faqSchema = {
         <span class="eyebrow">Meet your doctor</span>
         <h2 id="ethan-title">Good care starts with feeling heard.</h2>
         <p class="large-copy">Dr. Ethan Coghill</p>
-        <p>Dr. Ethan brings chiropractic care, rehabilitation, and performance coaching together to help active people work toward their goals.</p>
-        <p>Hands-on treatment, purposeful movement, and time to talk. Your care starts with understanding what matters to you.</p>
+        <p>Dr. Ethan Coghill, DC, is the owner and founder of Excel Sports Performance Therapy and an expert in conservative musculoskeletal health. Excel SPT was created to provide healthcare that is unrushed and built around the individual. Dr. Ethan enjoys taking the time needed to understand the client in front of him—their injury, lifestyle, medical history, and performance goals. His practice focuses on helping active adults bridge the gap between pain relief, rehabilitation, and performance.</p>
+        <p>Dr. Ethan takes a conservative approach to rehabilitating musculoskeletal injuries by combining chiropractic care, injury rehab, mobility work, and guided progressive strength training.</p>
+        <p>Dr. Ethan earned his Doctor of Chiropractic degree from Logan University, and then worked closely under one of the leading experts in the field of Sports Rehabilitation for 7 years prior to opening his own practice. Dr. Ethan also carries a Titleist Performance Institute Certification to support his golf athletes. A fun fact about Dr. Ethan is that he holds a brown belt in Brazilian Jiu Jitsu and actively enjoys training BJJ as a hobby. He pursues a balanced lifestyle taking nutrition concepts from Dr. David Seaman’s Deflame Diet, and enjoys strength training to support longevity and aging.</p>
+        <p>Dr. Ethan is dedicated to helping active adults take control of their health and improve their performance, and likes to have a fun time while doing it. He looks forward to seeing you in the office soon.</p>
         <a class="text-link" href={consultUrl}>Free Consultation <Icon size={18} /></a>
       </div>
     </div>
@@ -133,7 +136,7 @@ const faqSchema = {
 
   <section class="closing-cta" aria-labelledby="closing-title">
     <div class="container closing-grid">
-      <div><h2 id="closing-title">Ready to Start</h2><p>Dr. Ethan is here to help you recover, move with confidence, and get your <br class="cta-description-break" />body ready to handle what you want to be doing.</p></div>
+      <div><h2 id="closing-title">Ready to start?</h2><p>And get your body ready to handle the activities you love.</p></div>
       <div class="closing-actions">
         <a class="button" href={bookingUrl} data-booking>Schedule Now <Icon size={18} /></a>
         <a class="text-link" href={consultUrl}>Free Consultation <Icon size={17} /></a>

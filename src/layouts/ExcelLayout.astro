@@ -217,11 +217,7 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
               loading="lazy"
             />
           </a>
-          <p>
-            Care for your body.
-            <br />
-            Room for everything you love.
-          </p>
+          <p>Care for your body.</p>
         </div>
         <div>
           <h2 class="footer-heading">Find your next step</h2>
@@ -261,10 +257,10 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
       <span class="eyebrow">BOOK YOUR INITIAL EVALUATION</span>
       <h2 id="booking-title">Choose your location.</h2>
       <p id="booking-description">
-        See available times in Jane, then select an initial evaluation for your
-        60-minute first visit with Dr. Ethan.
+        See available times in Jane, then select [new patient appointment] for your
+        first visit with Dr. Ethan.
       </p>
-      <p class="booking-reassurance">Cash-based care · HSA/FSA accepted. <a href="tel:+16153141508">Call for pricing</a> before booking.</p>
+      <p class="booking-reassurance">Cash-based care · HSA/FSA accepted.</p>
       <div class="booking-options">
         {locations.map((l) => (
           <a href={l.booking} class="booking-option">

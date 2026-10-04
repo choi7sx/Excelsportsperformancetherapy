@@ -2,6 +2,7 @@
 export interface ServiceGuide {
   heroImage: { src: string; alt: string };
   overview: string;
+  hideFitPrompt?: boolean;
   fit: string | string[];
   fitEmphasis?: string;
   included?: string;
@@ -98,7 +99,8 @@ export const serviceGuides: Record<string, ServiceGuide> = {
       src: "/images/services/performance-training.webp",
       alt: "An athlete preparing to lift a barbell during a strength training session.",
     },
-    overview: "Who it’s for",
+    overview: "This is for you if:",
+    hideFitPrompt: true,
     fit: [
       "You don’t like to work out in public",
       "You don’t want to have to think about what to do",
@@ -113,10 +115,14 @@ export const serviceGuides: Record<string, ServiceGuide> = {
       {
         title: "What sessions look like",
         items: [
-          "One-hour weekly sessions",
-          "A private gym",
+          "Initial movement assessment to assist injury prevention",
+          "One-hour weekly sessions led by Dr. Ethan",
+          "A private gym environment",
           "A focus on progressive strength training",
-          "Exercise programming built around your body, goals, and experience",
+          "Personalized exercise selection around your goals, exercise, and injury history",
+          "Proper form guidance and injury aware modifications",
+          "Between session programming so you know what to do for the rest of the week",
+          "Community and good vibes",
         ],
       },
     ],

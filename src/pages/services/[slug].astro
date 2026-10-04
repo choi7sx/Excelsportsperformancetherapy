@@ -70,13 +70,13 @@ const schema = {
       </div>
       <div class="service-meta">
         <span><Icon name="pin" size={16} /> Old Hickory & Belle Meade</span>
-        <a href="#service-fit-title">Is this for you? <span aria-hidden="true">↓</span></a>
+        {!guide.hideFitPrompt && <a href="#service-fit-title">Is this for you? <span aria-hidden="true">↓</span></a>}
       </div>
     </section>
 
     <section class="service-overview container" aria-labelledby="service-fit-title">
       <div class="service-fit">
-        <span class="eyebrow">IS THIS FOR YOU?</span>
+        {!guide.hideFitPrompt && <span class="eyebrow">IS THIS FOR YOU?</span>}
         <h2 id="service-fit-title">{guide.overview}</h2>
         {Array.isArray(guide.fit) ? (
           <ul>{guide.fit.map((item) => <li>{item}</li>)}</ul>
@@ -118,7 +118,7 @@ const schema = {
     <PatientReviews />
 
     <section class="service-next container" aria-labelledby="service-next-title">
-      <div><h2 id="service-next-title">Ready to Start</h2><p>Dr. Ethan is here to help you recover, move with confidence, and get your <br class="cta-description-break" />body ready to handle what you want to be doing.</p></div>
+      <div><h2 id="service-next-title">Ready to start?</h2><p>And get your body ready to handle the activities you love.</p></div>
       <div class="service-next-actions"><a class="button" href={bookingUrl} data-booking>Schedule Now <Icon size={18} /></a><a class="text-link" href={consultUrl}>Free Consultation <Icon size={16} /></a></div>
     </section>
 
