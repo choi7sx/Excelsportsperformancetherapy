@@ -2,7 +2,7 @@
 
 [[preview_urls]]
 name = "Website preview"
-url = "http://localhost:$CONDUCTOR_PORT"
+url = "http://127.0.0.1:$CONDUCTOR_PORT"
 
 [scripts]
 setup = "npm ci"

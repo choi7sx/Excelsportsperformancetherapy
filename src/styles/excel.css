@@ -406,7 +406,7 @@ h3 {
 .ethan-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: start;
   gap: 100px;
 }
 .ethan-photo {
@@ -415,6 +415,13 @@ h3 {
   object-fit: cover;
   object-position: center 40%;
   border-radius: 4px;
+}
+@media screen and (min-width: 601px) {
+  .ethan-photo {
+    position: sticky;
+    top: calc(var(--sticky-header-height) + 24px);
+    max-height: calc(100svh - var(--sticky-header-height) - 48px);
+  }
 }
 .ethan-copy h2 {
   margin-bottom: 32px;
@@ -872,9 +879,6 @@ dialog h2 {
   }
 }
 @media (max-width: 800px) {
-  .cta-description-break {
-    display: none;
-  }
   .service-card {
     aspect-ratio: auto;
     padding: 24px 20px;
