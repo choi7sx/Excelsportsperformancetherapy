@@ -1,6 +1,6 @@
 # Excel Sports Performance Therapy
 
-A responsive Astro first draft for Dr. Ethan Coghill's Nashville practice. Includes a homepage, four service pages, real patient excerpts, FAQs, two locations, and a booking location chooser that connects to the existing Jane calendars.
+A responsive Astro first draft for Dr. Ethan Coghill's Nashville practice. Includes a homepage, service pages, a five-post blog, real patient excerpts, FAQs, two locations, and a booking location chooser that connects to the existing Jane calendars.
 
 ## Run locally
 
@@ -25,7 +25,32 @@ In Conductor, start **preview** from the **Run** tab, then click **Open** to vie
 - Service page styles: `src/styles/service-pages.css`
 - Images and self-hosted fonts (Outfit headings, Inter body text): `public/images` and `public/fonts`
 
-The CloudCannon integration and original content components remain available. The new pages use Astro source files; the old starter page-builder content is not connected to these new pages. Demo routes have been removed from public output (their history remains in Git).
+The homepage and service pages use Astro source files. The blog uses the CloudCannon content collections. Original page-builder components remain available; starter blog articles have been replaced with Excel content.
+
+## Blog and CloudCannon editing
+
+The `/blog/` page displays all posts newest first in three columns on desktop, two on tablets, and one on phones. The shared navigation places Blog immediately after FAQs. Articles use a hero image, heading, author/date, Markdown content, and three recent posts.
+
+- In CloudCannon, open **Blog → Add → Add New Post**. Enter the title, excerpt, heading, author, date, and hero image; write the body in the Content Editor and save. New posts automatically appear on the listing after a build.
+- Hero images upload to `public/images/blog` and are referenced as `/images/blog/filename`. The thumbnail is optional and defaults to the hero image. Set descriptive image alt text. The included stock images can be replaced through these same fields.
+- **Pages → Blog** controls the listing title and SEO. The listing uses the same hero typography as service pages and has no visible hero description. Article headings, authors, hero images, and body content have Visual Editor bindings; metadata is available in the editor sidebar. CloudCannon supplies the runtime for these simple text/image regions, so no component registration is needed.
+- Post files: `src/content/blog/*.mdx`. New-post defaults: `.cloudcannon/schemas/post.mdx`. Listing content: `src/content/pages/blog.md`. Layouts/styles: `src/layouts/Post.astro`, `src/components/blog`, and `src/styles/blog.css`.
+- Search titles (`seo.page_title`), answer summaries, author biography/profile links, and substantive-update dates (`date_modified`) are editable in CloudCannon. Original publication dates stay intact. Update `date_modified` only when the content materially changes; it drives the visible Updated label, article metadata, and sitemap `lastmod`. If changing the author, update the name, profile link, and biography together.
+- Dates use America/Chicago. Saving a post publishes it on the next build; there is no draft or scheduled-publication workflow. SEO `no_index` excludes a page from the sitemap and adds noindex, but does not hide it from the blog.
+
+The five articles were imported from the [existing Excel blog](https://www.excelspt.com/blog-1-copy-1-1) on October 4, 2026. Ethan Coghill’s authorship and original publication dates were retained, including the three May 28, 2019 dates. A subsequent SEO/content pass added concise answers, contextual links, source citations, and clearer medical wording; the visible update dates record that substantive edit. These edits have not been medically reviewed by Ethan. Legacy 301 redirects are configured in `.cloudcannon/routing.json` for CloudCannon hosting; verify their HTTP responses when deployed.
+
+Stock images are locally hosted 1200 × 800 WebP placeholders from Pexels, downloaded October 4, 2026 under the [Pexels license](https://www.pexels.com/license/). They illustrate the topics and do not depict Excel staff or patients.
+
+| File in `public/images/blog` | Photo source |
+| --- | --- |
+| `imaging.webp` | [MRI scan — MART PRODUCTION](https://www.pexels.com/photo/photo-of-doctor-operating-mri-scanner-7088479/) |
+| `exercise-man.webp` | [Man exercising — MART PRODUCTION](https://www.pexels.com/photo/a-man-exercising-8032907/) |
+| `first-visit.webp` | [Physiotherapist working with a patient](https://www.pexels.com/photo/physiotherapist-working-with-patient-20860579/) |
+| `stretching.webp` | [Pre-workout stretching — Anna Shvets](https://www.pexels.com/photo/woman-stretching-before-workout-6283563/) |
+| `golf.webp` | [Golfer swinging — DΛVΞ GΛRCIΛ](https://www.pexels.com/photo/golfer-swinging-on-scenic-green-with-mountain-view-33855294/) |
+
+The configuration follows CloudCannon's [collection reference](https://cloudcannon.com/documentation/developer-reference/configuration-file/collections_config/*/) and [Editable Regions reference](https://cloudcannon.com/documentation/developer-reference/editable-regions/). The build and local previews are verified locally; the hosted CloudCannon editor must be checked after this branch is deployed there.
 
 ## Google reviews badge
 
@@ -52,6 +77,8 @@ Compatible dependency fixes were applied using `npm audit fix`. Six inherited ad
 Run `npm test` to build the static site and check review logic, metadata, structured data, sitemap coverage, and local links/assets. After replacing an original photo or logo, run `npm run optimize:images` to regenerate its responsive WebP variants.
 
 The production domain in `astro.config.mjs` supplies canonical URLs, structured-data URLs, the sitemap, and robots.txt. Service pages include breadcrumb structured data; the homepage identifies the website and the two practice locations.
+
+See [the blog SEO/AEO audit](docs/blog-seo-audit-2026-10-04.md) for the blog implementation and remaining deployment checks.
 
 See [the September 22 responsive, functional, Lighthouse, and SEO audit](docs/quality-audit-2026-09-22.md) for the latest results.
 

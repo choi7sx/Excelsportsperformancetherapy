@@ -6,7 +6,7 @@
 .service-breadcrumb [aria-current] { color: var(--ink); }
 .service-intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); align-items: center; gap: 64px; }
 .service-hero-image { width: 100%; max-width: 400px; height: auto; aspect-ratio: 10 / 9; object-fit: cover; object-position: center 20%; border-radius: var(--radius); background: var(--surface); }
-.service-intro h1 { font-size: clamp(42px, 4.3vw, 62px); line-height: 1.08; letter-spacing: -2.5px; margin: 18px 0 22px; max-width: 760px; }
+.service-intro h1 { margin: 18px 0 22px; max-width: 760px; }
 .service-lead { font-size: var(--text-body); max-width: 680px; }
 .service-meta { flex-wrap: wrap; margin-top: 40px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 19px 0; display: flex; justify-content: space-between; gap: 20px; font-size: var(--text-small); color: var(--muted); }
 .service-meta > span, .service-meta a { display: flex; align-items: center; gap: 9px; }
@@ -22,7 +22,7 @@
 .service-included { background: var(--surface); padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); }
 .service-included-heading { display: flex; align-items: center; gap: 14px; }
 .service-included .service-icon { width: 48px; height: 48px; flex-shrink: 0; }
-.service-included h3 { font-size: 23px; }
+.service-included h2 { font-size: 23px; }
 .service-included > p { margin-top: 18px; font-size: var(--text-body); }
 .service-included ul { margin: 16px 0 0; padding-left: 22px; color: var(--muted); font-size: var(--text-body); line-height: 1.75; list-style: disc; }
 .service-included li + li { margin-top: 6px; }
@@ -54,7 +54,7 @@
   .service-intro { padding-top: 24px; }
   .service-breadcrumb { margin-bottom: 28px; font-size: var(--text-small); }
   .service-intro-grid, .service-next { grid-template-columns: 1fr; gap: 30px; }
-  .service-intro h1 { font-size: clamp(39px, 8.5vw, 55px); letter-spacing: -1.8px; margin-top: 16px; }
+  .service-intro h1 { margin-top: 16px; }
   .service-lead { font-size: var(--text-body); }
   .service-hero-image { aspect-ratio: 3 / 2; max-height: 260px; justify-self: center; }
   .service-meta { flex-wrap: wrap; margin-top: 28px; font-size: var(--text-small); gap: 12px; }
@@ -64,7 +64,7 @@
   .service-body-section ul { grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
   .service-included { padding: 24px; }
   .service-included-heading { gap: 10px; }
-  .service-included h3 { font-size: 22px; }
+  .service-included h2 { font-size: 22px; }
   .service-page > .reviews-section { margin-bottom: 40px; }
   .service-next { padding: 28px 24px; }
   .service-next h2 { font-size: 31px; }

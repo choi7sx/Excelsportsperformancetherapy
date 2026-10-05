@@ -14,6 +14,7 @@ export function getStaticPaths() {
 }
 const { service } = Astro.props;
 const guide = serviceGuides[service.slug];
+const hasFit = Boolean(guide.overview && guide.fit);
 const serviceUrl = new URL(`/services/${service.slug}/`, Astro.site).href;
 const schema = {
   "@context": "https://schema.org",
@@ -52,7 +53,7 @@ const schema = {
       <div class="service-intro-grid">
         <div>
           <span class="eyebrow">{service.title}</span>
-          <h1 id="service-title">{service.intro}</h1>
+          <h1 id="service-title" class="page-hero-title">{service.intro}</h1>
           <p class="service-lead">{service.detail}</p>
         </div>
         <img
@@ -70,12 +71,12 @@ const schema = {
       </div>
       <div class="service-meta">
         <span><Icon name="pin" size={16} /> Old Hickory & Belle Meade</span>
-        {!guide.hideFitPrompt && <a href="#service-fit-title">Is this for you? <span aria-hidden="true">↓</span></a>}
+        {hasFit && !guide.hideFitPrompt && <a href="#service-fit-title">Is this for you? <span aria-hidden="true">↓</span></a>}
       </div>
     </section>
 
-    <section class="service-overview container" aria-labelledby="service-fit-title">
-      <div class="service-fit">
+    <section class="service-overview container" aria-labelledby={hasFit ? "service-fit-title" : "service-included-title"}>
+      {guide.overview && guide.fit && <div class="service-fit">
         {!guide.hideFitPrompt && <span class="eyebrow">IS THIS FOR YOU?</span>}
         <h2 id="service-fit-title">{guide.overview}</h2>
         {Array.isArray(guide.fit) ? (
@@ -87,7 +88,7 @@ const schema = {
               ))
             : guide.fit}</p>
         )}
-      </div>
+      </div>}
       {guide.bodySections && (
         <div class="service-body-sections">
           {guide.bodySections.map((category, index) => (
@@ -101,7 +102,7 @@ const schema = {
       {guide.included && <aside class="service-included" aria-labelledby="service-included-title">
         <div class="service-included-heading">
           <span class="service-icon"><Icon name={service.icon} size={28} /></span>
-          <h3 id="service-included-title">What your care can include</h3>
+          <h2 id="service-included-title">What your care can include</h2>
         </div>
         <p>{guide.includedEmphasis
           ? guide.included.split(guide.includedEmphasis).map((part, index) => (
