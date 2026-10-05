@@ -1,9 +1,9 @@
 // Service-page copy is separate from the short homepage service summaries.
 export interface ServiceGuide {
   heroImage: { src: string; alt: string };
-  overview: string;
+  overview?: string;
   hideFitPrompt?: boolean;
-  fit: string | string[];
+  fit?: string | string[];
   fitEmphasis?: string;
   included?: string;
   includedEmphasis?: string;
@@ -18,8 +18,6 @@ export const serviceGuides: Record<string, ServiceGuide> = {
       src: "/images/services/recovery-care.webp",
       alt: "Dr. Ethan Coghill providing hands-on neck care to a patient.",
     },
-    overview: "Move with more comfort and confidence.",
-    fit: "If pain, an injury, or limited movement is getting in the way of your day, chiropractic care offers one-on-one support built around you. Your first step is a full-body movement assessment with Dr. Ethan to understand how you move, identify areas that may be contributing to your symptoms, and talk through what you want to get back to.",
     included: "Your treatment is tailored to your pain, movement limitations, and goals. Care may include:",
     includedItems: [
       "Chiropractic adjustments",

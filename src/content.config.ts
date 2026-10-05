@@ -4,6 +4,7 @@ import { glob } from 'astro/loaders';
 
 const seoSchema = z
   .object({
+    page_title: z.string().nullable().optional(),
     page_description: z.string().nullable(),
     canonical_url: z.string().nullable(),
     featured_image: z.string().nullable(),
@@ -18,11 +19,16 @@ const blogCollection = defineCollection({
   loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/blog" }),
   schema: z.object({
     title: z.string(),
+    excerpt: z.string().default(""),
+    answer_summary: z.string().default(""),
+    date_modified: z.union([z.string().datetime({ offset: true }), z.date()]).nullable().optional(),
     post_hero: z.object({
       date: z.string().or(z.date()),
       heading: z.string(),
       tags: z.array(z.string()),
       author: z.string(),
+      author_url: z.string().default(""),
+      author_bio: z.string().default(""),
       image: z.string(),
       image_alt: z.string(),
     }),
@@ -34,6 +40,7 @@ const blogCollection = defineCollection({
 
 const pageSchema = z.object({
   title: z.string(),
+  description: z.string().default(""),
   hero_block: z.any().optional(),
   content_blocks: z.array(z.any()).optional(),
   seo: seoSchema,
@@ -41,6 +48,7 @@ const pageSchema = z.object({
 
 const paginatedCollectionSchema = z.object({
   title: z.string(),
+  description: z.string().default(""),
   page_size: z.number().positive(),
   seo: seoSchema,
 });

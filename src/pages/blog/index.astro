@@ -1,0 +1,51 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "../../layouts/ExcelLayout.astro";
+import PostSummary from "../../components/blog/summary.astro";
+import { getBlogPosts } from "../../lib/blog";
+import "../../styles/blog.css";
+
+const page = await getEntry("pages", "blog");
+if (!page) throw new Error("Blog page content is missing");
+const { title, seo } = page.data;
+const description = seo?.page_description || "Articles from Excel Sports Performance Therapy.";
+const posts = await getBlogPosts();
+const url = new URL(seo?.canonical_url || "/blog/", Astro.site).href;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage", "@id": url, url, name: title, description,
+      isPartOf: { "@id": new URL("/#website", Astro.site).href },
+      mainEntity: { "@type": "ItemList", numberOfItems: posts.length,
+        itemListElement: posts.map((post, index) => ({
+          "@type": "ListItem", position: index + 1, name: post.data.title,
+          url: new URL(`/blog/${post.id}/`, Astro.site).href,
+        })),
+      },
+    },
+    {
+      "@type": "Blog", "@id": `${url}#blog`, url,
+      name: "Excel Sports Performance Therapy Blog", description,
+      inLanguage: "en-US", publisher: { "@id": new URL("/#practice", Astro.site).href },
+    },
+  ],
+};
+---
+
+<Layout title={seo?.page_title || `${title} | Excel SPT`} schema={schema} description={seo?.page_description || description}
+  image={seo?.featured_image || undefined} imageAlt={seo?.featured_image_alt || undefined}
+  openGraphType={seo?.open_graph_type || "website"}
+  noindex={seo?.no_index} canonicalUrl={seo?.canonical_url || undefined}>
+  <div class="blog-index container">
+    <header class="blog-intro">
+      <span class="eyebrow">EXCEL SPORTS PERFORMANCE THERAPY</span>
+      <h1 class="page-hero-title" data-editable="text" data-prop="title">{title}</h1>
+    </header>
+    <section aria-label="Blog posts">
+      <ul class="blog-grid">
+        {posts.map((post, i) => <li><PostSummary {...post} loading={i < 3 ? "eager" : "lazy"} priority={i === 0} /></li>)}
+      </ul>
+    </section>
+  </div>
+</Layout>

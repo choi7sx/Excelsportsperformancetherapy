@@ -1,0 +1,74 @@
+{
+  "routes": [
+    {
+      "from": "/blog-1-copy-1-1",
+      "to": "/blog/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/",
+      "to": "/blog/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/low-back-pain-when-do-you-actually-need-imaging-x-ray-or-mri",
+      "to": "/blog/low-back-pain-imaging/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/low-back-pain-when-do-you-actually-need-imaging-x-ray-or-mri/",
+      "to": "/blog/low-back-pain-imaging/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/low-back-pain-and-exercise-what-actually-helps",
+      "to": "/blog/low-back-pain-and-exercise/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/low-back-pain-and-exercise-what-actually-helps/",
+      "to": "/blog/low-back-pain-and-exercise/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/Blog Post Title One-3zaa9-zlxng-67tfc-3hpf6",
+      "to": "/blog/your-first-visit/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/Blog Post Title One-3zaa9-zlxng-67tfc-3hpf6/",
+      "to": "/blog/your-first-visit/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/Blog%20Post%20Title%20One-3zaa9-zlxng-67tfc-3hpf6",
+      "to": "/blog/your-first-visit/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/Blog%20Post%20Title%20One-3zaa9-zlxng-67tfc-3hpf6/",
+      "to": "/blog/your-first-visit/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/blog-post-title-two-t5my5-k4xmd-67jzh-wpbbl",
+      "to": "/blog/why-stretching-isnt-fixing-your-pain/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/blog-post-title-two-t5my5-k4xmd-67jzh-wpbbl/",
+      "to": "/blog/why-stretching-isnt-fixing-your-pain/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/blog-post-title-three-y3peb-4lwnz-5pkhf-zrmpc",
+      "to": "/blog/hip-pain-for-golfers/",
+      "status": 301
+    },
+    {
+      "from": "/blog-1-copy-1-1/blog-post-title-three-y3peb-4lwnz-5pkhf-zrmpc/",
+      "to": "/blog/hip-pain-for-golfers/",
+      "status": 301
+    }
+  ]
+}

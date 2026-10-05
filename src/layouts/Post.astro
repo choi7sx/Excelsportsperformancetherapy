@@ -1,58 +1,96 @@
 ---
-import Layout from "./Layout.astro";
+import Layout from "./ExcelLayout.astro";
 import PostSummary from "../components/blog/summary.astro";
 import PostHero from "../components/blog/post-hero/post-hero.astro";
-import { getCollection } from "astro:content";
+import { getBlogPosts } from "../lib/blog";
+import type { CollectionEntry } from "astro:content";
+import "../styles/blog.css";
 
-type Props = {
-  frontmatter: {
-    title: string;
-    post_hero: {
-      heading: string;
-      date: string | Date;
-      image: string;
-      image_alt: string;
-      author: string;
-      tags: Array<string>;
-    };
-  };
-  body: string;
+interface Props { post: CollectionEntry<"blog"> }
+const { post } = Astro.props;
+const { title, excerpt, seo, post_hero, answer_summary, date_modified } = post.data;
+const recent = (await getBlogPosts()).filter((item) => item.id !== post.id).slice(0, 3);
+const url = new URL(seo?.canonical_url || `/blog/${post.id}/`, Astro.site).href;
+const image = seo?.featured_image || post_hero.image;
+const imageAlt = seo?.featured_image_alt || post_hero.image_alt;
+const description = seo?.page_description || excerpt;
+const authorUrl = post_hero.author_url ? new URL(post_hero.author_url, Astro.site).href : undefined;
+const publishedTime = new Date(post_hero.date).toISOString();
+const modifiedTime = date_modified ? new Date(date_modified).toISOString() : undefined;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": `${url}#article`,
+      headline: post_hero.heading || title,
+      description,
+      ...(answer_summary ? { abstract: answer_summary } : {}),
+      url,
+      mainEntityOfPage: { "@id": url },
+      isPartOf: { "@id": new URL("/blog/#blog", Astro.site).href },
+      inLanguage: "en-US",
+      articleSection: post_hero.tags,
+      datePublished: publishedTime,
+      ...(modifiedTime ? { dateModified: modifiedTime } : {}),
+      author: { "@type": "Person", name: post_hero.author,
+        ...(authorUrl ? { "@id": authorUrl, url: authorUrl } : {}),
+        ...(post_hero.author_bio ? { description: post_hero.author_bio } : {}),
+      },
+      publisher: { "@id": new URL("/#practice", Astro.site).href },
+      image: new URL(image, Astro.site).href,
+    },
+    {
+      "@type": "WebPage", "@id": url, url, name: title,
+      mainEntity: { "@id": `${url}#article` },
+      breadcrumb: { "@id": `${url}#breadcrumb` },
+      isPartOf: { "@id": new URL("/#website", Astro.site).href },
+    },
+    {
+      "@type": "BreadcrumbList", "@id": `${url}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", Astro.site).href },
+        { "@type": "ListItem", position: 2, name: "Blog", item: new URL("/blog/", Astro.site).href },
+        { "@type": "ListItem", position: 3, name: title, item: url },
+      ],
+    },
+  ],
 };
-
-const { frontmatter, body } = Astro.props;
-
-const posts = await getCollection("blog");
-const filteredPosts = posts.filter(
-  (post) => post.data.title !== frontmatter.title,
-);
 ---
 
-<Layout {...frontmatter}>
-  <div class="mx-auto max-w-3xl px-8 py-12 md:py-20">
-    <article>
-      <editable-component data-prop="post_hero" data-component="PostHero">
-        <PostHero {...frontmatter.post_hero} bodyContent={body} />
-      </editable-component>
-      <div class="prose" data-pagefind-body>
-        <editable-text data-prop="@content" data-type="block">
+<Layout title={seo?.page_title || `${title} | Excel SPT`} description={description}
+  image={image} imageAlt={imageAlt} openGraphType={seo?.open_graph_type || "article"}
+  publishedTime={publishedTime} modifiedTime={modifiedTime} authorName={post_hero.author} authorUrl={authorUrl}
+  canonicalUrl={seo?.canonical_url || undefined} noindex={seo?.no_index} schema={schema}>
+  <div class="post-shell container">
+    <div class="post-column">
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog/">Blog</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span>
+      </nav>
+      <article data-pagefind-body>
+        <PostHero post={post} />
+        {answer_summary && <section class="post-answer" aria-labelledby="answer-heading">
+          <h2 id="answer-heading">The short answer</h2>
+          <p data-editable="text" data-prop="answer_summary">{answer_summary}</p>
+        </section>}
+        <div class="post-content" data-editable="text" data-prop="@content" data-type="block">
           <slot />
-        </editable-text>
+        </div>
+        {post_hero.author_bio && <aside class="post-author" aria-label="About the author">
+          <h2>About the author</h2>
+          <p data-editable="text" data-prop="post_hero.author_bio">{post_hero.author_bio}</p>
+          {authorUrl && <a href={post_hero.author_url} class="text-link" rel="author">Meet {post_hero.author} <span aria-hidden="true">→</span></a>}
+        </aside>}
+      </article>
+    </div>
+    <section class="recent-posts" aria-labelledby="recent-posts-title">
+      <div class="recent-posts-heading">
+        <h2 id="recent-posts-title">Recent posts</h2>
+        <a href="/blog/" class="text-link">View all posts <span aria-hidden="true">→</span></a>
       </div>
-    </article>
+      <ul class="blog-grid">
+        {recent.map((item) => <li><PostSummary {...item} /></li>)}
+      </ul>
+    </section>
   </div>
-
-  {
-    filteredPosts.length > 0 && (
-      <section class="mx-auto max-w-6xl px-8 pb-16">
-        <h2 class="text-2xl mb-6">Recent Posts</h2>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {filteredPosts.slice(0, 3).map((post) => (
-            <li>
-              <PostSummary {...post} loading="lazy" />
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
 </Layout>

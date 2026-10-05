@@ -7,15 +7,31 @@ interface Props {
   description?: string;
   noindex?: boolean;
   schema?: Record<string, unknown>;
+  image?: string;
+  imageAlt?: string;
+  canonicalUrl?: string;
+  openGraphType?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  authorName?: string;
+  authorUrl?: string;
 }
 const {
   title = "Sports Chiropractor in Nashville | Excel Sports Performance Therapy",
   description = "Move with more confidence. Dr. Ethan Coghill offers chiropractic care, sports rehab, and performance coaching in Old Hickory and Belle Meade. Book your evaluation.",
   noindex = false,
   schema,
+  image = "/images/excel-social.jpg",
+  imageAlt = "Excel Sports Performance Therapy — care with Dr. Ethan Coghill",
+  canonicalUrl,
+  openGraphType = "website",
+  publishedTime,
+  modifiedTime,
+  authorName,
+  authorUrl,
 } = Astro.props;
 const siteUrl = new URL("/", Astro.site);
-const canonical = new URL(noindex ? Astro.url.pathname : `${Astro.url.pathname.replace(/\/+$/, "")}/`, siteUrl);
+const canonical = new URL(canonicalUrl || (noindex ? Astro.url.pathname : `${Astro.url.pathname.replace(/\/+$/, "")}/`), siteUrl);
 const absoluteUrl = (path: string) => new URL(path, siteUrl).href;
 const businessSchema = {
   "@context": "https://schema.org",
@@ -30,7 +46,11 @@ const businessSchema = {
   areaServed: ["Nashville", "Old Hickory", "Belle Meade"],
   employee: {
     "@type": "Person",
-    name: "Dr. Ethan Coghill",
+    "@id": absoluteUrl("/#meet-ethan"),
+    name: "Ethan Coghill",
+    honorificPrefix: "Dr.",
+    honorificSuffix: "DC",
+    url: absoluteUrl("/#meet-ethan"),
     jobTitle: "Sports Rehab Chiropractor",
   },
   department: locations.map((l) => ({
@@ -82,11 +102,15 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
     <meta name="description" content={description} />
     <meta
       name="robots"
-      content={noindex ? "noindex, follow" : "index, follow"}
+      content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"}
     />
     {!noindex && <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={openGraphType} />
+    {authorName && <meta name="author" content={authorName} />}
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    {authorUrl && <meta property="article:author" content={absoluteUrl(authorUrl)} />}
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -94,22 +118,20 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
     <meta property="og:site_name" content="Excel Sports Performance Therapy" />
     <meta
       property="og:image"
-      content={absoluteUrl("/images/excel-social.jpg")}
+      content={absoluteUrl(image)}
     />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Excel Sports Performance Therapy — care with Dr. Ethan Coghill"
+      content={imageAlt}
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta
       name="twitter:image"
-      content={absoluteUrl("/images/excel-social.jpg")}
+      content={absoluteUrl(image)}
     />
-    <meta name="twitter:image:alt" content="Excel Sports Performance Therapy — care with Dr. Ethan Coghill" />
+    <meta name="twitter:image:alt" content={imageAlt} />
     <link
       rel="preload"
       href="/fonts/outfit-latin.woff2"
@@ -185,6 +207,7 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
           <a href="/#locations">Locations</a>
           <a href="/#meet-ethan">Meet Dr. Ethan</a>
           <a href="/#faq">FAQs</a>
+          <a href="/blog/" aria-current={Astro.url.pathname.startsWith("/blog") ? "page" : undefined}>Blog</a>
         </nav>
         <a class="button nav-book" href={bookingUrl} data-booking>
           Schedule Now <Icon size={17} />

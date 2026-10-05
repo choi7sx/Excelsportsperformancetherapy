@@ -1,4 +1,4 @@
-timezone: Pacific/Auckland
+timezone: America/Chicago
 
 paths:
   static: public
@@ -25,6 +25,9 @@ collections_config:
         schema: default
         icon: pages
     schemas:
+      blog:
+        name: Blog listing
+        path: '.cloudcannon/schemas/blog.md'
       default:
         name: New Page
         path: '.cloudcannon/schemas/page.md'
@@ -46,6 +49,8 @@ collections_config:
         type: text
         comment: Controls the metadata title for the page.
   blog:
+    name: Blog
+    description: Articles from Excel Sports Performance Therapy. Add a post, update its images and details, then write the article in the Content Editor.
     path: src/content/blog
     glob:
       - '**/*.mdx'
@@ -86,6 +91,29 @@ collections_config:
     create:
       path: '[relative_base_path]/{filename|slugify|lowercase}.mdx'
     _inputs:
+      excerpt:
+        type: textarea
+        comment: A short introduction shown on the blog listing and recent post cards.
+        options:
+          empty_type: string
+      answer_summary:
+        type: textarea
+        comment: A clear, concise answer to the article's main question. Shown near the beginning of the article.
+        options:
+          empty_type: string
+      date_modified:
+        type: datetime
+        comment: Set when you make a substantive content update. Leave empty for a new article; do not change just to make a post look fresh.
+      author_url:
+        type: text
+        comment: Link to this author's real biography. Change this when changing the author.
+        options:
+          empty_type: string
+      author_bio:
+        type: textarea
+        comment: A factual biography for the named author. Do not claim medical review unless it has happened.
+        options:
+          empty_type: string
       title:
         comment: Controls the metadata title, and the title used when linking to this page elsewhere on the site.
         options:
@@ -97,14 +125,22 @@ collections_config:
             image:
               - key: image
             icon: description
+      heading:
+        type: text
+        comment: The title displayed above the article. Usually the same as Title.
+        options:
+          empty_type: string
+      date:
+        type: datetime
+        instance_value: NOW
       image:
         type: image
         comment: The hero image at the top of the post.
         options:
           empty_type: string
           paths:
-            static: ''
-            uploads: src/assets/images/blog
+            static: public
+            uploads: public/images/blog
       image_alt:
         type: textarea
         options:
@@ -112,12 +148,12 @@ collections_config:
       thumb_image_path:
         type: image
         label: Thumbnail Image
-        comment: The image used as the page thumbnail when being referenced elsewhere on the site.
+        comment: Optional. Leave empty to use the hero image on article cards and in the collection gallery.
         options:
           empty_type: string
           paths:
-            static: ''
-            uploads: src/assets/images/blog
+            static: public
+            uploads: public/images/blog
       thumb_image_alt:
         type: textarea
         label: Thumbnail Image Alt Text
@@ -374,6 +410,9 @@ _inputs:
           - Set button link
   page_description:
     comment: Defaults to the description set in the Site SEO data file.
+  page_title:
+    type: text
+    comment: Optional search and social title, including the brand name. Keep it concise and specific to this page.
   canonical_url:
     comment: Defaults to the pages url.
   featured_image:
