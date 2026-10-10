@@ -1,10 +1,16 @@
 # Google reviews badge
 
-The homepage badge sits above “Chiropractic & sports rehab · Nashville, TN” and links directly to the Google Maps reviews tab supplied for Excel's Old Hickory listing. It uses Excel's blue stars, font, and link styling.
+The homepage badge sits below the hero actions and links directly to the Google Maps reviews tab for Excel's Old Hickory listing. It displays five blue stars and the owner-supplied text **5.0 · 23 verified Google reviews**.
 
-**Status:** the integration is implemented, but live ratings are disabled until the two configuration values below are supplied. Without configuration, JavaScript, or a successful Google response, visitors see “Read our Google reviews.” No rating or review count is invented or kept as an outdated fallback.
+**Current status:** the badge is static and makes no Google API requests. No API key or billing setup is needed. Update the visible rating/count and accessible link label manually in `src/components/GoogleReviews.astro`.
 
-## Activate automatic updates
+## Earlier automatic integration (currently disconnected)
+
+`src/scripts/google-reviews.ts` and its helpers are retained for possible future use, but the hero does not import or run them. Setting environment variables alone will not enable automatic updates. Reconnecting it requires restoring the script initialization and the `data-review-*` markup it expects in `GoogleReviews.astro`.
+
+The following setup and behavior notes describe that earlier automatic integration.
+
+### Google configuration for future reactivation
 
 1. In [Google Cloud Console](https://console.cloud.google.com/), choose or create your Google Maps Platform project and enable billing. Enable **Maps JavaScript API** and **Places API (New)**. Google documents this in its [API setup guide](https://developers.google.com/maps/documentation/javascript/get-api-key).
 2. Create a **browser API key** with **Websites / HTTP referrers** application restrictions. Add only the actual domains that will serve this site, for example:

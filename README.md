@@ -54,7 +54,7 @@ The configuration follows CloudCannon's [collection reference](https://cloudcann
 
 ## Google reviews badge
 
-The hero includes a branded link to the Old Hickory Google Maps reviews. Automatic rating and review-count updates are ready to configure using `PUBLIC_GOOGLE_MAPS_API_KEY` and `PUBLIC_GOOGLE_PLACE_ID`; see [the setup guide](docs/google-reviews.md) and `.env.example`. Until configured, the badge displays “Read our Google reviews” without a fabricated rating. Once configured, it fetches current Google data on each homepage load without rebuilding the site.
+The hero displays five stars and the owner-supplied text “5.0 · 23 verified Google reviews,” linked to the Old Hickory Google Maps reviews. The badge is static: it makes no Google API requests and needs no API key. Update the rating/count manually in `src/components/GoogleReviews.astro`. The earlier automatic integration is retained but disconnected; see [the setup guide](docs/google-reviews.md) for details.
 
 ## Content sources and conversion strategy
 
