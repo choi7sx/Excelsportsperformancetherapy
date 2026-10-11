@@ -1,0 +1,14 @@
+---
+// Public web-stream ID supplied by the site owner. An empty env override disables tracking.
+const measurementId = (import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "G-ZKJDYF5QVS").trim();
+if (measurementId && !/^G-[A-Z0-9]+$/.test(measurementId)) {
+  throw new Error("PUBLIC_GA_MEASUREMENT_ID must be a GA4 Measurement ID beginning with G-");
+}
+---
+
+{import.meta.env.PROD && measurementId && <meta name="ga-measurement-id" content={measurementId} />}
+<script>
+  import { initializeAnalytics } from "../lib/analytics";
+  const measurementId = document.querySelector<HTMLMetaElement>('meta[name="ga-measurement-id"]')?.content;
+  if (measurementId) initializeAnalytics(window, measurementId);
+</script>

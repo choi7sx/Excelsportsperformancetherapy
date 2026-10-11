@@ -27,6 +27,10 @@ In Conductor, start **preview** from the **Run** tab, then click **Open** to vie
 
 The homepage and service pages use Astro source files. The blog uses the CloudCannon content collections. Original page-builder components remain available; starter blog articles have been replaced with Excel content.
 
+## Analytics
+
+GA4 click tracking is wired into the shared layout for all pages using Excel's public Measurement ID `G-ZKJDYF5QVS`. It activates on `excelspt.com` and `www.excelspt.com` when this code is deployed. `PUBLIC_GA_MEASUREMENT_ID` can override the ID or disable tracking with an empty value. Development and preview hosts do not send events. See [the analytics setup and reporting guide](docs/analytics.md) for the event list, custom dimensions, and verification steps. Clicks to Jane/Google Forms and phone links measure intent; completed bookings, external form submissions, and connected calls require separate tracking.
+
 ## Blog and CloudCannon editing
 
 The `/blog/` page displays all posts newest first in three columns on desktop, two on tablets, and one on phones. The shared navigation places Blog immediately after FAQs. Articles use a hero image, heading, author/date, Markdown content, and three recent posts.
@@ -60,7 +64,7 @@ The hero displays five stars and the owner-supplied text “5.0 · 23 verified G
 
 Content was checked against https://www.excelspt.com/ and https://excelspt.janeapp.com/ on September 10, 2026. The homepage, Recovery Care, and Focused Rehab photos are optimized versions of the user-supplied treatment photo; the user-supplied Excel logo is used throughout. Performance Training uses a stock placeholder photo, with its source recorded in `public/images/services/README.md`. No fabricated reviews, star ratings, pricing, qualifications, or outcome guarantees were added.
 
-The working assumption is that uncertainty about care and the first visit creates booking friction. The Hormozi-inspired strategy therefore informed outcome-led copy, early patient proof, understandable care paths, a clear first-visit explanation, and a free consultation alternative. The intended outcome is more qualified initial evaluations. Once launched, measure visits → booking-calendar clicks → completed evaluations, along with consult requests. Analytics and completed-booking attribution are not connected in this draft; bookings happen in Jane. Evaluate conversion and booking quality before investing in more traffic. Appointment capacity becomes the next constraint if demand grows.
+The working assumption is that uncertainty about care and the first visit creates booking friction. The Hormozi-inspired strategy therefore informed outcome-led copy, early patient proof, understandable care paths, a clear first-visit explanation, and a free consultation alternative. The intended outcome is more qualified initial evaluations. Once launched, measure visits → booking-calendar clicks → completed evaluations, along with consult requests. GA4 is configured for the production domain; completed-booking attribution remains separate because bookings happen in Jane. Evaluate conversion and booking quality before investing in more traffic. Appointment capacity becomes the next constraint if demand grows.
 
 Service pages use a quieter text-led layout with an introductory booking action, service-fit guidance, explanations of the care approach, first-visit steps, and service-specific FAQs. The Enhanced PT physical therapy page (https://enhancedpt.com/services/physical-therapy/) informed the educational structure; copy and design are original to Excel.
 
