@@ -1,6 +1,7 @@
 ---
 import "../styles/excel.css";
 import Icon from "../components/ExcelIcon.astro";
+import Analytics from "../components/Analytics.astro";
 import { bookingUrl, consultUrl, locations, services } from "../data/excel";
 interface Props {
   title?: string;
@@ -96,6 +97,7 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <Analytics />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
     <title>{title}</title>
