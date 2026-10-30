@@ -1,6 +1,6 @@
 # Excel Sports Performance Therapy
 
-A responsive Astro first draft for Dr. Ethan Coghill's Nashville practice. Includes a homepage, service pages, a five-post blog, real patient excerpts, FAQs, two locations, and a booking location chooser that connects to the existing Jane calendars.
+A responsive Astro first draft for Dr. Ethan Coghill's Nashville practice. Includes a homepage, service pages, a five-post blog, real patient excerpts, FAQs, and a Schedule Now flow that connects to the existing Jane calendars.
 
 ## Run locally
 
@@ -16,7 +16,7 @@ In Conductor, start **preview** from the **Run** tab, then click **Open** to vie
 ## Editing the draft
 
 - Homepage: `src/pages/index.astro`
-- Services, FAQs, locations, hours, and booking URLs: `src/data/excel.ts`
+- Services, FAQs, locations, hours, and booking URLs: `src/data/excel.ts`. With one location, Schedule Now links directly to that location's Jane calendar. Adding a second location restores the booking dialog; location-specific copy in the homepage, navigation, footer, FAQs, service pages, metadata, blog author bios, and `src/lib/analytics.ts` must then be updated by hand.
 - Shared navigation, booking dialog, footer, and metadata: `src/layouts/ExcelLayout.astro`
 - Shared font family and weight tokens: `src/styles/typography.css`
 - Visual styles and responsive layouts: `src/styles/excel.css`

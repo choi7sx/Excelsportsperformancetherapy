@@ -36,7 +36,7 @@ for (const route of routes) {
     const data = schemas(html);
     const practice = data.find(s => s['@id'] === `${origin}/#practice`);
     assert.equal(practice['@type'], 'Organization');
-    assert.equal(practice.department.length, 2);
+    assert.equal(practice.department.length, 1);
     for (const location of practice.department) {
       assert.ok(location.address.streetAddress);
       assert.ok(location.telephone);

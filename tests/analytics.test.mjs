@@ -48,7 +48,7 @@ test("initialization is idempotent and nested SVG clicks produce one event witho
 
 test("booking, consultation, contact, directions, and external links have distinct events", () => {
   const cases = [
-    ['<a href="https://excelspt.janeapp.com/locations/excel-sports-performance-therapy-belle-meade/book">Book</a>', "booking_calendar_click", "Belle Meade"],
+    ['<a href="https://excelspt.janeapp.com/locations/excel-sports-performance-therapy-old-hickory/book">Book</a>', "booking_calendar_click", "Old Hickory"],
     ['<a href="https://forms.gle/nBraWwyNaS89eaHx6">Consult</a>', "consult_click"],
     ['<a href="tel:+16153141508">615-314-1508</a>', "phone_click"],
     ['<a href="mailto:drethanexcelspt@gmail.com?body=private">Email</a>', "email_click"],
