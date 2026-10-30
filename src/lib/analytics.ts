@@ -69,9 +69,8 @@ export function clickEvent(element: Element, pageUrl: string) {
   const details = element.matches("summary") ? element.closest("details") : null;
   if (details) parameters.click_action = details.hasAttribute("open") ? "close" : "open";
   else if (element.hasAttribute("aria-expanded")) parameters.click_action = element.getAttribute("aria-expanded") === "true" ? "close" : "open";
-  if (url?.hostname === "excelspt.janeapp.com") {
-    if (url.pathname.includes("old-hickory")) parameters.booking_location = "Old Hickory";
-    if (url.pathname.includes("belle-meade")) parameters.booking_location = "Belle Meade";
+  if (url?.hostname === "excelspt.janeapp.com" && url.pathname.includes("old-hickory")) {
+    parameters.booking_location = "Old Hickory";
   }
   return { name, parameters };
 }

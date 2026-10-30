@@ -1,27 +1,25 @@
-export const bookingUrl = "https://excelspt.janeapp.com/";
 export const consultUrl = "https://forms.gle/nBraWwyNaS89eaHx6";
 export const locations = [
   {
     name: "Old Hickory",
-    venue: "Inside Old Hickory CrossFit",
+    venue: "Old Hickory CrossFit",
     address: "3323 Old Hickory Blvd",
     city: "Old Hickory, TN",
-    hours: "Tue & Thu · 7am–4pm / Fri · 7am–2pm",
+    hours: [
+      { days: "Monday", time: "7am–5pm" },
+      { days: "Tue – Thu", time: "7am–4pm" },
+      { days: "Friday", time: "7am–2pm" },
+    ],
     booking:
       "https://excelspt.janeapp.com/locations/excel-sports-performance-therapy-old-hickory/book",
-    days: ["Tuesday", "Thursday", "Friday"],
-  },
-  {
-    name: "Belle Meade",
-    venue: "Inside Renzo Gracie Nashville",
-    address: "73 White Bridge Rd, Suite G-3",
-    city: "Nashville, TN 37205",
-    hours: "Mon · 7am–5pm / Wed · 7am–4pm",
-    booking:
-      "https://excelspt.janeapp.com/locations/excel-sports-performance-therapy-belle-meade/book",
-    days: ["Monday", "Wednesday"],
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
   },
 ];
+// With one location, Schedule Now opens its Jane calendar directly. Adding a
+// second location restores the booking dialog and Jane's location chooser.
+export const hasLocationChoice = locations.length > 1;
+export const bookingUrl = hasLocationChoice ? "https://excelspt.janeapp.com/" : locations[0].booking;
+export const bookingLinkAttrs = hasLocationChoice ? { "data-booking": "" } : {};
 export const services = [
   {
     slug: "recovery-care",
@@ -114,8 +112,8 @@ export const faqs = [
       "You can bring that history to your evaluation. Dr. Ethan’s approach combines chiropractic care with progressive strength and mobility work. A consultation is a chance to talk through what you have tried and whether Excel could be a good fit.",
   },
   {
-    question: "Which location should I book?",
+    question: "Where are you located?",
     answer:
-      "Choose Old Hickory for Tuesday, Thursday, or Friday visits, or Belle Meade for Monday and Wednesday visits. Both locations offer appointments with Dr. Ethan. The booking calendar shows current availability.",
+      "Excel is inside Old Hickory CrossFit at 3323 Old Hickory Blvd in Old Hickory, TN. Dr. Ethan sees patients there Monday through Friday. The booking calendar shows current availability.",
   },
 ];

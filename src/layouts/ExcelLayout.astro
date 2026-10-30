@@ -2,7 +2,7 @@
 import "../styles/excel.css";
 import Icon from "../components/ExcelIcon.astro";
 import Analytics from "../components/Analytics.astro";
-import { bookingUrl, consultUrl, locations, services } from "../data/excel";
+import { bookingLinkAttrs, bookingUrl, consultUrl, hasLocationChoice, locations, services } from "../data/excel";
 interface Props {
   title?: string;
   description?: string;
@@ -19,7 +19,7 @@ interface Props {
 }
 const {
   title = "Sports Chiropractor in Nashville | Excel Sports Performance Therapy",
-  description = "Move with more confidence. Dr. Ethan Coghill offers chiropractic care, sports rehab, and performance coaching in Old Hickory and Belle Meade. Book your evaluation.",
+  description = "Move with more confidence. Dr. Ethan Coghill offers chiropractic care, sports rehab, and performance coaching in Old Hickory, TN. Book your evaluation.",
   noindex = false,
   schema,
   image = "/images/excel-social.jpg",
@@ -44,7 +44,7 @@ const businessSchema = {
   logo: absoluteUrl("/images/excel-logo.webp"),
   telephone: "+1-615-314-1508",
   email: "drethanexcelspt@gmail.com",
-  areaServed: ["Nashville", "Old Hickory", "Belle Meade"],
+  areaServed: ["Nashville", "Old Hickory"],
   employee: {
     "@type": "Person",
     "@id": absoluteUrl("/#meet-ethan"),
@@ -66,10 +66,9 @@ const businessSchema = {
     address: {
       "@type": "PostalAddress",
       streetAddress: l.address,
-      addressLocality: l.name === "Old Hickory" ? "Old Hickory" : "Nashville",
+      addressLocality: l.city.split(",")[0],
       addressRegion: "TN",
       addressCountry: "US",
-      ...(l.name === "Belle Meade" ? { postalCode: "37205" } : {}),
     },
     openingHoursSpecification: l.days.map((day) => ({
       "@type": "OpeningHoursSpecification",
@@ -206,12 +205,12 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
               ))}
             </ul>
           </details>
-          <a href="/#locations">Locations</a>
+          <a href="/#locations">Location</a>
           <a href="/#meet-ethan">Meet Dr. Ethan</a>
           <a href="/#faq">FAQs</a>
           <a href="/blog/" aria-current={Astro.url.pathname.startsWith("/blog") ? "page" : undefined}>Blog</a>
         </nav>
-        <a class="button nav-book" href={bookingUrl} data-booking>
+        <a class="button nav-book" href={bookingUrl} {...bookingLinkAttrs}>
           Schedule Now <Icon size={17} />
         </a>
         <button
@@ -248,7 +247,7 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
           <h2 class="footer-heading">Find your next step</h2>
           <a href="/#services">Explore our services</a>
           <a href="/#meet-ethan">Meet Dr. Ethan</a>
-          <a href={bookingUrl} data-booking>
+          <a href={bookingUrl} {...bookingLinkAttrs}>
             Schedule Now
           </a>
           <a href={consultUrl}>
@@ -261,7 +260,7 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
           <a href="mailto:drethanexcelspt@gmail.com">
             drethanexcelspt@gmail.com
           </a>
-          <a href="/#locations">Old Hickory & Belle Meade, TN</a>
+          <a href="/#locations">Old Hickory, TN</a>
           <span class="footer-note">HSA / FSA accepted</span>
         </div>
       </div>
@@ -275,37 +274,39 @@ const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value
         </a>
       </div>
     </footer>
-    <dialog id="booking-dialog" aria-labelledby="booking-title" aria-describedby="booking-description">
-      <button class="dialog-close" aria-label="Close booking options">
-        ×
-      </button>
-      <span class="eyebrow">BOOK YOUR INITIAL EVALUATION</span>
-      <h2 id="booking-title">Choose your location.</h2>
-      <p id="booking-description">
-        See available times in Jane, then select [new patient appointment] for your
-        first visit with Dr. Ethan.
-      </p>
-      <p class="booking-reassurance">Cash-based care · HSA/FSA accepted.</p>
-      <div class="booking-options">
-        {locations.map((l) => (
-          <a href={l.booking} class="booking-option">
-            <div>
-              <span class="eyebrow">{l.venue}</span>
-              <h3>{l.name}</h3>
-              <p>{l.address}</p>
-              <p>{l.hours}</p>
-            </div>
-            <Icon />
+    {hasLocationChoice && (
+      <dialog id="booking-dialog" aria-labelledby="booking-title" aria-describedby="booking-description">
+        <button class="dialog-close" aria-label="Close booking options">
+          ×
+        </button>
+        <span class="eyebrow">BOOK YOUR INITIAL EVALUATION</span>
+        <h2 id="booking-title">Choose your location.</h2>
+        <p id="booking-description">
+          See available times in Jane, then select [new patient appointment] for your
+          first visit with Dr. Ethan.
+        </p>
+        <p class="booking-reassurance">Cash-based care · HSA/FSA accepted.</p>
+        <div class="booking-options">
+          {locations.map((l) => (
+            <a href={l.booking} class="booking-option">
+              <div>
+                <span class="eyebrow">Inside {l.venue}</span>
+                <h3>{l.name}</h3>
+                <p>{l.address}</p>
+                <p>{l.hours.map((h) => `${h.days} · ${h.time}`).join(" / ")}</p>
+              </div>
+              <Icon />
+            </a>
+          ))}
+        </div>
+        <p class="dialog-note">
+          Have a question first?{" "}
+          <a href={consultUrl}>
+            Free Consultation
           </a>
-        ))}
-      </div>
-      <p class="dialog-note">
-        Have a question first?{" "}
-        <a href={consultUrl}>
-          Free Consultation
-        </a>
-      </p>
-    </dialog>
+        </p>
+      </dialog>
+    )}
     <script>
       const menu = document.querySelector<HTMLButtonElement>(".menu-toggle");
       const nav = document.querySelector<HTMLElement>("#main-nav");

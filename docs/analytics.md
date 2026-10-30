@@ -13,8 +13,8 @@ The shared `ExcelLayout` includes GA4 on the homepage, services, blog listing, a
 
 | Event | Meaning |
 | --- | --- |
-| `booking_click` | Activate a Schedule Now / booking-picker link |
-| `booking_calendar_click` | Follow a link to a Jane location calendar |
+| `booking_click` | Open the booking picker from Schedule Now (only fires when the site has multiple locations) |
+| `booking_calendar_click` | Follow a link to a Jane location calendar, including Schedule Now while the site has one location |
 | `consult_click` | Follow a consultation Google Forms link |
 | `phone_click` | Activate a phone link (does not confirm a connected call) |
 | `email_click` | Activate an email link (does not confirm a sent email) |

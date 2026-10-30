@@ -534,11 +534,19 @@ h3 {
   gap: 64px;
 }
 .location-card {
-  padding: 32px;
+  display: grid;
+  overflow: hidden;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 8px;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s ease-out;
+}
+.location-card:only-child {
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+}
+.location-info {
+  padding: 36px;
 }
 .location-card:focus-within {
   border-color: var(--blue);
@@ -557,24 +565,56 @@ h3 {
   }
 }
 .location-venue {
-  margin-block: 10px 20px;
+  margin-block: 8px 18px;
   font-size: var(--text-small);
 }
 .location-card address {
   font-style: normal;
-  line-height: 1.75;
+  line-height: 1.7;
 }
 .location-hours {
-  font-size: var(--text-small);
+  width: 100%;
   margin-top: 18px;
+  border-collapse: collapse;
+  font-size: var(--text-small);
+}
+.location-hours th {
+  padding: 7px 0;
+  font-weight: 500;
+  text-align: left;
+}
+.location-hours td {
+  padding: 7px 0;
+  text-align: right;
+}
+.location-hours tr + tr :is(th, td) {
+  border-top: 1px solid var(--line);
 }
 .location-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px 20px;
-  margin-top: 22px;
+  gap: 8px 24px;
+  margin-top: 24px;
+}
+.location-tip {
+  margin-top: 16px;
+  font-size: var(--text-small);
+}
+.location-map {
+  position: relative;
+  min-height: 260px;
+  background: var(--surface);
+}
+.location-card:only-child .location-map {
+  min-height: 420px;
+}
+.location-map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 .directions-link {
   display: inline-flex;
@@ -879,6 +919,13 @@ dialog h2 {
   }
 }
 @media (max-width: 800px) {
+  .location-card:only-child {
+    grid-template-columns: 1fr;
+  }
+  .location-card:only-child .location-map {
+    order: -1;
+    min-height: 260px;
+  }
   .service-card {
     aspect-ratio: auto;
     padding: 24px 20px;
@@ -1014,7 +1061,7 @@ dialog h2 {
     grid-template-columns: 1fr;
     gap: 30px;
   }
-  .location-card {
+  .location-info {
     padding: 24px;
   }
   .reviews-section {
